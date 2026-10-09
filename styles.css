@@ -81,10 +81,6 @@ body.locked{overflow:hidden}
 .section{padding:4.5rem 0}
 
 /* cards: no outlines */
-.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:2rem 0 2.5rem}
-.filters button{background:none;border:0;outline:0;padding:.55rem 1.1rem;border-radius:999px;font-size:.88rem;font-weight:600;color:var(--muted);cursor:pointer;transition:color .2s,background .2s}
-.filters button:hover{color:var(--blue)}
-.filters button.active{background:var(--navy);color:var(--bg)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem 2rem}
 .card{background:transparent;border:0;outline:0;box-shadow:none;padding:0;display:flex;flex-direction:column}
 .card .num{font-size:.78rem;font-weight:700;letter-spacing:.15em;color:var(--accent);margin-bottom:.6rem}
@@ -95,8 +91,15 @@ body.locked{overflow:hidden}
 .card .size{color:var(--muted)}
 .card .offer{color:var(--accent);font-weight:600;margin-top:.35rem}
 .card .more{margin-top:1rem;font-weight:600;font-size:.9rem;color:var(--accent);align-self:flex-start;background:none;border:0;padding:0;cursor:pointer}
-.card.hide{display:none}
 .steps{margin-top:3rem}
+.products-grid{margin-top:2.5rem}
+.thumb{aspect-ratio:4/3;width:100%;border-radius:1rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.25rem}
+.thumb span{color:var(--muted);font-size:.9rem}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.view-all{margin-top:3rem;text-align:center}
+.page-hero{padding:2.5rem 0 1rem}
+.page-hero h1{font-weight:500;margin-bottom:1rem}
+.page-hero .lead{margin:0;max-width:620px}
 
 /* footer, modelled on theintegratedmed.com */
 .footer{padding:4rem 0 2rem;margin-top:2rem}
@@ -130,8 +133,8 @@ body.locked{overflow:hidden}
   .hero-copy{text-align:left}
   .hero-copy .lead{margin:0 0 2rem}
   .center{text-align:left}
-  .filters{justify-content:flex-start}
-  .card{text-align:left;align-items:flex-start}
+  .view-all{text-align:left}
+    .card{text-align:left;align-items:flex-start}
   .card .more{align-self:flex-start}
   .card .meta{justify-content:flex-start}
   .footer{text-align:center}
