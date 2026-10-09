@@ -3,6 +3,7 @@
   --ink:#0F2A6B;
   --muted:#3A4A73;
   --blue:#1F4FBF;
+  --green:#1E4D2B;
   --accent:#C75B0A;
   --orange:#F28C28;
   --accent-ink:#0F2A6B;
@@ -46,7 +47,8 @@ p + p{margin-top:.75rem}
 .nav-bar{display:flex;align-items:center;justify-content:space-between;height:6.75rem}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-stack{display:flex;flex-direction:column;align-items:center;gap:.35rem;line-height:1.1}
-.logo-ph{width:3.5rem;height:3.5rem;padding:.4rem;text-align:center;border-radius:50%;background:rgba(31,79,191,.1);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:600;line-height:1.2;letter-spacing:.02em}
+.logo-mark{width:3.6rem;height:3.6rem;display:block;color:var(--green)}
+.logo-badge{width:9.5rem;height:9.5rem;display:block;color:var(--green)}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
 .nav-desktop a:not(.btn){font-size:.92rem;font-weight:500;transition:color .2s}
 .nav-desktop a:not(.btn):hover{color:var(--blue)}
@@ -91,6 +93,7 @@ body.locked{overflow:hidden}
 /* footer, modelled on theintegratedmed.com */
 .footer{padding:4rem 0 2rem;margin-top:2rem}
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand .brand-stack{align-items:flex-start;gap:.75rem}
 .footer-brand p{margin-top:.75rem;max-width:300px}
 .footer-col h4{margin-bottom:1rem}
 .footer-col li + li{margin-top:.55rem}
@@ -115,5 +118,7 @@ body.locked{overflow:hidden}
   .footer{text-align:center}
   .footer-top{grid-template-columns:1fr;justify-items:center;gap:2rem}
   .footer-brand p{margin-left:auto;margin-right:auto}
+  .footer-brand .brand-stack{align-items:center}
+  .footer-brand{display:flex;flex-direction:column;align-items:center}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}

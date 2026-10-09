@@ -7,15 +7,214 @@
 <meta name="description" content="Pure, natural and authentic honey, honeycomb, Ethiopian black seed, bee pollen and Ajwa dates, sourced from trusted origins around the world.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<radialGradient id="esDisc" cx="50%" cy="40%" r="70%">
+<stop offset="0" stop-color="#FBF6E7"></stop>
+<stop offset="1" stop-color="#EFE5C9"></stop>
+</radialGradient>
+<linearGradient id="esGold" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#E9CF8C"></stop>
+<stop offset="0.5" stop-color="#B58A2B"></stop>
+<stop offset="1" stop-color="#E6C879"></stop>
+</linearGradient>
+<radialGradient id="esCell" cx="38%" cy="30%" r="80%">
+<stop offset="0" stop-color="#F3CF72"></stop>
+<stop offset="0.6" stop-color="#D49A30"></stop>
+<stop offset="1" stop-color="#A56C16"></stop>
+</radialGradient>
+<linearGradient id="esDrip" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#B97A1A"></stop>
+<stop offset="0.4" stop-color="#F0C766"></stop>
+<stop offset="1" stop-color="#A56C16"></stop>
+</linearGradient>
+<radialGradient id="esDate" cx="34%" cy="26%" r="85%">
+<stop offset="0" stop-color="#A86A38"></stop>
+<stop offset="0.5" stop-color="#6E3A1B"></stop>
+<stop offset="1" stop-color="#3B1D0C"></stop>
+</radialGradient>
+<radialGradient id="esOil" cx="34%" cy="34%" r="80%">
+<stop offset="0" stop-color="#C98B3C"></stop>
+<stop offset="0.5" stop-color="#6B3A10"></stop>
+<stop offset="1" stop-color="#1F1006"></stop>
+</radialGradient>
+<linearGradient id="esLeaf" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" stop-color="#4B6B3A"></stop>
+<stop offset="1" stop-color="#8CA871"></stop>
+</linearGradient>
+<radialGradient id="esPetal" cx="40%" cy="30%" r="80%">
+<stop offset="0" stop-color="#FFFFFA"></stop>
+<stop offset="1" stop-color="#EEF0DD"></stop>
+</radialGradient>
+<radialGradient id="esSeed" cx="35%" cy="30%" r="75%">
+<stop offset="0" stop-color="#55504A"></stop>
+<stop offset="1" stop-color="#0D0B09"></stop>
+</radialGradient>
+<radialGradient id="esBee" cx="40%" cy="30%" r="80%">
+<stop offset="0" stop-color="#F7CB55"></stop>
+<stop offset="0.6" stop-color="#D9921A"></stop>
+<stop offset="1" stop-color="#8A560A"></stop>
+</radialGradient>
+<linearGradient id="esWing" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"></stop>
+<stop offset="1" stop-color="#DCE8EA" stop-opacity="0.65"></stop>
+</linearGradient>
+<clipPath id="esAbd2"><path d="M0 2 C-10 4 -12 18 -6 28 C-3 33 3 33 6 28 C12 18 10 4 0 2 Z"></path></clipPath>
+<radialGradient id="esThorax" cx="40%" cy="30%" r="80%">
+<stop offset="0" stop-color="#B8801F"></stop>
+<stop offset="0.6" stop-color="#6B430C"></stop>
+<stop offset="1" stop-color="#2E1D08"></stop>
+</radialGradient>
+<filter id="esBlur" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter>
+<path id="esTop" d="M 29.32,153 A 96.5,96.5 0 1 1 210.68,153"></path>
+<path id="esBottom" d="M 15.3,120 A 104.7,104.7 0 0 0 224.7,120"></path>
+<path id="esSeedShape" d="M0 -6.5 C3 -3.5 4.2 1.5 2.4 5 C0.8 6.8 -2 6.6 -3.2 4.4 C-4.2 1.2 -2.6 -3.4 0 -6.5 Z"></path>
+<path id="esLeaflet" d="M0 0 C-3.5 -12 -3 -32 0 -50 C3 -32 3.5 -12 0 0 Z"></path>
+<polygon id="esHex" points="0,-13 11.26,-6.5 11.26,6.5 0,13 -11.26,6.5 -11.26,-6.5"></polygon>
+<ellipse id="esPetalShape" cx="0" cy="-17" rx="7.5" ry="15.5"></ellipse>
+
+<radialGradient id="esDateWarm" cx="55%" cy="60%" r="60%">
+<stop offset="0" stop-color="#B8572B" stop-opacity="0.55"></stop>
+<stop offset="1" stop-color="#B8572B" stop-opacity="0"></stop>
+</radialGradient>
+<g id="esDateShape">
+<ellipse cx="0" cy="0" rx="8.6" ry="14.5" fill="url(#esDate)" stroke="#2E1507" stroke-width="0.6"></ellipse>
+<ellipse cx="1.5" cy="3" rx="6.5" ry="10.5" fill="url(#esDateWarm)"></ellipse>
+<g fill="none" stroke-linecap="round">
+<path d="M-5 -9 C-6.5 -3 -6.5 4 -4.5 10 M-2 -12 C-3.5 -4 -3.5 5 -1.5 12 M1.5 -12 C0.5 -4 1 5 2.5 12 M5 -8 C5.5 -2 5 4 3.8 9" stroke="#1E0C04" stroke-width="0.5" opacity="0.4"></path>
+<path d="M-4.3 -9 C-5.8 -3 -5.8 4 -3.8 10 M-1.3 -12 C-2.8 -4 -2.8 5 -0.8 12 M2.2 -12 C1.2 -4 1.7 5 3.2 12" stroke="#D9A06A" stroke-width="0.3" opacity="0.35"></path>
+<path d="M-6 -2 C-4 -1 -2 -1.5 0 -1 M0 3 C2 3.8 4 3.5 6 2 M-5 6 C-3.5 6.6 -2 6.4 -0.8 6" stroke="#1E0C04" stroke-width="0.4" opacity="0.35"></path>
+</g>
+<ellipse cx="-4.4" cy="-4.5" rx="1.8" ry="6.2" transform="rotate(8 -4.4 -4.5)" fill="#F2C690" opacity="0.5"></ellipse>
+<ellipse cx="-4.8" cy="-8" rx="0.8" ry="2" transform="rotate(8 -4.8 -8)" fill="#FFFFFF" opacity="0.6"></ellipse>
+<ellipse cx="0" cy="-13.4" rx="3.5" ry="1.7" fill="#2B1608" stroke="#1A0C04" stroke-width="0.3"></ellipse>
+<path d="M0 -13.4 L-3 -14.4 M0 -13.4 L3 -14.4 M0 -13.4 L-2.4 -12.2 M0 -13.4 L2.4 -12.2" stroke="#6A4420" stroke-width="0.35" stroke-linecap="round"></path>
+<path d="M0 -14.8 L0.3 -16.8" stroke="#4A3A1A" stroke-width="0.9" stroke-linecap="round"></path>
+<ellipse cx="0" cy="13.8" rx="1.3" ry="0.6" fill="#1E0C04" opacity="0.6"></ellipse>
+</g>
+
+<g id="esScene">
+<ellipse cx="92" cy="182" rx="30" ry="4" fill="#4A3B22" opacity="0.28" filter="url(#esBlur)"></ellipse>
+
+<g transform="translate(90 174)" stroke="#3E5430" stroke-width="0.5">
+<use href="#esLeaflet" fill="url(#esLeaf)" transform="rotate(-80) scale(0.62)"></use>
+<use href="#esLeaflet" fill="url(#esLeaf)" transform="rotate(-58) scale(0.7)"></use>
+<use href="#esLeaflet" fill="url(#esLeaf)" transform="rotate(58) scale(0.7)"></use>
+<use href="#esLeaflet" fill="url(#esLeaf)" transform="rotate(80) scale(0.62)"></use>
+</g>
+
+<g transform="translate(120 80) scale(0.9) translate(-120 -80)">
+<g stroke="#B27A18" stroke-width="0.7" stroke-linejoin="round" opacity="0.95">
+<polygon points="103.55,42.00 111.77,46.75 111.77,56.25 103.55,61.00 95.32,56.25 95.32,46.75" fill="#F6E6B4" fill-opacity="0.55"></polygon>
+<polygon points="120.00,42.00 128.23,46.75 128.23,56.25 120.00,61.00 111.77,56.25 111.77,46.75" fill="url(#esCell)" fill-opacity="0.8"></polygon>
+<polygon points="136.45,42.00 144.68,46.75 144.68,56.25 136.45,61.00 128.23,56.25 128.23,46.75" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="95.32,56.25 103.55,61.00 103.55,70.50 95.32,75.25 87.09,70.50 87.09,61.00" fill="#F6E6B4" fill-opacity="0.55"></polygon>
+<polygon points="111.77,56.25 120.00,61.00 120.00,70.50 111.77,75.25 103.55,70.50 103.55,61.00" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="128.23,56.25 136.45,61.00 136.45,70.50 128.23,75.25 120.00,70.50 120.00,61.00" fill="url(#esCell)" fill-opacity="0.8"></polygon>
+<polygon points="144.68,56.25 152.91,61.00 152.91,70.50 144.68,75.25 136.45,70.50 136.45,61.00" fill="#F6E6B4" fill-opacity="0.55"></polygon>
+<polygon points="87.09,70.50 95.32,75.25 95.32,84.75 87.09,89.50 78.86,84.75 78.86,75.25" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="103.55,70.50 111.77,75.25 111.77,84.75 103.55,89.50 95.32,84.75 95.32,75.25" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="120.00,70.50 128.23,75.25 128.23,84.75 120.00,89.50 111.77,84.75 111.77,75.25" fill="url(#esCell)" fill-opacity="0.8"></polygon>
+<polygon points="136.45,70.50 144.68,75.25 144.68,84.75 136.45,89.50 128.23,84.75 128.23,75.25" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="152.91,70.50 161.14,75.25 161.14,84.75 152.91,89.50 144.68,84.75 144.68,75.25" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="95.32,84.75 103.55,89.50 103.55,99.00 95.32,103.75 87.09,99.00 87.09,89.50" fill="#F6E6B4" fill-opacity="0.55"></polygon>
+<polygon points="111.77,84.75 120.00,89.50 120.00,99.00 111.77,103.75 103.55,99.00 103.55,89.50" fill="url(#esCell)" fill-opacity="0.8"></polygon>
+<polygon points="128.23,84.75 136.45,89.50 136.45,99.00 128.23,103.75 120.00,99.00 120.00,89.50" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="144.68,84.75 152.91,89.50 152.91,99.00 144.68,103.75 136.45,99.00 136.45,89.50" fill="#F6E6B4" fill-opacity="0.55"></polygon>
+<polygon points="103.55,99.00 111.77,103.75 111.77,113.25 103.55,118.00 95.32,113.25 95.32,103.75" fill="none" fill-opacity="0.55"></polygon>
+<polygon points="120.00,99.00 128.23,103.75 128.23,113.25 120.00,118.00 111.77,113.25 111.77,103.75" fill="url(#esCell)" fill-opacity="0.8"></polygon>
+<polygon points="136.45,99.00 144.68,103.75 144.68,113.25 136.45,118.00 128.23,113.25 128.23,103.75" fill="#F6E6B4" fill-opacity="0.55"></polygon>
+</g>
+</g>
+<g transform="translate(120 78) scale(0.72)">
+<g id="esWingL" transform="translate(-6 -5) scale(0.7) translate(6 5)">
+<path d="M-6 -8 C-18 -16 -34 -22 -44 -16 C-48 -12 -44 -4 -34 0 C-24 4 -12 0 -6 -4 Z" fill="url(#esWing)" stroke="#5A3410" stroke-width="0.7" stroke-linejoin="round"></path>
+<path d="M-7 -7 C-20 -12 -34 -15 -43 -14 M-8 -5 C-20 -7 -34 -8 -45 -10 M-8 -3 C-18 -3 -30 -3 -38 -4" stroke="#8A5A1A" stroke-width="0.4" fill="none"></path>
+<path d="M-22 -14 C-23 -9 -22 -5 -21 -3 M-32 -17 C-33 -12 -32 -7 -31 -4 M-39 -15 C-40 -11 -39 -8 -38 -5" stroke="#8A5A1A" stroke-width="0.3" fill="none"></path>
+<path d="M-6 -3 C-16 -2 -28 2 -34 8 C-36 12 -32 15 -26 14 C-18 12 -9 5 -6 0 Z" fill="url(#esWing)" stroke="#5A3410" stroke-width="0.7" stroke-linejoin="round"></path>
+<path d="M-8 -1 C-18 1 -28 5 -33 10 M-9 1 C-16 4 -23 8 -27 12" stroke="#8A5A1A" stroke-width="0.4" fill="none"></path>
+</g>
+<use href="#esWingL" transform="scale(-1 1)"></use>
+<g stroke="#2A1D0B" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-7 -4 L-14 -2 L-18 5 M-7 0 L-15 5 L-16 13 M-6 4 L-12 12 L-10 19"></path>
+<path d="M7 -4 L14 -2 L18 5 M7 0 L15 5 L16 13 M6 4 L12 12 L10 19"></path>
+</g>
+<path d="M0 2 C-10 4 -12 18 -6 28 C-3 33 3 33 6 28 C12 18 10 4 0 2 Z" fill="url(#esBee)" stroke="#4E3308" stroke-width="0.8"></path>
+<g clip-path="url(#esAbd2)" fill="#2A1D0B">
+<path d="M-13 9 Q0 13.5 13 9 L13 12.5 Q0 17 -13 12.5 Z"></path>
+<path d="M-13 17 Q0 21.5 13 17 L13 20.5 Q0 25 -13 20.5 Z"></path>
+<path d="M-13 25 Q0 29.5 13 25 L13 36 L-13 36 Z"></path>
+</g>
+<path d="M-5 6 C-8 12 -8 18 -6 23" stroke="#FFE9A8" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"></path>
+<path d="M0 33 L0 36.5" stroke="#2A1D0B" stroke-width="1" stroke-linecap="round"></path>
+<ellipse cx="0" cy="-4" rx="8.6" ry="8" fill="url(#esThorax)" stroke="#2A1608" stroke-width="0.6"></ellipse>
+<path d="M-8 -8 L-10.5 -9 M-9 -4 L-11.8 -4 M-8 0 L-10.5 1 M8 -8 L10.5 -9 M9 -4 L11.8 -4 M8 0 L10.5 1 M-4 -11 L-4.6 -13 M4 -11 L4.6 -13 M-3 3 L-3.4 5 M3 3 L3.4 5" stroke="#C9902A" stroke-width="0.7" stroke-linecap="round" opacity="0.75"></path>
+<path d="M0 -10 L0 2" stroke="#1E1206" stroke-width="0.5" opacity="0.5"></path>
+<ellipse cx="0" cy="-16" rx="6" ry="5" fill="#241A10" stroke="#120C06" stroke-width="0.5"></ellipse>
+<ellipse cx="-4.4" cy="-16.5" rx="2.3" ry="3.3" transform="rotate(-8 -4.4 -16.5)" fill="#0F0B07"></ellipse>
+<ellipse cx="4.4" cy="-16.5" rx="2.3" ry="3.3" transform="rotate(8 4.4 -16.5)" fill="#0F0B07"></ellipse>
+<ellipse cx="-5" cy="-18" rx="0.7" ry="1.1" fill="#fff" opacity="0.65"></ellipse>
+<ellipse cx="5" cy="-18" rx="0.7" ry="1.1" fill="#fff" opacity="0.65"></ellipse>
+<path d="M-1.6 -11.6 L0 -9.8 L1.6 -11.6" stroke="#120C06" stroke-width="0.8" fill="none" stroke-linecap="round"></path>
+<g stroke="#241A10" stroke-width="0.8" fill="none" stroke-linecap="round">
+<path d="M-2.4 -20 C-4 -25 -8 -28 -12 -28"></path>
+<path d="M2.4 -20 C4 -25 8 -28 12 -28"></path>
+</g>
+<circle cx="-12.4" cy="-28" r="1.1" fill="#241A10"></circle>
+<circle cx="12.4" cy="-28" r="1.1" fill="#241A10"></circle>
+</g>
+
+<g transform="translate(0 12)">
+<path d="M60 100 C70 102 82 106 96 112" stroke="#5B4A24" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+<path d="M76 105 L78 118 M88 109 L92 116" stroke="#5B4A24" stroke-width="1" fill="none"></path>
+<use href="#esDateShape" transform="translate(78 131) rotate(12)"></use>
+<use href="#esDateShape" transform="translate(94 129) rotate(-5)"></use>
+<use href="#esDateShape" transform="translate(87 149) rotate(3)"></use>
+</g>
+<g>
+<use href="#esSeedShape" fill="url(#esSeed)" transform="translate(184 150) rotate(35) scale(0.95)"></use>
+<use href="#esSeedShape" fill="url(#esSeed)" transform="translate(178 170) rotate(-25) scale(0.95)"></use>
+<use href="#esSeedShape" fill="url(#esSeed)" transform="translate(162 180) rotate(62) scale(0.95)"></use>
+<use href="#esSeedShape" fill="url(#esSeed)" transform="translate(146 172) rotate(-48) scale(0.9)"></use>
+<ellipse cx="184" cy="148" rx="0.8" ry="1.6" fill="#fff" opacity="0.5"></ellipse>
+<ellipse cx="177" cy="168" rx="0.8" ry="1.6" fill="#fff" opacity="0.5"></ellipse>
+</g>
+
+<g transform="translate(-14 55)">
+<path d="M178 80 C178 80 168 94 168 101 C168 107.5 172.5 111.5 178 111.5 C183.5 111.5 188 107.5 188 101 C188 94 178 80 178 80 Z" fill="url(#esOil)" stroke="#1F1006" stroke-width="0.5"></path>
+<path d="M172.5 96 C171 99.5 171 103 172.5 106" stroke="#F7E3B8" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.8"></path>
+<path d="M183 106.5 C185 105 186 103 186.5 100.5" stroke="#D9A862" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"></path>
+</g>
+</g>
+
+<symbol id="esBadge" viewBox="0 0 240 240">
+<circle cx="120" cy="120" r="119" fill="currentColor"></circle>
+<circle cx="120" cy="120" r="115" fill="none" stroke="url(#esGold)" stroke-width="1"></circle>
+<circle cx="120" cy="120" r="88.5" fill="none" stroke="url(#esGold)" stroke-width="1.4"></circle>
+<circle cx="120" cy="120" r="85.5" fill="url(#esDisc)"></circle>
+<text style="font-family: 'Lora', serif; font-weight: 400; font-size: 15.5px; letter-spacing: 11.25px" fill="#F2E4BB" text-anchor="middle"><textPath href="#esTop" startOffset="51.5%">EARTH’S ESSENCE</textPath></text>
+<text style="font-family: 'Lora', serif; font-weight: 400; font-size: 8.4px; letter-spacing: 4.4px" fill="#DDBB68" text-anchor="middle"><textPath href="#esBottom" startOffset="50%">DATES · HONEY · KALONJI OIL</textPath></text>
+<use href="#esScene"></use>
+</symbol>
+
+<symbol id="esCore" viewBox="0 0 240 240">
+<circle cx="120" cy="120" r="119" fill="currentColor"></circle>
+<circle cx="120" cy="120" r="109" fill="none" stroke="url(#esGold)" stroke-width="2"></circle>
+<circle cx="120" cy="120" r="105" fill="url(#esDisc)"></circle>
+<g transform="translate(120 122) scale(1.24) translate(-120 -122)"><use href="#esScene"></use></g>
+</symbol>
+</defs>
+</svg>
+
 <header class="site-header" id="top">
   <div class="container nav-bar">
     <a href="#top" class="brand brand-stack" aria-label="Earth's Essence home">
-      <span class="logo-ph" aria-hidden="true">Earth Essence logo</span>
+      <svg class="logo-mark" viewBox="0 0 240 240" role="img" aria-label="Earth's Essence logo"><use href="#esCore"></use></svg>
       <span>Earth’s Essence</span>
     </a>
     <nav class="nav-desktop" aria-label="Primary">
@@ -118,7 +317,10 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#top" class="brand">Earth’s Essence</a>
+        <a href="#top" class="brand brand-stack" aria-label="Earth's Essence home">
+          <svg class="logo-badge" viewBox="0 0 240 240" role="img" aria-label="Earth's Essence logo"><use href="#esBadge"></use></svg>
+          <span>Earth’s Essence</span>
+        </a>
         <p>Pure, natural and authentic products, sourced from trusted origins around the world.</p>
       </div>
       <div class="footer-col">
