@@ -139,6 +139,6 @@ body.locked{overflow:hidden}
   .footer{text-align:center}
   .footer-top{grid-template-columns:1fr;justify-items:center;gap:2rem}
   .footer-brand p{margin-left:auto;margin-right:auto}
-    .footer-brand{display:flex;flex-direction:column;align-items:center}
+  .footer-brand{display:flex;flex-direction:column;align-items:center}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
