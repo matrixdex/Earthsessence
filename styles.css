@@ -1,11 +1,11 @@
 :root{
   --bg:#FFFEEB;
-  --ink:#0B2545;
+  --ink:#0A213E;
   --muted:#3B4E6B;
   --blue:#1D4E89;
   --green:#1E4D2B;
   --accent:#1D4E89;
-  --navy:#0B2545;
+  --navy:#0A213E;
   --accent-ink:var(--bg);
   --gutter:1.25rem;
 }
@@ -72,7 +72,7 @@ body.locked{overflow:hidden}
 /* sections */
 .hero{padding:2.5rem 0 4rem}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.hero-image{aspect-ratio:4/5;width:100%;border-radius:1rem;background:rgba(11,37,69,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-image{aspect-ratio:4/5;width:100%;border-radius:1rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-image span{color:var(--muted);font-size:.9rem}
 .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-copy{text-align:left}
