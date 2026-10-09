@@ -52,3 +52,20 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(fals
 window.addEventListener('resize', () => { if (innerWidth > 768) setMenu(false); });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// shrink the navbar logo smoothly from 100% to 50% over the hero section
+const hero = document.querySelector('.hero');
+let heroEnd = 1, ticking = false;
+function measureHero(){ heroEnd = Math.max(1, hero.offsetTop + hero.offsetHeight); }
+function updateLogo(){
+  const p = Math.min(1, Math.max(0, window.scrollY / heroEnd));
+  document.documentElement.style.setProperty('--logo-scale', (1 - 0.5 * p).toFixed(4));
+  ticking = false;
+}
+window.addEventListener('scroll', () => {
+  if (!ticking) { ticking = true; requestAnimationFrame(updateLogo); }
+}, { passive: true });
+window.addEventListener('resize', () => { measureHero(); updateLogo(); });
+window.addEventListener('load', () => { measureHero(); updateLogo(); });
+measureHero();
+updateLogo();
