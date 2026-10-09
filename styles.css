@@ -10,6 +10,7 @@
   --gutter:1.25rem;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+body{margin-top:10px}
 html{scroll-behavior:smooth;scroll-padding-top:11rem}
 body{
   background:var(--bg);color:var(--ink);
