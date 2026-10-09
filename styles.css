@@ -45,7 +45,6 @@ p + p{margin-top:.75rem}
 .site-header{position:sticky;top:0;z-index:50;background:var(--bg)}
 .nav-bar{display:flex;align-items:center;justify-content:space-between;height:4.25rem}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
-.brand em{color:var(--ink)}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
 .nav-desktop a:not(.btn){font-size:.92rem;font-weight:500;transition:color .2s}
 .nav-desktop a:not(.btn):hover{color:var(--blue)}
