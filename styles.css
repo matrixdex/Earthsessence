@@ -10,7 +10,7 @@
   --gutter:1.25rem;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:8rem}
+html{scroll-behavior:smooth;scroll-padding-top:11rem}
 body{
   background:var(--bg);color:var(--ink);
   font-family:'Manrope',sans-serif;
@@ -44,11 +44,11 @@ p + p{margin-top:.75rem}
 
 /* header */
 .site-header{position:sticky;top:0;z-index:50;background:var(--bg)}
-.nav-bar{display:flex;align-items:center;justify-content:space-between;height:7.5rem}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;height:10.5rem}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-stack{display:flex;flex-direction:column;align-items:center;gap:.35rem;line-height:1.1}
-.logo-nav{width:6.25rem;height:6.25rem;display:block;color:var(--green)}
-.logo-badge{width:9.5rem;height:9.5rem;display:block;color:var(--green)}
+.logo-nav{width:9.375rem;height:9.375rem;display:block;color:var(--green)}
+.logo-badge{width:14.25rem;height:14.25rem;display:block;color:var(--green)}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
 .nav-desktop a:not(.btn){font-size:.92rem;font-weight:500;transition:color .2s}
 .nav-desktop a:not(.btn):hover{color:var(--blue)}
