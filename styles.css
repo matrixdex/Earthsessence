@@ -3,7 +3,6 @@
   --ink:#0A213E;
   --muted:#3B4E6B;
   --blue:#1D4E89;
-  --green:#1E4D2B;
   --accent:#1D4E89;
   --navy:#0A213E;
   --accent-ink:var(--bg);
@@ -48,8 +47,8 @@ p + p{margin-top:.75rem}
 .nav-bar{display:flex;align-items:center;justify-content:space-between;height:10.5rem}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-stack{display:flex;flex-direction:column;align-items:center;gap:.35rem;line-height:1.1}
-.logo-nav{width:9.375rem;height:9.375rem;display:block;color:var(--green)}
-.logo-badge{width:9.975rem;height:9.975rem;display:block;color:var(--green)}
+.logo-nav{width:9.375rem;height:9.375rem;display:block;color:var(--navy)}
+.logo-badge{width:9.975rem;height:9.975rem;display:block;color:var(--navy)}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
 .nav-desktop a:not(.btn){font-size:.92rem;font-weight:500;transition:color .2s}
 .nav-desktop a:not(.btn):hover{color:var(--blue)}
