@@ -102,8 +102,12 @@ body.locked{overflow:hidden}
 .feature-copy h3{font-size:1.6rem;margin-bottom:1.3rem}
 .feature-copy a{display:inline-block;margin-top:1.25rem;font-weight:600;font-size:.9rem;color:var(--accent)}
 .products-grid{margin-top:3.25rem}
-.filters + .products-grid{margin-top:0}
-.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.filter-bar + .products-grid{margin-top:0}
+.filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1rem;margin-bottom:2.5rem}
+.filter-toggle{display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,33,62,.08);color:var(--ink);border:0;outline:0;padding:.55rem 1.25rem;border-radius:999px;font-size:.88rem;font-weight:600;cursor:pointer;transition:background .2s}
+.filter-toggle:hover{background:rgba(10,33,62,.14)}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem}
+.filters[hidden]{display:none}
 .filters button{background:none;border:0;outline:0;padding:.55rem 1.25rem;border-radius:999px;font-size:.88rem;font-weight:600;color:var(--muted);cursor:pointer;transition:color .2s,background .2s}
 .filters button:hover{color:var(--blue)}
 .filters button.active{background:var(--navy);color:var(--bg)}

@@ -44,6 +44,12 @@ if (filtersEl) {
     if (active) url.searchParams.set('filter', active); else url.searchParams.delete('filter');
     try { history.replaceState(null, '', url); } catch (e) { /* e.g. opened from file:// */ }
   };
+  const toggle = document.getElementById('filter-toggle');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', open);
+    filtersEl.hidden = !open;
+  });
   buttons.forEach(b => b.addEventListener('click', () => {
     active = active === b.dataset.filter ? null : b.dataset.filter;
     applyFilter();
