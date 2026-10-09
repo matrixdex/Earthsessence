@@ -101,6 +101,11 @@ body.locked{overflow:hidden}
 .feature-copy h3{font-size:1.6rem;margin-bottom:1rem}
 .feature-copy a{display:inline-block;margin-top:1.25rem;font-weight:600;font-size:.9rem;color:var(--accent)}
 .products-grid{margin-top:2.5rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.filters button{background:none;border:0;outline:0;padding:.55rem 1.25rem;border-radius:999px;font-size:.88rem;font-weight:600;color:var(--muted);cursor:pointer;transition:color .2s,background .2s}
+.filters button:hover{color:var(--blue)}
+.filters button.active{background:var(--navy);color:var(--bg)}
+.card.hide{display:none}
 .thumb{aspect-ratio:4/3;width:100%;border-radius:1rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.25rem}
 .thumb span{color:var(--muted);font-size:.9rem}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
