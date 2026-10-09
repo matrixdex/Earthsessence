@@ -126,9 +126,14 @@ body.locked{overflow:hidden}
   .hero{padding:3.5rem 0 3rem}
   .section{padding:3.25rem 0}
   .grid{grid-template-columns:1fr;gap:2.25rem}
-  .card{text-align:center;align-items:center}
-  .card .more{align-self:center}
-  .card .meta{justify-content:center}
+  .hero-image{margin:0}
+  .hero-copy{text-align:left}
+  .hero-copy .lead{margin:0 0 2rem}
+  .center{text-align:left}
+  .filters{justify-content:flex-start}
+  .card{text-align:left;align-items:flex-start}
+  .card .more{align-self:flex-start}
+  .card .meta{justify-content:flex-start}
   .footer{text-align:center}
   .footer-top{grid-template-columns:1fr;justify-items:center;gap:2rem}
   .footer-brand p{margin-left:auto;margin-right:auto}
