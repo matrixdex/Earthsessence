@@ -12,7 +12,7 @@
   --logo-size:calc(var(--logo-full) * var(--logo-scale));
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{padding-top:calc(10.5rem + 10px)}
+body{padding-top:calc(var(--logo-full) + 1.125rem + 10px)}
 html{scroll-behavior:smooth;scroll-padding-top:7.5rem}
 body{
   background:var(--bg);color:var(--ink);
@@ -119,6 +119,8 @@ body.locked{overflow:hidden}
   .footer-brand{grid-column:1/-1}
 }
 @media (max-width:768px){
+  :root{--logo-full:6.5625rem}
+  html{scroll-padding-top:6rem}
   .nav-desktop{display:none}
   .burger{display:block}
   .hero{padding:3.5rem 0 3rem}
