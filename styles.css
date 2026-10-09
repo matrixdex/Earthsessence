@@ -156,7 +156,11 @@ body.locked{overflow:hidden}
   .hero-copy{text-align:left}
   .hero-copy .lead{margin:0 0 2rem}
   .center{text-align:left}
-  .view-all{text-align:left}
+  #products .container{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:1rem}
+  #products .center{grid-column:1;grid-row:1}
+  #products .view-all{grid-column:2;grid-row:1;margin:0;text-align:right}
+  #products .view-all .btn{padding:.6rem 1.25rem;white-space:nowrap}
+  #products .products-grid{grid-column:1 / -1;grid-row:2}
   .card{text-align:left;align-items:flex-start}
   .card .more{align-self:flex-start}
   .card .meta{justify-content:flex-start}
