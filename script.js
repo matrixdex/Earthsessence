@@ -1,27 +1,27 @@
 const products = [
   {n:1,featured:true,cat:'honey',name:'Multi-Colour Multi-Nectar Honey',price:'£16',size:'215g',desc:'Our signature product. Pure, natural, and unpasteurised honey made from a variety of flowers. Rich in natural colour and flavour, and full of character.'},
 
-  {n:2,cat:'honey',name:'Honeycomb of Multi-Colour Multi-Nectar Honey',price:'£16',size:'215g',desc:'Our pure, natural, and unpasteurised Multi-Colour Multi-Nectar honey. Presented with raw, hand-cut honeycomb.'},
+  {n:2,cat:'honey',name:'Honeycomb of Multi-Colour Multi-Nectar Honey',price:'£16',size:'215g',desc:'Our pure, natural, and unpasteurised Multi-Colour Multi-Nectar honey. Presented with raw, hand-cut honeycomb. Raw comb keeps honey’s natural enzymes and pollen, and the wax is safe to chew.'},
 
   {n:3,cat:'honey',name:'Black Seed Infused Honey',price:'£16',size:'215g',desc:'Our Multi-Colour Multi-Nectar honey infused with Ethiopian black seed (Nigella sativa). A distinct combination of two treasured natural ingredients.'},
 
-  {n:4,cat:'honey',name:'Spanish Acacia Honey',price:'£16',size:'215g',desc:'Delicate, naturally sweet, and unpasteurised Spanish Acacia honey. A delicious, natural alternative to refined sugar.'},
+  {n:4,cat:'honey',name:'Spanish Acacia Honey',price:'£16',size:'215g',desc:'Delicate, naturally sweet, and unpasteurised Spanish Acacia honey. A delicious, natural alternative to refined sugar. Light and slow to crystallise, it offers natural energy and antioxidants in every spoonful.'},
 
   {n:5,cat:'honey',name:'Honeycomb in Spanish Acacia Honey',price:'£16',size:'215g',desc:'Our delicate, naturally sweet, and unpasteurised Spanish Acacia Honey. Beautifully presented with hand-cut honeycomb. A delicious, natural alternative to refined sugar with just that little bit extra.'},
 
-  {n:6,cat:'honey',name:'Spanish Lavender Honey',price:'£16',size:'215g',desc:'Floral, fragrant and full of flavour. A distinct honey with lavender notes.'},
+  {n:6,cat:'honey',name:'Spanish Lavender Honey',price:'£16',size:'215g',desc:'Floral, fragrant and full of flavour. A distinct honey with lavender notes. Traditionally enjoyed in a warm drink in the evening, it provides natural energy along with the antioxidants found in honey.'},
 
-  {n:7,cat:'honey',name:'Spanish Rosemary Honey',price:'£16',size:'215g',desc:'A delicately sweet gourmet honey with subtle herbal notes. Rosemary brings a unique undertone to our delicious honey.'},
+  {n:7,cat:'honey',name:'Spanish Rosemary Honey',price:'£16',size:'215g',desc:'A delicately sweet gourmet honey with subtle herbal notes. Rosemary brings a unique undertone to our delicious honey. Like all honey, it contains natural antioxidants and makes a lovely alternative to refined sugar.'},
 
-  {n:8,cat:'honey',name:'Spanish Wild Thyme Honey',price:'£16',size:'215g',desc:'Smooth and sweet honey with subtle herbal, floral, and distinct phenolic notes. A hint of thyme in every taste.'},
+  {n:8,cat:'honey',name:'Spanish Wild Thyme Honey',price:'£16',size:'215g',desc:'Smooth and sweet honey with subtle herbal, floral, and distinct phenolic notes. A hint of thyme in every taste. Thyme has a long tradition in home comforts; try a spoonful in warm water.'},
 
   {n:9,featured:true,cat:'oil',name:'Ethiopian Black Seed Oil',price:'£16',size:'100ml',desc:'Cold-pressed from Nigella sativa seeds, our black seed oil is sourced from Ethiopia. Natural and unfiltered, without additives or preservatives. Boosts immunity and promotes good health.'},
 
-  {n:10,cat:'',name:'Ethiopian Black Seeds',price:'£10',size:'100g',offer:'2 for £16',desc:'Carefully selected whole black seeds (Nigella sativa) of the highest quality. Boosts immunity with long-term use.'},
+  {n:10,cat:'',name:'Ethiopian Black Seeds',price:'£10',size:'100g',offer:'2 for £16',desc:'Carefully selected whole black seeds (Nigella sativa) of the highest quality. Boosts immunity with long-term use. Nigella sativa seeds contain thymoquinone and are a source of fibre and healthy fats.'},
 
   {n:11,cat:'',name:'Honeybee Pollen',price:'£10',size:'100g',offer:'2 for £16',desc:'Pollen collected by local English honeybees. High in fibre. Full of vitamins, minerals, and antioxidants. A teaspoon everyday brings the natural power of pollen and propolis into your diet.'},
 
-  {n:12,cat:'honey',name:'Hand-Cut Honeycomb',price:'£10',size:'185–227g',offer:'2 for £16',desc:'Natural and unpasteurised honeycomb. Enjoy real honey in its most natural form.'},
+  {n:12,cat:'honey',name:'Hand-Cut Honeycomb',price:'£10',size:'185–227g',offer:'2 for £16',desc:'Natural and unpasteurised honeycomb. Enjoy real honey in its most natural form. Raw honeycomb keeps honey’s natural enzymes and pollen. Enjoy it with cheese or yoghurt, or chew the wax like a natural gum.'},
 
   {n:13,featured:true,cat:'dates',name:'Ajwa Dates',price:'£10',size:'500g',desc:'Delicious Ajwa dates sourced directly from Madinah Munawwarah, The Enlightened City. Decadent, soft, and renowned for their distinctive taste.'}
 ];
@@ -52,16 +52,6 @@ const LOOK = {
   9: {k: 'oil', o: 'Ethiopia'}, 10: {k: 'seeds', o: 'Ethiopia'}, 11: {k: 'pollen', o: 'England'},
   12: {k: 'comb'}, 13: {k: 'dates', o: 'Madinah'}
 };
-// short, general wellness notes appended to descriptions that are under four lines on widescreen
-const BENEFITS = {
-  2: 'Raw comb keeps honey\u2019s natural enzymes and pollen, and the wax is safe to chew.',
-  4: 'Light and slow to crystallise, it offers natural energy and antioxidants in every spoonful.',
-  6: 'Traditionally enjoyed in a warm drink in the evening, it provides natural energy along with the antioxidants found in honey.',
-  7: 'Like all honey, it contains natural antioxidants and makes a lovely alternative to refined sugar.',
-  8: 'Thyme has a long tradition in home comforts; try a spoonful in warm water.',
-  10: 'Nigella sativa seeds contain thymoquinone and are a source of fibre and healthy fats.',
-  12: 'Raw honeycomb keeps honey\u2019s natural enzymes and pollen. Enjoy it with cheese or yoghurt, or chew the wax like a natural gum.'
-};
 // source country -> flag class (Madinah is in Saudi Arabia)
 const FLAG = {Spain: 'es', Ethiopia: 'et', England: 'gb', Madinah: 'sa'};
 const lookFor = p => LOOK[p.n] || {k: {honey: 'honey', oil: 'oil', dates: 'dates'}[p.cat] || 'honey'};
@@ -74,7 +64,7 @@ if (grid) grid.innerHTML = list.map(p => `
   <article class="card" data-cat="${p.cat}">
     <div class="thumb thumb-${lookFor(p).k}${FLAG[lookFor(p).o] ? ' flag-' + FLAG[lookFor(p).o] : ''}" role="img" aria-label="${esc(p.name)}">${ICON[lookFor(p).k]}${lookFor(p).o ? `<span class="thumb-origin">${lookFor(p).o}</span>` : ''}</div>
     <h3>${esc(p.name)}</h3>
-    <p>${esc(p.desc)}${BENEFITS[p.n] ? ' ' + esc(BENEFITS[p.n]) : ''}</p>
+    <p>${esc(p.desc)}</p>
     <div class="meta"><span class="price">${p.price}</span><span class="size">${p.size}</span></div>
     <p class="offer">${p.offer ? esc(p.offer) : ''}</p>
     <a class="more" href="mailto:hello@example.com?subject=${encodeURIComponent('Order: ' + p.name)}">Order Now →</a>
