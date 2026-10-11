@@ -51,7 +51,8 @@ p + p{margin-top:.75rem}
 .logo-nav{width:var(--logo-size);height:var(--logo-size);display:block;color:var(--navy)}
 .footer-name{font-size:1.75rem;font-weight:500;line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
-.nav-desktop a:not(.btn){font-size:.92rem;font-weight:500;transition:color .2s}
+.nav-desktop .btn,.overlay nav .btn{font-size:1.08rem}
+.nav-desktop a:not(.btn){font-size:1.104rem;font-weight:500;transition:color .2s}
 .nav-desktop a:not(.btn):hover{color:var(--blue)}
 .burger{display:none;background:none;border:0;width:2.5rem;height:2.5rem;position:relative;cursor:pointer;z-index:70}
 .burger span{position:absolute;left:.5rem;right:.5rem;height:2px;background:var(--ink);transition:transform .3s,opacity .3s,top .3s}
@@ -66,7 +67,7 @@ p + p{margin-top:.75rem}
 .overlay{position:fixed;inset:0;background:var(--bg);z-index:60;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .overlay.open{opacity:1;visibility:visible}
 .overlay nav{display:flex;flex-direction:column;align-items:center;gap:1.75rem}
-.overlay nav a:not(.btn){font-size:1.8rem;font-weight:700}
+.overlay nav a:not(.btn){font-size:2.16rem;font-weight:700}
 body.locked{overflow:hidden}
 
 /* sections */
