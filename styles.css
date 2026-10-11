@@ -124,7 +124,7 @@ body.locked{overflow:hidden}
 .thumb-seeds .thumb-icon{width:50%}
 .thumb-oil .thumb-icon{width:72%}
 /* source country flag, as a soft gradient behind the tile illustration */
-.thumb[class*="flag-"]::before{content:"";position:absolute;inset:0;opacity:.5}
+.thumb[class*="flag-"]::before{content:"";position:absolute;inset:0;opacity:.25}
 .thumb > svg{position:relative;z-index:1}
 .flag-es::before{background:linear-gradient(180deg,#AA151B 0%,#AA151B 20%,#F1BF00 38%,#F1BF00 62%,#AA151B 80%,#AA151B 100%)}
 .flag-et::before{background:linear-gradient(180deg,#078930 0%,#078930 28%,#FCDD09 38%,#FCDD09 62%,#DA121A 72%,#DA121A 100%)}
