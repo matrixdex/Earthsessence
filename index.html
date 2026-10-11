@@ -240,7 +240,130 @@
 <main>
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-image" role="img" aria-label="Hero image placeholder"><span>Hero image placeholder</span></div>
+      <div class="hero-image" role="img" aria-label="Animation: the sun, the moon and the Earth combine in nature to create honey, dates and black seed oil"><svg class="hero-anim" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs>
+<linearGradient id="haSky" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#FBE7B5"></stop>
+<stop offset="0.38" stop-color="#F7EBD2"></stop>
+<stop offset="0.52" stop-color="#C9D8EA"></stop>
+<stop offset="0.72" stop-color="#5F7FB0"></stop>
+<stop offset="1" stop-color="#1D3A6B"></stop>
+</linearGradient>
+<linearGradient id="haHorizon" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0"></stop>
+<stop offset="1" stop-color="#FFFFFF" stop-opacity="0.35"></stop>
+</linearGradient>
+<radialGradient id="haSun" cx="45%" cy="40%" r="65%">
+<stop offset="0" stop-color="#FFF3B8"></stop>
+<stop offset="0.6" stop-color="#F6B93B"></stop>
+<stop offset="1" stop-color="#E08A12"></stop>
+</radialGradient>
+<radialGradient id="haSunGlow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#FFD76A" stop-opacity="0.65"></stop>
+<stop offset="1" stop-color="#FFD76A" stop-opacity="0"></stop>
+</radialGradient>
+<radialGradient id="haMoonGlow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#DCE8FF" stop-opacity="0.55"></stop>
+<stop offset="1" stop-color="#DCE8FF" stop-opacity="0"></stop>
+</radialGradient>
+<linearGradient id="haMoon" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#FFFFFF"></stop>
+<stop offset="1" stop-color="#C8D6EE"></stop>
+</linearGradient>
+<linearGradient id="haEarth" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#3C8A57"></stop>
+<stop offset="0.55" stop-color="#2A6F5C"></stop>
+<stop offset="1" stop-color="#1B4A78"></stop>
+</linearGradient>
+<radialGradient id="haHoney" cx="35%" cy="30%" r="80%">
+<stop offset="0" stop-color="#FFE48A"></stop>
+<stop offset="0.6" stop-color="#EDA920"></stop>
+<stop offset="1" stop-color="#B8700A"></stop>
+</radialGradient>
+<radialGradient id="haDate" cx="34%" cy="26%" r="85%">
+<stop offset="0" stop-color="#B8763F"></stop>
+<stop offset="0.5" stop-color="#6E3A1B"></stop>
+<stop offset="1" stop-color="#3A1808"></stop>
+</radialGradient>
+<radialGradient id="haOil" cx="34%" cy="34%" r="80%">
+<stop offset="0" stop-color="#E8AE55"></stop>
+<stop offset="0.5" stop-color="#8F4C12"></stop>
+<stop offset="1" stop-color="#2A1406"></stop>
+</radialGradient>
+<clipPath id="haEarthClip"><circle cx="300" cy="650" r="370"></circle></clipPath>
+<path id="haDrop" d="M0 -18 C0 -18 -13 0 -13 9 C-13 16 -7 21 0 21 C7 21 13 16 13 9 C13 0 0 -18 0 -18 Z"></path>
+</defs>
+
+<rect width="600" height="400" fill="url(#haSky)"></rect>
+<rect width="600" height="400" fill="url(#haHorizon)"></rect>
+
+<g class="ha-stars" fill="#FFFFFF">
+<circle cx="430" cy="46" r="1.6"></circle>
+<circle cx="520" cy="70" r="1.3"></circle>
+<circle cx="565" cy="140" r="1.6"></circle>
+<circle cx="455" cy="150" r="1.2"></circle>
+<circle cx="545" cy="215" r="1.4"></circle>
+<circle cx="505" cy="28" r="1.2"></circle>
+</g>
+
+<g class="ha-scene">
+<polygon class="ha-beam ha-beam-sun" points="112,100 250,196 332,238" fill="#F6B93B"></polygon>
+<polygon class="ha-beam ha-beam-moon" points="488,100 350,196 268,238" fill="#DCE8FF"></polygon>
+
+<g class="ha-sun">
+<circle cx="110" cy="100" r="78" fill="url(#haSunGlow)"></circle>
+<g class="ha-rays" stroke="#F2A81D" stroke-width="3" stroke-linecap="round">
+<path d="M110 52 V40 M110 148 V160 M62 100 H50 M158 100 H170 M76 66 L68 58 M144 134 L152 142 M144 66 L152 58 M76 134 L68 142"></path>
+</g>
+<circle cx="110" cy="100" r="34" fill="url(#haSun)"></circle>
+</g>
+
+<g class="ha-moon">
+<circle cx="490" cy="100" r="64" fill="url(#haMoonGlow)"></circle>
+<path transform="translate(490 100) scale(1.15)" d="M0 -32 A32 32 0 0 0 0 32 A40 40 0 0 1 0 -32 Z" fill="url(#haMoon)"></path>
+</g>
+
+<g class="ha-plant">
+<circle class="ha-crown" cx="300" cy="226" r="34" fill="url(#haSunGlow)"></circle>
+<path class="ha-stem" d="M300 284 C300 264 296 246 300 224" fill="none" stroke="#2F7D4F" stroke-width="5" stroke-linecap="round" pathLength="100"></path>
+<path class="ha-leaf ha-leaf-l1" d="M299 266 C281 266 271 254 269 242 C286 242 297 250 299 266 Z" fill="#3F9A5A"></path>
+<path class="ha-leaf ha-leaf-r1" d="M301 258 C319 258 329 246 331 234 C314 234 303 242 301 258 Z" fill="#4DAA66"></path>
+<path class="ha-leaf ha-leaf-l2" d="M299 244 C287 244 280 236 279 227 C291 227 298 233 299 244 Z" fill="#4DAA66"></path>
+<path class="ha-leaf ha-leaf-r2" d="M301 238 C313 238 320 230 321 221 C309 221 302 227 301 238 Z" fill="#3F9A5A"></path>
+</g>
+
+<g transform="translate(210 168)"><g class="ha-prod ha-prod-honey" style="--dx:90px;--dy:58px"><g class="ha-float">
+<use href="#haDrop" fill="url(#haHoney)"></use>
+<ellipse cx="-4.5" cy="4" rx="2.2" ry="5" transform="rotate(14 -4.5 4)" fill="#FFF6D2" opacity="0.7"></ellipse>
+<text y="46" text-anchor="middle" class="ha-label">Honey</text>
+</g></g></g>
+
+<g transform="translate(300 142)"><g class="ha-prod ha-prod-dates" style="--dx:0px;--dy:84px"><g class="ha-float ha-float-b">
+<ellipse rx="12" ry="20" transform="rotate(14)" fill="url(#haDate)" stroke="#2E1507" stroke-width="0.6"></ellipse>
+<ellipse cx="-4" cy="-3" rx="2" ry="8" transform="rotate(14)" fill="#E8B988" opacity="0.5"></ellipse>
+<ellipse cx="4.6" cy="-19" rx="3.6" ry="1.8" transform="rotate(14 4.6 -19)" fill="#2B1608"></ellipse>
+<text y="46" text-anchor="middle" class="ha-label">Dates</text>
+</g></g></g>
+
+<g transform="translate(390 168)"><g class="ha-prod ha-prod-oil" style="--dx:-90px;--dy:58px"><g class="ha-float ha-float-c">
+<use href="#haDrop" fill="url(#haOil)" stroke="#F0C766" stroke-width="0.8"></use>
+<ellipse cx="-4.5" cy="4" rx="2.2" ry="5" transform="rotate(14 -4.5 4)" fill="#FFF1D2" opacity="0.7"></ellipse>
+<text y="46" text-anchor="middle" class="ha-label ha-label-light">Black seed oil</text>
+</g></g></g>
+</g>
+
+<g class="ha-earth" clip-path="url(#haEarthClip)">
+<circle cx="300" cy="650" r="370" fill="url(#haEarth)"></circle>
+<g class="ha-land" fill="#58A66B" opacity="0.55">
+<ellipse cx="190" cy="298" rx="90" ry="14"></ellipse>
+<ellipse cx="410" cy="306" rx="70" ry="12"></ellipse>
+<ellipse cx="330" cy="318" rx="60" ry="10"></ellipse>
+<ellipse cx="120" cy="326" rx="60" ry="10"></ellipse>
+<ellipse cx="490" cy="330" rx="70" ry="12"></ellipse>
+</g>
+</g>
+<circle class="ha-atmos" cx="300" cy="650" r="374" fill="none" stroke="#BFD9F2" stroke-width="5" opacity="0.45"></circle>
+</svg></div>
       <div class="hero-copy">
         <h1>Nature’s finest <em>for you</em></h1>
         <p class="lead">Earth's Essence sources unique honeys, dates, and black seed oil from across the world</p>
