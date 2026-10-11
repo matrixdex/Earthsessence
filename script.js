@@ -1,17 +1,29 @@
 const products = [
   {n:1,featured:true,cat:'honey',name:'Multi-Colour Multi-Nectar Honey',price:'£16',size:'215g',desc:'Pure, natural, and unpasteurised honey made from a variety of flowers. Rich in natural colour and flavour, and full of character.'},
+
   {n:2,cat:'honey',name:'Honeycomb of Multi-Colour Multi-Nectar Honey',price:'£16',size:'215g',desc:'Our pure, natural, and unpasteurised Multi-Colour Multi-Nectar honey. Presented with raw, hand-cut honeycomb.'},
+
   {n:3,cat:'honey',name:'Black Seed Infused Honey',price:'£16',size:'215g',desc:'Our Multi-Colour Multi-Nectar honey infused with Ethiopian black seed (Nigella sativa). A distinct combination of two treasured natural ingredients.'},
+
   {n:4,cat:'honey',name:'Spanish Acacia Honey',price:'£16',size:'215g',desc:'Delicate, naturally sweet, and unpasteurised Spanish Acacia honey. A delicious, natural alternative to refined sugar.'},
+
   {n:5,cat:'honey',name:'Honeycomb in Spanish Acacia Honey',price:'£16',size:'215g',desc:'Our delicate, naturally sweet, and unpasteurised Spanish Acacia Honey. Beautifully presented with hand-cut honeycomb. A delicious, natural alternative to refined sugar with just that little bit extra.'},
-  {n:6,cat:'honey',name:'Pure Spanish Lavender Honey',price:'£16',size:'215g',desc:'Floral, fragrant and full of flavour.'},
-  {n:7,cat:'honey',name:'Pure Spanish Rosemary Honey',price:'£16',size:'215g',desc:'A delicately sweet gourmet honey with subtle herbal notes.'},
-  {n:8,cat:'honey',name:'Pure Spanish Wild Thyme Honey',price:'£16',size:'215g',desc:'Smooth and sweet with subtle herbal, floral, and distinct phenolic note.'},
-  {n:9,featured:true,cat:'oil',name:'100% Pure, Unfiltered, Cold Pressed, Extra Virgin Ethiopian Black Seed Oil',price:'£16',size:'100ml',desc:'Premium cold-pressed Ethiopian Black Seed (Nigella Sativa) Oil, naturally unfiltered and made without additives or preservatives. Direct from Ethiopia. Nothing added. Nothing taken away.'},
-  {n:10,cat:'',name:'100% Pure, Premium, Whole Ethiopian Black Seeds',price:'£10',size:'100g',offer:'2 for £16 (Mix & Match)',desc:'Carefully selected Whole Black (Nigella Sativa) Seeds of premium quality.'},
-  {n:11,cat:'',name:'100% Pure & Natural Honeybee Pollen',price:'£10',size:'100g',offer:'2 for £16 (Mix & Match)',desc:'Collected by local Honeybees. High in fibre. Full of vitamins, minerals and antioxidants. Enjoy a teaspoon per day to introduce the natural power of pollen and propolis into your diet.'},
-  {n:12,cat:'honey',name:'100% Real, Raw, Hand-Cut Honeycomb',price:'£10',size:'Approx 185–227g',offer:'2 for £16 (Mix & Match)',desc:'Authentic, unpasteurised, natural honeycomb. Enjoy real Honey in one of its most natural forms.'},
-  {n:13,featured:true,cat:'dates',name:'Authentic Ajwa Dates',price:'£10',size:'500g',desc:'Premium Ajwa Dates sourced from Madinah Munawwarah, The Enlightened City. Naturally rich, soft and renowned for their distinctive taste.'}
+
+  {n:6,cat:'honey',name:'Spanish Lavender Honey',price:'£16',size:'215g',desc:'Floral, fragrant and full of flavour. A distinct honey with lavender notes.'},
+
+  {n:7,cat:'honey',name:'Spanish Rosemary Honey',price:'£16',size:'215g',desc:'A delicately sweet gourmet honey with subtle herbal notes. Rosemary brings a unique undertone to our delicious honey.'},
+
+  {n:8,cat:'honey',name:'Spanish Wild Thyme Honey',price:'£16',size:'215g',desc:'Smooth and sweet honey with subtle herbal, floral, and distinct phenolic notes. A hint of thyme in every taste.'},
+
+  {n:9,featured:true,cat:'oil',name:'Ethiopian Black Seed Oil',price:'£16',size:'100ml',desc:'Cold-pressed from Nigella sativa seeds, our black seed oil is sourced from Ethiopia. Natural and unfiltered, without additives or preservatives. Boosts immunity and promotes good health.'},
+
+  {n:10,cat:'',name:'Ethiopian Black Seeds',price:'£10',size:'100g',offer:'2 for £16',desc:'Carefully selected whole black seeds (Nigella sativa) of the highest quality. Boosts immunity with long-term use.'},
+
+  {n:11,cat:'',name:'Honeybee Pollen',price:'£10',size:'100g',offer:'2 for £16',desc:'Pollen collected by local English honeybees. High in fibre. Full of vitamins, minerals, and antioxidants. A teaspoon everyday brings the natural power of pollen and propolis into your diet.'},
+
+  {n:12,cat:'honey',name:'Hand-Cut Honeycomb',price:'£10',size:'185–227g',offer:'2 for £16',desc:'Natural and unpasteurised honeycomb. Enjoy real honey in its most natural form.'},
+
+  {n:13,featured:true,cat:'dates',name:'Ajwa Dates',price:'£10',size:'500g',desc:'Delicious Ajwa dates sourced directly from Madinah Munawwarah, The Enlightened City. Decadent, soft, and renowned for their distinctive taste.'}
 ];
 
 const grid = document.getElementById('grid');
