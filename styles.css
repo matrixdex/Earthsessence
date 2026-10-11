@@ -123,6 +123,13 @@ body.locked{overflow:hidden}
 .thumb-dates .thumb-icon{width:74%}
 .thumb-seeds .thumb-icon{width:50%}
 .thumb-oil .thumb-icon{width:72%}
+/* source country flag, as a soft gradient behind the tile illustration */
+.thumb[class*="flag-"]::before{content:"";position:absolute;inset:0;opacity:.5}
+.thumb > svg{position:relative;z-index:1}
+.flag-es::before{background:linear-gradient(180deg,#AA151B 0%,#AA151B 20%,#F1BF00 38%,#F1BF00 62%,#AA151B 80%,#AA151B 100%)}
+.flag-et::before{background:linear-gradient(180deg,#078930 0%,#078930 28%,#FCDD09 38%,#FCDD09 62%,#DA121A 72%,#DA121A 100%)}
+.flag-gb::before{background:linear-gradient(#CE1124,#CE1124) 50% 50%/100% 20% no-repeat,linear-gradient(#CE1124,#CE1124) 50% 50%/14% 100% no-repeat,#FFFFFF}
+.flag-sa::before{background:linear-gradient(#FFFFFF,#FFFFFF) 50% 84%/58% 2.5% no-repeat,linear-gradient(135deg,#1F9A5C,#006C35 60%,#00522A)}
 .thumb-origin{position:absolute;left:.75rem;bottom:.75rem;background:rgba(255,254,235,.9);color:var(--ink);font-size:.78rem;font-weight:600;line-height:1;padding:.4rem .75rem;border-radius:999px}
 /* product tiles: a tinted pattern per product kind */
 .thumb-honey,.thumb-honeyseed,.thumb-comb{background-color:rgba(242,178,51,.2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23C7811A' stroke-opacity='.28' stroke-width='1.2'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23C7811A' stroke-opacity='.28' stroke-width='1.2'/%3E%3C/svg%3E");background-size:44px auto}
