@@ -160,7 +160,7 @@ body.locked{overflow:hidden}
 @keyframes paFrond{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 @keyframes paSwing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
 @keyframes paAura{0%,100%{opacity:.35;transform:scale(.92)}50%{opacity:.9;transform:scale(1.1)}}
-@keyframes paFall{0%{transform:translateY(0);opacity:0}12%{opacity:1}78%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+@keyframes paFall{0%{transform:translateY(0);opacity:0}12%{opacity:1}78%{opacity:1}100%{transform:translateY(60px);opacity:0}}
 @keyframes paFlow{to{stroke-dashoffset:-13}}
 @keyframes paRipple2{0%{opacity:.8;transform:scale(.3)}100%{opacity:0;transform:scale(3.1)}}
 @keyframes paSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
