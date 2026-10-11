@@ -126,7 +126,6 @@ body.locked{overflow:hidden}
 /* source country flag, as a soft gradient behind the tile illustration */
 .thumb[class*="flag-"]::before{content:"";position:absolute;inset:0;opacity:.25}
 .thumb > svg{position:relative;z-index:1}
-.thumb.flag-et{background-color:rgba(252,221,9,.3)}
 .flag-es::before{background:linear-gradient(180deg,#AA151B 0%,#AA151B 20%,#F1BF00 38%,#F1BF00 62%,#AA151B 80%,#AA151B 100%)}
 .flag-et::before{background:linear-gradient(180deg,#078930 0%,#078930 28%,#FCDD09 38%,#FCDD09 62%,#DA121A 72%,#DA121A 100%)}
 .flag-gb::before{background:linear-gradient(#C8102E,#C8102E) 50% 50%/100% 18% no-repeat,linear-gradient(#C8102E,#C8102E) 50% 50%/10% 100% no-repeat,linear-gradient(#FFFFFF,#FFFFFF) 50% 50%/100% 30% no-repeat,linear-gradient(#FFFFFF,#FFFFFF) 50% 50%/18% 100% no-repeat,linear-gradient(to top right,transparent 47.5%,#C8102E 47.5%,#C8102E 52.5%,transparent 52.5%),linear-gradient(to bottom right,transparent 47.5%,#C8102E 47.5%,#C8102E 52.5%,transparent 52.5%),linear-gradient(to top right,transparent 44%,#FFFFFF 44%,#FFFFFF 56%,transparent 56%),linear-gradient(to bottom right,transparent 44%,#FFFFFF 44%,#FFFFFF 56%,transparent 56%),#012169}
