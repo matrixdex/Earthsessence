@@ -85,3 +85,90 @@ window.addEventListener('resize', () => { measureHero(); updateLogo(); });
 window.addEventListener('load', () => { measureHero(); updateLogo(); });
 measureHero();
 updateLogo();
+// three-body hero animation: three equal masses on the figure-eight orbit, viewed in a slowly turning frame
+(function () {
+  const root = document.querySelector('.hero-anim');
+  if (!root) return;
+  const bodyEls = [...root.querySelectorAll('.ha-body')];
+  const trailEls = [0, 1, 2].map(i => [...root.querySelectorAll('.ha-trail-' + i)]);
+  const T = 6.32591398;          // orbital period in simulation units
+  const REAL_PERIOD = 9;          // seconds per orbit on screen
+  const CX = 300, CY = 200, SCALE = 150, SPIN = 0.16, TRAIL = 90, H = 0.004;
+  let p, v, simT, realT, history;
+
+  function reset() {
+    p = [[-0.97000436, 0.24308753], [0.97000436, -0.24308753], [0, 0]];
+    v = [[0.466203685, 0.43236573], [0.466203685, 0.43236573], [-0.93240737, -0.86473146]];
+    simT = 0;
+    history = [[], [], []];
+  }
+  function accel(q) {
+    return q.map((qi, i) => {
+      let ax = 0, ay = 0;
+      q.forEach((qj, j) => {
+        if (i === j) return;
+        const dx = qj[0] - qi[0], dy = qj[1] - qi[1];
+        const inv = 1 / Math.pow(dx * dx + dy * dy, 1.5);
+        ax += dx * inv; ay += dy * inv;
+      });
+      return [ax, ay];
+    });
+  }
+  function rk4(h) {
+    const add = (a, b, s) => a.map((x, i) => [x[0] + b[i][0] * s, x[1] + b[i][1] * s]);
+    const k1v = accel(p), k1p = v;
+    const p2 = add(p, k1p, h / 2), v2 = add(v, k1v, h / 2);
+    const k2v = accel(p2), k2p = v2;
+    const p3 = add(p, k2p, h / 2), v3 = add(v, k2v, h / 2);
+    const k3v = accel(p3), k3p = v3;
+    const p4 = add(p, k3p, h), v4 = add(v, k3v, h);
+    const k4v = accel(p4), k4p = v4;
+    p = p.map((x, i) => [x[0] + h / 6 * (k1p[i][0] + 2 * k2p[i][0] + 2 * k3p[i][0] + k4p[i][0]), x[1] + h / 6 * (k1p[i][1] + 2 * k2p[i][1] + 2 * k3p[i][1] + k4p[i][1])]);
+    v = v.map((x, i) => [x[0] + h / 6 * (k1v[i][0] + 2 * k2v[i][0] + 2 * k3v[i][0] + k4v[i][0]), x[1] + h / 6 * (k1v[i][1] + 2 * k2v[i][1] + 2 * k3v[i][1] + k4v[i][1])]);
+  }
+  function advance(dt) {
+    realT += dt;
+    let remaining = dt * (T / REAL_PERIOD);
+    while (remaining > 1e-9) {
+      const h = Math.min(H, remaining);
+      rk4(h); simT += h; remaining -= h;
+    }
+    if (simT >= T) { reset(); }
+  }
+  function draw() {
+    const a = realT * SPIN, ca = Math.cos(a), sa = Math.sin(a);
+    p.forEach((q, i) => {
+      const x = CX + SCALE * (q[0] * ca - q[1] * sa);
+      const y = CY + SCALE * (q[0] * sa + q[1] * ca);
+      bodyEls[i].setAttribute('transform', 'translate(' + x.toFixed(2) + ' ' + y.toFixed(2) + ')');
+      const hs = history[i];
+      hs.push([x, y]);
+      if (hs.length > TRAIL) hs.shift();
+      const seg = Math.ceil(hs.length / 3);
+      trailEls[i].forEach((el, k) => {
+        const pts = hs.slice(k * seg, Math.min(hs.length, (k + 1) * seg + 1));
+        el.setAttribute('d', pts.length > 1 ? 'M' + pts.map(pt => pt[0].toFixed(1) + ' ' + pt[1].toFixed(1)).join('L') : '');
+      });
+    });
+  }
+
+  reset(); realT = 0;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (let i = 0; i < 70; i++) { advance(1 / 60); draw(); }
+    return;
+  }
+  let last = 0, running = true, raf = 0;
+  function frame(now) {
+    if (!running) return;
+    const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
+    last = now;
+    advance(dt); draw();
+    raf = requestAnimationFrame(frame);
+  }
+  new IntersectionObserver(entries => {
+    const visible = entries[0].isIntersecting;
+    if (visible && !running) { running = true; last = 0; raf = requestAnimationFrame(frame); }
+    if (!visible) { running = false; cancelAnimationFrame(raf); }
+  }).observe(root);
+  raf = requestAnimationFrame(frame);
+})();
