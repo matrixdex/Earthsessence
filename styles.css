@@ -51,7 +51,8 @@ p + p{margin-top:.75rem}
 .logo-nav{width:var(--logo-size);height:var(--logo-size);display:block;color:var(--navy)}
 .footer-name{font-size:1.75rem;font-weight:500;line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
-.nav-desktop .btn{font-size:1.08rem}
+.nav-desktop .btn{font-size:1.104rem}
+.overlay nav .btn{font-size:1.8rem}
 .nav-desktop a:not(.btn){font-size:1.104rem;font-weight:500;transition:color .2s}
 .nav-desktop a:not(.btn):hover{color:var(--blue)}
 .burger{display:none;background:none;border:0;width:2.5rem;height:2.5rem;position:relative;cursor:pointer;z-index:70}
