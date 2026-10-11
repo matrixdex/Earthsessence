@@ -16,8 +16,8 @@ const products = [
 
 const grid = document.getElementById('grid');
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-const list = grid.dataset.featured ? products.filter(p => p.featured) : products;
-grid.innerHTML = list.map(p => `
+const list = grid && grid.dataset.featured ? products.filter(p => p.featured) : products;
+if (grid) grid.innerHTML = list.map(p => `
   <article class="card" data-cat="${p.cat}">
     <div class="thumb" role="img" aria-label="${esc(p.name)} image placeholder"><span>Product image</span></div>
     <h3>${esc(p.name)}</h3>
