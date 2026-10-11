@@ -85,19 +85,11 @@ window.addEventListener('resize', () => { measureHero(); updateLogo(); });
 window.addEventListener('load', () => { measureHero(); updateLogo(); });
 measureHero();
 updateLogo();
-// hero animation: pause while off screen, and show a still midday scene for reduced motion
+// hero animation: pause while it is off screen
 (function () {
   const root = document.querySelector('.hero-anim');
   if (!root) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    root.pauseAnimations();
-    root.setCurrentTime(6);
-    return;
-  }
   new IntersectionObserver(entries => {
-    const visible = entries[0].isIntersecting;
-    root.style.setProperty('--hs-state', visible ? 'running' : 'paused');
-    root.querySelectorAll('*').forEach(el => { el.style.animationPlayState = visible ? 'running' : 'paused'; });
-    if (visible) root.unpauseAnimations(); else root.pauseAnimations();
+    root.classList.toggle('ts-paused', !entries[0].isIntersecting);
   }).observe(root);
 })();
