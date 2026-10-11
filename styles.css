@@ -173,17 +173,12 @@ body.locked{overflow:hidden}
   .hero-copy h1{margin-bottom:1.8rem}
   .hero-copy .lead{margin-bottom:2.88rem}
 }
-/* hero animation: sun, crescent moon and Earth circle the corners of a triangle; products blink in turn at its centre (12s loop, transparent canvas) */
+/* hero animation: sun, crescent moon and Earth travel in circular arcs between the corners of a triangle; products blink in turn at its centre (12s loop, transparent canvas) */
 .hero-anim{display:block;width:100%;height:100%}
 .ts-rays,.ts-core,.ts-p{transform-box:fill-box}
-.ts-sun{transform:translate(300px,64px)}
-.ts-moon{transform:translate(423.0px,277.0px) rotate(150deg)}
-.ts-earth{transform:translate(177.0px,277.0px)}
 .ts-p{opacity:0;transform-origin:center}
-.ts-sun{animation:tsSun 12s infinite}
-.ts-moon{animation:tsMoon 12s infinite}
-.ts-earth{animation:tsEarth 12s infinite}
-.ts-sun,.ts-moon,.ts-earth{transform-box:view-box;transform-origin:0 0;animation-timing-function:ease-in-out}
+.ts-orbit{transform-box:view-box;transform-origin:300px 206px;animation:tsOrbit 12s ease-in-out infinite}
+.ts-up{transform-box:fill-box;transform-origin:center;animation:tsUp 12s ease-in-out infinite}
 .ts-rays{transform-origin:center;animation:tsSpin 40s linear infinite}
 .ts-spin{animation:tsEarthSpin 14s linear infinite}
 .ts-core{transform-origin:center;animation:tsCore 12s ease-in-out infinite}
@@ -191,9 +186,8 @@ body.locked{overflow:hidden}
 .ts-p2{animation:tsBlink2 12s infinite}
 .ts-p3{animation:tsBlink3 12s infinite}
 .hero-anim.ts-paused *{animation-play-state:paused}
-@keyframes tsSun{0%{transform:translate(300px,64px)}11.67%{transform:translate(300px,64px)}33.33%{transform:translate(423.0px,277.0px)}45%{transform:translate(423.0px,277.0px)}66.67%{transform:translate(177.0px,277.0px)}78.33%{transform:translate(177.0px,277.0px)}100%{transform:translate(300px,64px)}}
-@keyframes tsMoon{0%{transform:translate(423.0px,277.0px) rotate(150deg)}11.67%{transform:translate(423.0px,277.0px) rotate(150deg)}33.33%{transform:translate(177.0px,277.0px) rotate(210deg)}45%{transform:translate(177.0px,277.0px) rotate(210deg)}66.67%{transform:translate(300px,64px) rotate(360deg)}78.33%{transform:translate(300px,64px) rotate(360deg)}100%{transform:translate(423.0px,277.0px) rotate(510deg)}}
-@keyframes tsEarth{0%{transform:translate(177.0px,277.0px)}11.67%{transform:translate(177.0px,277.0px)}33.33%{transform:translate(300px,64px)}45%{transform:translate(300px,64px)}66.67%{transform:translate(423.0px,277.0px)}78.33%{transform:translate(423.0px,277.0px)}100%{transform:translate(177.0px,277.0px)}}
+@keyframes tsOrbit{0%,11.67%{transform:rotate(0deg)}33.33%,45%{transform:rotate(120deg)}66.67%,78.33%{transform:rotate(240deg)}100%{transform:rotate(360deg)}}
+@keyframes tsUp{0%,11.67%{transform:rotate(0deg)}33.33%,45%{transform:rotate(-120deg)}66.67%,78.33%{transform:rotate(-240deg)}100%{transform:rotate(-360deg)}}
 @keyframes tsSpin{to{transform:rotate(360deg)}}
 @keyframes tsEarthSpin{to{transform:translateX(-48px)}}
 @keyframes tsCore{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
