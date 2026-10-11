@@ -85,109 +85,66 @@ window.addEventListener('resize', () => { measureHero(); updateLogo(); });
 window.addEventListener('load', () => { measureHero(); updateLogo(); });
 measureHero();
 updateLogo();
-// three-body hero animation: three equal masses on the figure-eight orbit, seen at a low angle to their orbital plane
+// hero animation: the Earth orbits the sun, the moon orbits the Earth; seen at a low angle to the orbital plane
 (function () {
   const root = document.querySelector('.hero-anim');
   if (!root) return;
-  const bodyEls = [...root.querySelectorAll('.ha-body')];
+  const bodyEls = [...root.querySelectorAll('.ha-body')];           // 0 sun, 1 moon, 2 earth
   const shades = bodyEls.map(el => el.querySelector('.ha-shade'));
   const trailEls = [0, 1, 2].map(i => [...root.querySelectorAll('.ha-trail-' + i)]);
   const back = root.querySelector('.ha-back'), front = root.querySelector('.ha-front');
-  const orbitPath = root.querySelector('.ha-orbit'), orbitWrap = root.querySelector('.ha-orbit-wrap');
+  const orbitPath = root.querySelector('.ha-orbit'), moonOrbit = root.querySelector('.ha-moonorbit');
   root.querySelector('.ha-bodies').remove();
-  bodyEls.forEach(el => back.appendChild(el));
 
-  const T = 6.32591398;           // orbital period in simulation units
-  const REAL_PERIOD = 9;           // seconds per orbit on screen
-  const CX = 300, CY = 200, SCALE = 150, SPIN = 0.14, TRAIL = 90, H = 0.004;
-  const EL = 26 * Math.PI / 180, SIN = Math.sin(EL), COS = Math.cos(EL);   // viewing elevation above the orbital plane
-  const SUN = 0;
-  let p, v, simT, realT, history;
+  const CX = 300, CY = 200, R_EARTH = 190, R_MOON = 42;
+  const EL = 24 * Math.PI / 180, SIN = Math.sin(EL), COS = Math.cos(EL);   // viewing elevation above the orbital plane
+  const P_EARTH = 28, P_MOON = P_EARTH / 13.37;                            // seconds per orbit, real month-to-year ratio
+  const INCL = 5.1 * Math.PI / 180;                                       // the moon's orbit is tilted 5.1 degrees to the Earth's
+  const TRAIL = [0, 50, 170];
+  let realT = 0, history = [[], [], []];
 
-  function reset() {
-    p = [[-0.97000436, 0.24308753], [0.97000436, -0.24308753], [0, 0]];
-    v = [[0.466203685, 0.43236573], [0.466203685, 0.43236573], [-0.93240737, -0.86473146]];
-    simT = 0;
-    history = [[], [], []];
-  }
-  function accel(q) {
-    return q.map((qi, i) => {
-      let ax = 0, ay = 0;
-      q.forEach((qj, j) => {
-        if (i === j) return;
-        const dx = qj[0] - qi[0], dy = qj[1] - qi[1];
-        const inv = 1 / Math.pow(dx * dx + dy * dy, 1.5);
-        ax += dx * inv; ay += dy * inv;
-      });
-      return [ax, ay];
-    });
-  }
-  function rk4(h) {
-    const add = (a, b, s) => a.map((x, i) => [x[0] + b[i][0] * s, x[1] + b[i][1] * s]);
-    const k1v = accel(p), k1p = v;
-    const p2 = add(p, k1p, h / 2), v2 = add(v, k1v, h / 2);
-    const k2v = accel(p2), k2p = v2;
-    const p3 = add(p, k2p, h / 2), v3 = add(v, k2v, h / 2);
-    const k3v = accel(p3), k3p = v3;
-    const p4 = add(p, k3p, h), v4 = add(v, k3v, h);
-    const k4v = accel(p4), k4p = v4;
-    p = p.map((x, i) => [x[0] + h / 6 * (k1p[i][0] + 2 * k2p[i][0] + 2 * k3p[i][0] + k4p[i][0]), x[1] + h / 6 * (k1p[i][1] + 2 * k2p[i][1] + 2 * k3p[i][1] + k4p[i][1])]);
-    v = v.map((x, i) => [x[0] + h / 6 * (k1v[i][0] + 2 * k2v[i][0] + 2 * k3v[i][0] + k4v[i][0]), x[1] + h / 6 * (k1v[i][1] + 2 * k2v[i][1] + 2 * k3v[i][1] + k4v[i][1])]);
-  }
-  function advance(dt) {
-    realT += dt;
-    let remaining = dt * (T / REAL_PERIOD);
-    while (remaining > 1e-9) {
-      const h = Math.min(H, remaining);
-      rk4(h); simT += h; remaining -= h;
-    }
-    if (simT >= T) reset();
-  }
+  moonOrbit.setAttribute('rx', R_MOON);
+  moonOrbit.setAttribute('ry', (R_MOON * SIN).toFixed(2));
+  orbitPath.setAttribute('d', 'M' + (CX + R_EARTH) + ' ' + CY + 'A' + R_EARTH + ' ' + (R_EARTH * SIN).toFixed(2) + ' 0 1 1 ' + (CX - R_EARTH) + ' ' + CY + 'A' + R_EARTH + ' ' + (R_EARTH * SIN).toFixed(2) + ' 0 1 1 ' + (CX + R_EARTH) + ' ' + CY);
+  bodyEls[0].setAttribute('transform', 'translate(' + CX + ' ' + CY + ')');
 
-  // draw the orbit once (in plane coordinates) and turn it with the view
-  function buildOrbit() {
-    reset();
-    const pts = [];
-    for (let i = 0; i <= 240; i++) {
-      pts.push(p[0][0] * SCALE + ' ' + p[0][1] * SCALE);
-      let r = T / 240; while (r > 1e-9) { const h = Math.min(H, r); rk4(h); r -= h; }
-    }
-    orbitPath.setAttribute('d', 'M' + pts.join('L'));
-    reset();
-  }
+  // position of a point (plane x, plane y, height z) on screen, plus its depth (larger = nearer the viewer)
+  const project = (x, y, z) => ({ x: CX + x, y: CY + y * SIN - z * COS, d: y * COS + z * SIN });
 
   function draw() {
-    const a = realT * SPIN, ca = Math.cos(a), sa = Math.sin(a);
-    orbitWrap.setAttribute('transform', 'translate(' + CX + ' ' + CY + ') scale(1 ' + SIN.toFixed(4) + ') rotate(' + (a * 180 / Math.PI).toFixed(2) + ')');
-    const screen = p.map(q => {
-      const X = SCALE * (q[0] * ca - q[1] * sa), Y = SCALE * (q[0] * sa + q[1] * ca);
-      return { x: CX + X, y: CY + Y * SIN, d: Y * COS };           // d > 0: nearer the viewer
-    });
-    screen.forEach((s, i) => {
+    const te = 0.6 + realT / P_EARTH * 2 * Math.PI, tm = realT / P_MOON * 2 * Math.PI;
+    const ex = R_EARTH * Math.cos(te), ey = R_EARTH * Math.sin(te);
+    const earth = project(ex, ey, 0);
+    const moon = project(ex + R_MOON * Math.cos(tm), ey + R_MOON * Math.sin(tm), R_MOON * Math.sin(INCL) * Math.sin(tm));
+    const pos = [{ x: CX, y: CY, d: -1e4 }, moon, earth];            // the sun sits at the centre, behind everything
+    moonOrbit.setAttribute('cx', earth.x.toFixed(2));
+    moonOrbit.setAttribute('cy', earth.y.toFixed(2));
+
+    pos.forEach((s, i) => {
+      if (i === 0) return;
       const k = 1 + s.d * 0.0011;
       bodyEls[i].setAttribute('transform', 'translate(' + s.x.toFixed(2) + ' ' + s.y.toFixed(2) + ') scale(' + k.toFixed(3) + ')');
-      const layer = s.d > 0 ? front : back;
-      if (bodyEls[i].parentNode !== layer) layer.appendChild(bodyEls[i]);
-      if (shades[i]) {                                              // light the moon and earth from the sun
-        const dx = screen[SUN].x - s.x, dy = screen[SUN].y - s.y, len = Math.hypot(dx, dy) || 1;
-        const off = i === 1 ? 7.4 : 10.6;
-        shades[i].setAttribute('cx', (-dx / len * off).toFixed(2));
-        shades[i].setAttribute('cy', (-dy / len * off).toFixed(2));
-      }
+      const dx = CX - s.x, dy = CY - s.y, len = Math.hypot(dx, dy) || 1;   // light the moon and Earth from the sun
+      const off = i === 1 ? 7.4 : 10.6;
+      shades[i].setAttribute('cx', (-dx / len * off).toFixed(2));
+      shades[i].setAttribute('cy', (-dy / len * off).toFixed(2));
       const hs = history[i];
       hs.push([s.x, s.y]);
-      if (hs.length > TRAIL) hs.shift();
+      if (hs.length > TRAIL[i]) hs.shift();
       const seg = Math.ceil(hs.length / 3);
       trailEls[i].forEach((el, n) => {
         const pts = hs.slice(n * seg, Math.min(hs.length, (n + 1) * seg + 1));
         el.setAttribute('d', pts.length > 1 ? 'M' + pts.map(pt => pt[0].toFixed(1) + ' ' + pt[1].toFixed(1)).join('L') : '');
       });
     });
+
+    // stacking: sun at the back; bodies nearer the viewer than the centre go in front of the plant
+    const order = [0, 1, 2].sort((a, b) => pos[a].d - pos[b].d);
+    order.forEach(i => (pos[i].d > 0 ? front : back).appendChild(bodyEls[i]));
   }
 
-  buildOrbit(); realT = 0;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    for (let i = 0; i < 70; i++) { advance(1 / 60); draw(); }
+    for (let i = 0; i < 70; i++) { realT += 1 / 12; draw(); }
     return;
   }
   let last = 0, running = true, raf = 0;
@@ -195,7 +152,7 @@ updateLogo();
     if (!running) return;
     const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
     last = now;
-    advance(dt); draw();
+    realT += dt; draw();
     raf = requestAnimationFrame(frame);
   }
   new IntersectionObserver(entries => {
