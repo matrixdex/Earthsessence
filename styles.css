@@ -105,6 +105,10 @@ body.locked{overflow:hidden}
 .products-grid{margin-top:3.25rem;row-gap:0}
 .products-grid .card{display:grid;grid-template-rows:subgrid;grid-row:span 6;margin-bottom:3.5rem}
 .offer:empty{margin:0}
+/* product Enquire link: only visible while the card is hovered (always visible on touch screens) */
+.products-grid .card .more{opacity:0;transition:opacity .2s}
+.products-grid .card:hover .more,.products-grid .card:focus-within .more{opacity:1}
+@media (hover:none){.products-grid .card .more{opacity:1}}
 .filter-bar + .products-grid{margin-top:0}
 .filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1rem;margin-bottom:2.5rem}
 .filter-label{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink);font-size:.88rem;font-weight:600;padding:.55rem 0}
