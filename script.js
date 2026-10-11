@@ -85,80 +85,19 @@ window.addEventListener('resize', () => { measureHero(); updateLogo(); });
 window.addEventListener('load', () => { measureHero(); updateLogo(); });
 measureHero();
 updateLogo();
-// hero animation: the Earth orbits the sun, the moon orbits the Earth; seen at a low angle to the orbital plane
+// hero animation: pause while off screen, and show a still midday scene for reduced motion
 (function () {
   const root = document.querySelector('.hero-anim');
   if (!root) return;
-  const bodyEls = [...root.querySelectorAll('.ha-body')];           // 0 sun, 1 moon, 2 earth
-  const shades = bodyEls.map(el => el.querySelector('.ha-shade'));
-  const trailEls = [0, 1, 2].map(i => [...root.querySelectorAll('.ha-trail-' + i)]);
-  const back = root.querySelector('.ha-back'), front = root.querySelector('.ha-front');
-  const orbitPath = root.querySelector('.ha-orbit'), moonOrbit = root.querySelector('.ha-moonorbit');
-  root.querySelector('.ha-bodies').remove();
-
-  const CX = 300, CY = 200, R_EARTH = 190, R_MOON = 42;
-  const EL = 24 * Math.PI / 180, SIN = Math.sin(EL), COS = Math.cos(EL);   // viewing elevation above the orbital plane
-  const P_EARTH = 28, P_MOON = P_EARTH / 13.37;                            // seconds per orbit, real month-to-year ratio
-  const INCL = 5.1 * Math.PI / 180;                                       // the moon's orbit is tilted 5.1 degrees to the Earth's
-  const TRAIL = [0, 50, 170];
-  let realT = 0, history = [[], [], []];
-
-  moonOrbit.setAttribute('rx', R_MOON);
-  moonOrbit.setAttribute('ry', (R_MOON * SIN).toFixed(2));
-  orbitPath.setAttribute('d', 'M' + (CX + R_EARTH) + ' ' + CY + 'A' + R_EARTH + ' ' + (R_EARTH * SIN).toFixed(2) + ' 0 1 1 ' + (CX - R_EARTH) + ' ' + CY + 'A' + R_EARTH + ' ' + (R_EARTH * SIN).toFixed(2) + ' 0 1 1 ' + (CX + R_EARTH) + ' ' + CY);
-  bodyEls[0].setAttribute('transform', 'translate(' + CX + ' ' + CY + ')');
-
-  // position of a point (plane x, plane y, height z) on screen, plus its depth (larger = nearer the viewer)
-  const project = (x, y, z) => ({ x: CX + x, y: CY + y * SIN - z * COS, d: y * COS + z * SIN });
-
-  function draw() {
-    const te = 0.6 + realT / P_EARTH * 2 * Math.PI, tm = realT / P_MOON * 2 * Math.PI;
-    const ex = R_EARTH * Math.cos(te), ey = R_EARTH * Math.sin(te);
-    const earth = project(ex, ey, 0);
-    const moon = project(ex + R_MOON * Math.cos(tm), ey + R_MOON * Math.sin(tm), R_MOON * Math.sin(INCL) * Math.sin(tm));
-    const pos = [{ x: CX, y: CY, d: -1e4 }, moon, earth];            // the sun sits at the centre, behind everything
-    moonOrbit.setAttribute('cx', earth.x.toFixed(2));
-    moonOrbit.setAttribute('cy', earth.y.toFixed(2));
-
-    pos.forEach((s, i) => {
-      if (i === 0) return;
-      const k = 1 + s.d * 0.0011;
-      bodyEls[i].setAttribute('transform', 'translate(' + s.x.toFixed(2) + ' ' + s.y.toFixed(2) + ') scale(' + k.toFixed(3) + ')');
-      const dx = CX - s.x, dy = CY - s.y, len = Math.hypot(dx, dy) || 1;   // light the moon and Earth from the sun
-      const off = i === 1 ? 7.4 : 10.6;
-      shades[i].setAttribute('cx', (-dx / len * off).toFixed(2));
-      shades[i].setAttribute('cy', (-dy / len * off).toFixed(2));
-      const hs = history[i];
-      hs.push([s.x, s.y]);
-      if (hs.length > TRAIL[i]) hs.shift();
-      const seg = Math.ceil(hs.length / 3);
-      trailEls[i].forEach((el, n) => {
-        const pts = hs.slice(n * seg, Math.min(hs.length, (n + 1) * seg + 1));
-        el.setAttribute('d', pts.length > 1 ? 'M' + pts.map(pt => pt[0].toFixed(1) + ' ' + pt[1].toFixed(1)).join('L') : '');
-      });
-    });
-
-    // stacking: sun at the back; bodies nearer the viewer than the centre go in front of the plant
-    const order = [0, 1, 2].sort((a, b) => pos[a].d - pos[b].d);
-    order.forEach(i => (pos[i].d > 0 ? front : back).appendChild(bodyEls[i]));
-  }
-
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    for (let i = 0; i < 70; i++) { realT += 1 / 12; draw(); }
+    root.pauseAnimations();
+    root.setCurrentTime(6);
     return;
-  }
-  let last = 0, running = true, raf = 0;
-  function frame(now) {
-    if (!running) return;
-    const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
-    last = now;
-    realT += dt; draw();
-    raf = requestAnimationFrame(frame);
   }
   new IntersectionObserver(entries => {
     const visible = entries[0].isIntersecting;
-    if (visible && !running) { running = true; last = 0; raf = requestAnimationFrame(frame); }
-    if (!visible) { running = false; cancelAnimationFrame(raf); }
+    root.style.setProperty('--hs-state', visible ? 'running' : 'paused');
+    root.querySelectorAll('*').forEach(el => { el.style.animationPlayState = visible ? 'running' : 'paused'; });
+    if (visible) root.unpauseAnimations(); else root.pauseAnimations();
   }).observe(root);
-  raf = requestAnimationFrame(frame);
 })();

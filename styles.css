@@ -173,43 +173,79 @@ body.locked{overflow:hidden}
   .hero-copy h1{margin-bottom:1.8rem}
   .hero-copy .lead{margin-bottom:2.88rem}
 }
-/* hero animation: sun, moon and earth orbit in a tilted plane; a date palm, honeycomb and black seed flower sprout at the centre (18s cycle) */
+/* hero animation: one day of sun and moon over the Earth, ripening dates, honey and black seed (24s loop) */
 .hero-image{position:relative}
 .hero-anim{display:block;width:100%;height:100%}
 .hero-anim *{transform-box:fill-box}
-.hero-anim .ha-stars circle{animation:haTwinkle 4s ease-in-out infinite}
-.ha-centerglow{transform-origin:center;animation:haGlow 18s ease-in-out infinite}
-.ha-corona{transform-origin:center;animation:haFlicker 3.2s ease-in-out infinite}
-.ha-spin{animation:haEarthSpin 22s linear infinite}
-.ha-sprout{animation:haSprout 18s ease-in-out infinite}
-.ha-seed{transform-origin:center;animation:haSeed 18s ease-in-out infinite}
-.ha-grow{stroke-dasharray:100;animation:haGrowC 18s ease-in-out infinite}
-.ha-rings{stroke-dasharray:1 3.2;animation-name:haRingsIn}
-.ha-gl{animation-name:haGrowL}
-.ha-gr{animation-name:haGrowR}
-.ha-frond{transform-origin:0% 100%;animation:haFrond 18s ease-out infinite}
-.ha-fr1{animation-delay:.12s}.ha-fr2{animation-delay:.24s}.ha-fr3{animation-delay:.36s}.ha-fr4{animation-delay:.18s}.ha-fr5{animation-delay:.3s}.ha-fr6{animation-delay:.42s}
-.ha-pop{transform-origin:50% 0%}
-.ha-p1{animation:haPop1 18s ease-out infinite}
-.ha-p2{transform-origin:50% 100%;animation:haPop2 18s ease-out infinite}
-.ha-p3{transform-origin:50% 100%;animation:haPop3 18s ease-out infinite}
-.ha-sway{transform-origin:50% 0%;animation:haSway 4.5s ease-in-out infinite}
-.ha-sway-b{transform-origin:50% 100%;animation-delay:-1.5s}
-.ha-sway-c{transform-origin:50% 100%;animation-delay:-3s}
-@keyframes haTwinkle{0%,100%{opacity:.2}50%{opacity:1}}
-@keyframes haGlow{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.2)}}
-@keyframes haFlicker{0%,100%{transform:scale(.96);opacity:.9}50%{transform:scale(1.06);opacity:1}}
-@keyframes haEarthSpin{to{transform:translateX(-30px)}}
-@keyframes haSprout{0%{opacity:1}93%{opacity:1}99%,100%{opacity:0}}
-@keyframes haSeed{0%,3%{opacity:0;transform:scale(.2)}10%{opacity:1;transform:scale(1.5)}30%{opacity:.9;transform:scale(1)}40%,100%{opacity:0;transform:scale(.4)}}
-@keyframes haGrowC{0%,8%{stroke-dashoffset:100}32%,100%{stroke-dashoffset:0}}
-@keyframes haRingsIn{0%,8%{opacity:0}32%,100%{opacity:.55}}
-@keyframes haGrowL{0%,22%{stroke-dashoffset:100}40%,100%{stroke-dashoffset:0}}
-@keyframes haGrowR{0%,26%{stroke-dashoffset:100}44%,100%{stroke-dashoffset:0}}
-@keyframes haFrond{0%,30%{transform:scale(0)}46%{transform:scale(1.1)}52%,100%{transform:scale(1)}}
-@keyframes haSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
-@keyframes haPop1{0%,46%{opacity:0;transform:scale(.1)}53%{opacity:1;transform:scale(1.15)}56%,100%{opacity:1;transform:scale(1)}}
-@keyframes haPop2{0%,44%{opacity:0;transform:scale(.1)}51%{opacity:1;transform:scale(1.15)}54%,100%{opacity:1;transform:scale(1)}}
-@keyframes haPop3{0%,50%{opacity:0;transform:scale(.1)}57%{opacity:1;transform:scale(1.15)}60%,100%{opacity:1;transform:scale(1)}}
+.hs-day{opacity:1}.hs-dawn,.hs-dusk{opacity:0}.hs-stars{opacity:0}
+.hs-cloud{opacity:.85}
+.hs-sun{transform:translate(300px,70px)}
+.hs-moon{transform:translate(30px,305px)}
+.hs-sunwarm{opacity:0}
+.hs-date{fill:#B8651F}
+.hs-moonhalo{opacity:0}.hs-fly{opacity:0}
+.hs-honeyglow{opacity:.8}
+.hs-sun{animation:hsSun 24s linear infinite}
+.hs-moon{animation:hsMoon 24s linear infinite}
+.hs-rays{transform-origin:center;animation:hsSpin 90s linear infinite}
+.hs-sunwarm{animation:hsWarm 24s ease-in-out infinite}
+.hs-day{animation:hsDay 24s ease-in-out infinite}
+.hs-dawn{animation:hsDawn 24s ease-in-out infinite}
+.hs-dusk{animation:hsDusk 24s ease-in-out infinite}
+.hs-stars{animation:hsStars 24s ease-in-out infinite}
+.hs-stars circle{animation:hsTwinkle 4s ease-in-out infinite}
+.hs-cloud{animation:hsCloud 24s ease-in-out infinite}
+.hs-c1{animation-name:hsDrift1,hsCloud}.hs-c2{animation-name:hsDrift2,hsCloud}.hs-c3{animation-name:hsDrift1,hsCloud}
+.hs-cloud{animation-duration:46s,24s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.hs-date{animation:hsRipen 24s ease-in-out infinite}
+.hs-tree{transform-origin:50% 100%;animation:hsTree 6s ease-in-out infinite}
+.hs-tree-slow{animation-duration:9s}
+.hs-frond{transform-origin:0% 100%;animation:hsFrond 5s ease-in-out infinite}
+.hs-fr1{animation-delay:-1.2s}.hs-fr2{animation-delay:-2.4s}.hs-fr3{animation-delay:-3.6s}
+.hs-sway{transform-origin:50% 100%;animation:hsSway 5s ease-in-out infinite}
+.hs-sw1{animation-delay:-1.7s}.hs-sw2{animation-delay:-3.3s}
+.hs-petals{transform-origin:50% 100%;animation:hsPetals 24s ease-in-out infinite}
+.hs-moonhalo{animation:hsHalo 24s ease-in-out infinite}
+.hs-honeyglow{animation:hsHoney 24s ease-in-out infinite}
+.hs-drip{animation:hsDrip 3.4s ease-in infinite}
+.hs-beex{animation:hsBeeX 3.1s ease-in-out infinite alternate}
+.hs-beey{animation:hsBeeY 2.3s ease-in-out infinite alternate}
+.hs-bx1{animation-duration:3.7s;animation-delay:-1s}.hs-by1{animation-duration:2.9s}
+.hs-bx2{animation-duration:2.6s;animation-delay:-2s}.hs-by2{animation-duration:3.3s}
+.hs-wing{transform-origin:50% 100%;animation:hsWing .14s ease-in-out infinite alternate}
+.hs-sunref{animation:hsSunRef 24s linear infinite}
+.hs-moonref{animation:hsMoonRef 24s linear infinite}
+.hs-glint{animation:hsGlint 5s ease-in-out infinite}
+.hs-fly{animation:hsFly 24s ease-in-out infinite,hsFloat 7s ease-in-out infinite}
+.hs-seed{animation:hsSeed 6s ease-in-out infinite}
+@keyframes hsSun{0.00%{transform:translate(30.0px,305.0px)}2.50%{transform:translate(33.3px,268.2px)}5.00%{transform:translate(43.2px,232.4px)}7.50%{transform:translate(59.4px,198.3px)}10.00%{transform:translate(81.6px,166.9px)}12.50%{transform:translate(109.1px,138.8px)}15.00%{transform:translate(141.3px,114.9px)}17.50%{transform:translate(177.4px,95.6px)}20.00%{transform:translate(216.6px,81.5px)}22.50%{transform:translate(257.8px,72.9px)}25.00%{transform:translate(300.0px,70.0px)}27.50%{transform:translate(342.2px,72.9px)}30.00%{transform:translate(383.4px,81.5px)}32.50%{transform:translate(422.6px,95.6px)}35.00%{transform:translate(458.7px,114.9px)}37.50%{transform:translate(490.9px,138.8px)}40.00%{transform:translate(518.4px,166.9px)}42.50%{transform:translate(540.6px,198.3px)}45.00%{transform:translate(556.8px,232.4px)}47.50%{transform:translate(566.7px,268.2px)}50.00%{transform:translate(570.0px,305.0px)}100%{transform:translate(570px,305px)}}
+@keyframes hsMoon{0%{transform:translate(30px,305px)}50.00%{transform:translate(30.0px,305.0px)}52.50%{transform:translate(33.3px,268.2px)}55.00%{transform:translate(43.2px,232.4px)}57.50%{transform:translate(59.4px,198.3px)}60.00%{transform:translate(81.6px,166.9px)}62.50%{transform:translate(109.1px,138.8px)}65.00%{transform:translate(141.3px,114.9px)}67.50%{transform:translate(177.4px,95.6px)}70.00%{transform:translate(216.6px,81.5px)}72.50%{transform:translate(257.8px,72.9px)}75.00%{transform:translate(300.0px,70.0px)}77.50%{transform:translate(342.2px,72.9px)}80.00%{transform:translate(383.4px,81.5px)}82.50%{transform:translate(422.6px,95.6px)}85.00%{transform:translate(458.7px,114.9px)}87.50%{transform:translate(490.9px,138.8px)}90.00%{transform:translate(518.4px,166.9px)}92.50%{transform:translate(540.6px,198.3px)}95.00%{transform:translate(556.8px,232.4px)}97.50%{transform:translate(566.7px,268.2px)}100.00%{transform:translate(570.0px,305.0px)}100%{transform:translate(570px,305px)}}
+@keyframes hsSpin{to{transform:rotate(360deg)}}
+@keyframes hsWarm{0%,100%{opacity:.85}12%,40%{opacity:0}50%{opacity:.85}}
+@keyframes hsDay{0%{opacity:.35}12%,38%{opacity:1}50%{opacity:.35}58%,90%{opacity:0}100%{opacity:.35}}
+@keyframes hsDawn{0%{opacity:1}14%{opacity:0}88%{opacity:0}100%{opacity:1}}
+@keyframes hsDusk{0%,36%{opacity:0}50%{opacity:1}62%,100%{opacity:0}}
+@keyframes hsStars{0%,52%{opacity:0}62%,88%{opacity:1}98%,100%{opacity:0}}
+@keyframes hsTwinkle{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes hsCloud{0%{opacity:.5}12%,38%{opacity:.9}50%{opacity:.55}60%,90%{opacity:.1}100%{opacity:.5}}
+@keyframes hsDrift1{0%,100%{transform:translateX(-26px)}50%{transform:translateX(26px)}}
+@keyframes hsDrift2{0%,100%{transform:translateX(22px)}50%{transform:translateX(-22px)}}
+@keyframes hsRipen{0%{fill:#86B34E}18%{fill:#E3A93A}36%{fill:#B8651F}50%,88%{fill:#7A3A12}100%{fill:#86B34E}}
+@keyframes hsTree{0%,100%{transform:rotate(-.7deg)}50%{transform:rotate(.7deg)}}
+@keyframes hsFrond{0%,100%{transform:rotate(-2.2deg)}50%{transform:rotate(2.2deg)}}
+@keyframes hsSway{0%,100%{transform:rotate(-2.4deg)}50%{transform:rotate(2.4deg)}}
+@keyframes hsPetals{0%{transform:scale(1,.7)}12%,40%{transform:scale(1,1)}52%,88%{transform:scale(1,.35)}100%{transform:scale(1,.7)}}
+@keyframes hsHalo{0%,52%{opacity:0}64%,86%{opacity:1}96%,100%{opacity:0}}
+@keyframes hsHoney{0%{opacity:.4}12%,40%{opacity:1}52%{opacity:.5}62%,90%{opacity:.08}100%{opacity:.4}}
+@keyframes hsDrip{0%,20%{transform:translateY(0) scale(.2);opacity:0}30%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(26px) scale(1);opacity:0}}
+@keyframes hsBeeX{from{transform:translateX(-16px)}to{transform:translateX(16px)}}
+@keyframes hsBeeY{from{transform:translateY(-9px)}to{transform:translateY(9px)}}
+@keyframes hsWing{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+@keyframes hsSunRef{0%{opacity:0;transform:translateX(30px)}8%{opacity:.75}40%{opacity:.75}50%{opacity:0;transform:translateX(570px)}100%{opacity:0;transform:translateX(570px)}}
+@keyframes hsMoonRef{0%,50%{opacity:0;transform:translateX(30px)}58%{opacity:.6}92%{opacity:.6}100%{opacity:0;transform:translateX(570px)}}
+@keyframes hsGlint{0%,100%{opacity:.1}50%{opacity:.7}}
+@keyframes hsFly{0%,56%{opacity:0}66%,86%{opacity:.95}96%,100%{opacity:0}}
+@keyframes hsFloat{0%,100%{transform:translate(0,0)}25%{transform:translate(8px,-7px)}50%{transform:translate(-6px,-12px)}75%{transform:translate(-10px,-4px)}}
+@keyframes hsSeed{0%,100%{opacity:1}50%{opacity:.75}}
 @media (prefers-reduced-motion:reduce){.hero-anim *{animation:none!important}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
