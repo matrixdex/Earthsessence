@@ -114,6 +114,7 @@ body.locked{overflow:hidden}
 .filters button.active{background:var(--navy);color:var(--bg)}
 .card.hide{display:none}
 .thumb{position:relative;aspect-ratio:4/3;width:100%;border-radius:1rem;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.25rem;background:transparent}
+.thumb-dome{width:34%;height:auto;max-height:80%;display:block}
 .thumb-origin{position:absolute;left:.75rem;bottom:.75rem;background:rgba(255,254,235,.9);color:var(--ink);font-size:.78rem;font-weight:600;line-height:1;padding:.4rem .75rem;border-radius:999px}
 /* product tiles: a tinted pattern per product kind */
 .thumb-honey,.thumb-honeyseed,.thumb-comb{background-color:rgba(242,178,51,.2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23C7811A' stroke-opacity='.28' stroke-width='1.2'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23C7811A' stroke-opacity='.28' stroke-width='1.2'/%3E%3C/svg%3E");background-size:44px auto}

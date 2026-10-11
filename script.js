@@ -33,6 +33,8 @@ const LOOK = {
   9: {k: 'oil', o: 'Ethiopia'}, 10: {k: 'seeds', o: 'Ethiopia'}, 11: {k: 'pollen', o: 'England'},
   12: {k: 'comb'}, 13: {k: 'dates', o: 'Madinah'}
 };
+// the green dome, shown on the Madinah tile only
+const DOME = `<svg class="thumb-dome" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="tdDome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#47B377"/><stop offset="1" stop-color="#1E6B3E"/></linearGradient></defs><ellipse cx="50" cy="83" rx="34" ry="4" fill="#0A213E" opacity=".14"/><path d="M22 74 A28 32 0 0 1 78 74 Z" fill="url(#tdDome)" stroke="#1B5E37" stroke-width="1.2"/><path d="M31 66 C33 52 40 45 50 43" fill="none" stroke="#9BE0B0" stroke-width="3.5" stroke-linecap="round" opacity=".7"/><rect x="19" y="74" width="62" height="6" rx="2" fill="#C79A3A"/><path d="M50 42 V30" stroke="#C79A3A" stroke-width="2.4"/><circle cx="50" cy="27" r="3.6" fill="#C79A3A"/><path d="M44.6 19.4 a6.2 6.2 0 1 0 10.8 0 a4.9 4.9 0 1 1 -10.8 0 Z" fill="#C79A3A"/></svg>`;
 const lookFor = p => LOOK[p.n] || {k: {honey: 'honey', oil: 'oil', dates: 'dates'}[p.cat] || 'honey'};
 
 const grid = document.getElementById('grid');
@@ -40,7 +42,7 @@ const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const list = grid && grid.dataset.featured ? products.filter(p => p.featured) : products;
 if (grid) grid.innerHTML = list.map(p => `
   <article class="card" data-cat="${p.cat}">
-    <div class="thumb thumb-${lookFor(p).k}" role="img" aria-label="${esc(p.name)}">${lookFor(p).o ? `<span class="thumb-origin">${lookFor(p).o}</span>` : ''}</div>
+    <div class="thumb thumb-${lookFor(p).k}" role="img" aria-label="${esc(p.name)}">${lookFor(p).o === 'Madinah' ? DOME : ''}${lookFor(p).o ? `<span class="thumb-origin">${lookFor(p).o}</span>` : ''}</div>
     <h3>${esc(p.name)}</h3>
     <p>${esc(p.desc)}</p>
     <div class="meta"><span class="price">${p.price}</span><span class="size">${p.size}</span></div>
