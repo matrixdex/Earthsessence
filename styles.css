@@ -178,7 +178,7 @@ body.locked{overflow:hidden}
 .ts-rays,.ts-core,.ts-p{transform-box:fill-box}
 .ts-p{opacity:0;transform-origin:center}
 .ts-orbit{transform-box:view-box;transform-origin:300px 206px;animation:tsOrbit 12s ease-in-out infinite}
-.ts-up{transform-box:fill-box;transform-origin:center;animation:tsUp 12s ease-in-out infinite}
+.ts-up{transform-box:view-box;transform-origin:0 0;animation:tsUp 12s ease-in-out infinite}
 .ts-rays{transform-origin:center;animation:tsSpin 40s linear infinite}
 .ts-spin{animation:tsEarthSpin 14s linear infinite}
 .ts-core{transform-origin:center;animation:tsCore 12s ease-in-out infinite}
