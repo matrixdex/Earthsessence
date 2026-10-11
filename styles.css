@@ -173,7 +173,7 @@ body.locked{overflow:hidden}
   .hero-copy h1{margin-bottom:1.8rem}
   .hero-copy .lead{margin-bottom:2.88rem}
 }
-/* hero animation: sun, crescent moon and Earth travel in circular arcs between the corners of a triangle; products blink in turn at its centre (12s loop, transparent canvas) */
+/* hero animation: sun, crescent moon and Earth travel in circular arcs between the corners of a triangle; products fade in and out in turn at its centre (12s loop, transparent canvas) */
 .hero-anim{display:block;width:100%;height:100%}
 .ts-rays,.ts-core,.ts-p{transform-box:fill-box}
 .ts-p{opacity:0;transform-origin:center}
@@ -182,18 +182,18 @@ body.locked{overflow:hidden}
 .ts-rays{transform-origin:center;animation:tsSpin 40s linear infinite}
 .ts-spin{animation:tsEarthSpin 14s linear infinite}
 .ts-core{transform-origin:center;animation:tsCore 12s ease-in-out infinite}
-.ts-p1{animation:tsBlink1 12s infinite}
-.ts-p2{animation:tsBlink2 12s infinite}
-.ts-p3{animation:tsBlink3 12s infinite}
+.ts-p1{animation:tsFade1 12s ease-in-out infinite}
+.ts-p2{animation:tsFade2 12s ease-in-out infinite}
+.ts-p3{animation:tsFade3 12s ease-in-out infinite}
 .hero-anim.ts-paused *{animation-play-state:paused}
 @keyframes tsOrbit{0%,11.67%{transform:rotate(0deg)}33.33%,45%{transform:rotate(120deg)}66.67%,78.33%{transform:rotate(240deg)}100%{transform:rotate(360deg)}}
 @keyframes tsUp{0%,11.67%{transform:rotate(0deg)}33.33%,45%{transform:rotate(-120deg)}66.67%,78.33%{transform:rotate(-240deg)}100%{transform:rotate(-360deg)}}
 @keyframes tsSpin{to{transform:rotate(360deg)}}
 @keyframes tsEarthSpin{to{transform:translateX(-48px)}}
 @keyframes tsCore{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
-@keyframes tsBlink1{0%{opacity:0;transform:scale(.6)}0.80%{opacity:1;transform:scale(1.1)}1.80%{opacity:.25;transform:scale(1)}2.80%{opacity:1;transform:scale(1.04)}4.00%{opacity:1;transform:scale(1)}26.00%{opacity:1;transform:scale(1)}27.20%{opacity:.3}28.20%{opacity:1}31.00%{opacity:0;transform:scale(.7)}100%{opacity:0;transform:scale(.7)}}
-@keyframes tsBlink2{0%,33.33%{opacity:0;transform:scale(.6)}34.13%{opacity:1;transform:scale(1.1)}35.13%{opacity:.25;transform:scale(1)}36.13%{opacity:1;transform:scale(1.04)}37.33%{opacity:1;transform:scale(1)}59.33%{opacity:1;transform:scale(1)}60.53%{opacity:.3}61.53%{opacity:1}64.33%{opacity:0;transform:scale(.7)}100%{opacity:0;transform:scale(.7)}}
-@keyframes tsBlink3{0%,66.67%{opacity:0;transform:scale(.6)}67.47%{opacity:1;transform:scale(1.1)}68.47%{opacity:.25;transform:scale(1)}69.47%{opacity:1;transform:scale(1.04)}70.67%{opacity:1;transform:scale(1)}92.67%{opacity:1;transform:scale(1)}93.87%{opacity:.3}94.87%{opacity:1}97.67%{opacity:0;transform:scale(.7)}100%{opacity:0;transform:scale(.7)}}
+@keyframes tsFade1{0%{opacity:0}6.00%{opacity:1}25.00%{opacity:1}31.00%{opacity:0}100%{opacity:0}}
+@keyframes tsFade2{0%,33.33%{opacity:0}39.33%{opacity:1}58.33%{opacity:1}64.33%{opacity:0}100%{opacity:0}}
+@keyframes tsFade3{0%,66.67%{opacity:0}72.67%{opacity:1}91.67%{opacity:1}97.67%{opacity:0}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){
   .hero-anim *{animation:none!important}
   .ts-p{opacity:1}
