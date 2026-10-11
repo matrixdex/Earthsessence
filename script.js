@@ -52,6 +52,16 @@ const LOOK = {
   9: {k: 'oil', o: 'Ethiopia'}, 10: {k: 'seeds', o: 'Ethiopia'}, 11: {k: 'pollen', o: 'England'},
   12: {k: 'comb'}, 13: {k: 'dates', o: 'Madinah'}
 };
+// short, general wellness notes appended to descriptions that are under four lines on widescreen
+const BENEFITS = {
+  2: 'Raw comb keeps honey\u2019s natural enzymes and pollen, and the wax is safe to chew.',
+  4: 'Light and slow to crystallise, it offers natural energy and antioxidants in every spoonful.',
+  6: 'Traditionally enjoyed in a warm drink in the evening, it provides natural energy along with the antioxidants found in honey.',
+  7: 'Like all honey, it contains natural antioxidants and makes a lovely alternative to refined sugar.',
+  8: 'Thyme has a long tradition in home comforts; try a spoonful in warm water.',
+  10: 'Nigella sativa seeds contain thymoquinone and are a source of fibre and healthy fats.',
+  12: 'Raw honeycomb keeps honey\u2019s natural enzymes and pollen. Enjoy it with cheese or yoghurt, or chew the wax like a natural gum.'
+};
 // source country -> flag class (Madinah is in Saudi Arabia)
 const FLAG = {Spain: 'es', Ethiopia: 'et', England: 'gb', Madinah: 'sa'};
 const lookFor = p => LOOK[p.n] || {k: {honey: 'honey', oil: 'oil', dates: 'dates'}[p.cat] || 'honey'};
@@ -64,7 +74,7 @@ if (grid) grid.innerHTML = list.map(p => `
   <article class="card" data-cat="${p.cat}">
     <div class="thumb thumb-${lookFor(p).k}${FLAG[lookFor(p).o] ? ' flag-' + FLAG[lookFor(p).o] : ''}" role="img" aria-label="${esc(p.name)}">${ICON[lookFor(p).k]}${lookFor(p).o ? `<span class="thumb-origin">${lookFor(p).o}</span>` : ''}</div>
     <h3>${esc(p.name)}</h3>
-    <p>${esc(p.desc)}</p>
+    <p>${esc(p.desc)}${BENEFITS[p.n] ? ' ' + esc(BENEFITS[p.n]) : ''}</p>
     <div class="meta"><span class="price">${p.price}</span><span class="size">${p.size}</span></div>
     <p class="offer">${p.offer ? esc(p.offer) : ''}</p>
     <a class="more" href="mailto:hello@example.com?subject=${encodeURIComponent('Order: ' + p.name)}">Order Now →</a>
