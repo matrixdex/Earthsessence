@@ -121,7 +121,7 @@ body.locked{overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb-icon{width:52%;height:auto;max-height:84%;display:block}
 .thumb-dates .thumb-icon{width:74%}
-.thumb-seeds .thumb-icon{width:52%}
+.thumb-seeds .thumb-icon{width:50%}
 .thumb-oil .thumb-icon{width:72%}
 /* source country flag, as a soft gradient behind the tile illustration */
 .thumb[class*="flag-"]::before{content:"";position:absolute;inset:0;opacity:.25}
@@ -148,7 +148,7 @@ body.locked{overflow:hidden}
 .pa-bunch{transform-origin:50% 0;animation:paSwing 4s ease-in-out infinite}
 .pa-aura{transform-origin:center;animation:paAura 4s ease-in-out infinite}
 .pa-spark{transform-origin:center;opacity:0;animation:paSpark 2.6s ease-in-out infinite}
-.pa-orbit{transform-box:view-box;transform-origin:60px 60px;animation:paSpin 14s linear infinite}
+.pa-fall{animation:paFall 4.2s ease-in infinite}
 .pa-flow{stroke-dasharray:5 8;animation:paFlow 1s linear infinite}
 .pa-ripple2{transform-origin:center;opacity:0;animation:paRipple2 2.4s ease-out infinite}
 .pa-r2{animation-delay:-1.2s}
@@ -160,7 +160,7 @@ body.locked{overflow:hidden}
 @keyframes paFrond{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 @keyframes paSwing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
 @keyframes paAura{0%,100%{opacity:.35;transform:scale(.92)}50%{opacity:.9;transform:scale(1.1)}}
-@keyframes paSpin{to{transform:rotate(360deg)}}
+@keyframes paFall{0%{transform:translateY(0);opacity:0}12%{opacity:1}78%{opacity:1}100%{transform:translateY(46px);opacity:0}}
 @keyframes paFlow{to{stroke-dashoffset:-13}}
 @keyframes paRipple2{0%{opacity:.8;transform:scale(.3)}100%{opacity:0;transform:scale(3.1)}}
 @keyframes paSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
