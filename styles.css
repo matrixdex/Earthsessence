@@ -177,13 +177,12 @@ body.locked{overflow:hidden}
 }
 /* hero animation: sun, crescent moon and Earth travel in circular arcs between the corners of a triangle; products fade in and out in turn at its centre (12s loop, transparent canvas) */
 .hero-anim{display:block;width:100%;height:100%}
-.ts-rays,.ts-core,.ts-p{transform-box:fill-box}
+.ts-rays,.ts-p{transform-box:fill-box}
 .ts-p{opacity:0;transform-origin:center}
 .ts-orbit{transform-box:view-box;transform-origin:360px 240px;animation:tsOrbit 12s ease-in-out infinite}
 .ts-up{transform-box:view-box;transform-origin:0 0;animation:tsUp 12s ease-in-out infinite}
 .ts-rays{transform-origin:center;animation:tsSpin 40s linear infinite}
 .ts-spin{animation:tsEarthSpin 14s linear infinite}
-.ts-core{transform-origin:center;animation:tsCore 12s ease-in-out infinite}
 .ts-p1{animation:tsFade1 12s ease-in-out infinite}
 .ts-p2{animation:tsFade2 12s ease-in-out infinite}
 .ts-p3{animation:tsFade3 12s ease-in-out infinite}
@@ -192,7 +191,6 @@ body.locked{overflow:hidden}
 @keyframes tsUp{0%,11.67%{transform:rotate(0deg)}33.33%,45%{transform:rotate(-120deg)}66.67%,78.33%{transform:rotate(-240deg)}100%{transform:rotate(-360deg)}}
 @keyframes tsSpin{to{transform:rotate(360deg)}}
 @keyframes tsEarthSpin{to{transform:translateX(-48px)}}
-@keyframes tsCore{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
 @keyframes tsFade1{0%{opacity:0}6.00%{opacity:1}25.00%{opacity:1}31.00%{opacity:0}100%{opacity:0}}
 @keyframes tsFade2{0%,33.33%{opacity:0}39.33%{opacity:1}58.33%{opacity:1}64.33%{opacity:0}100%{opacity:0}}
 @keyframes tsFade3{0%,66.67%{opacity:0}72.67%{opacity:1}91.67%{opacity:1}97.67%{opacity:0}100%{opacity:0}}
