@@ -164,6 +164,7 @@ body.locked{overflow:hidden}
 @keyframes paSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 @media (prefers-reduced-motion:reduce){.thumb-icon *{animation:none!important}.pa-spark{opacity:.8}.pa-glow{opacity:0}.pa-stream{transform:scale(1,0)}}
 .view-all{margin-top:2.5rem;text-align:center}
+#products .view-all{margin-top:-.5rem}
 .narrow p + .btn{margin-top:1.75rem}
 .page-hero{padding:2.5rem 0 1rem}
 .page-hero h1{font-weight:500;margin-bottom:1.3rem}
