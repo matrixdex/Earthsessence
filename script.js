@@ -67,7 +67,7 @@ if (grid) grid.innerHTML = list.map(p => `
     <p>${esc(p.desc)}</p>
     <div class="meta"><span class="price">${p.price}</span><span class="size">${p.size}</span></div>
     <p class="offer">${p.offer ? esc(p.offer) : ''}</p>
-    <a class="more" href="mailto:hello@example.com?subject=${encodeURIComponent('Enquiry: ' + p.name)}">Enquire →</a>
+    <a class="more" href="mailto:hello@example.com?subject=${encodeURIComponent('Order: ' + p.name)}">Order Now →</a>
   </article>`).join('');
 
 // category filter (products page): oil, honey, dates; click the active one again to show all
