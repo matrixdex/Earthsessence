@@ -173,40 +173,43 @@ body.locked{overflow:hidden}
   .hero-copy h1{margin-bottom:1.8rem}
   .hero-copy .lead{margin-bottom:2.88rem}
 }
-/* hero animation: three bodies (sun, moon, earth) orbit in space; products sprout at the centre (18s cycle) */
+/* hero animation: sun, moon and earth orbit in a tilted plane; a date palm, honeycomb and black seed flower sprout at the centre (18s cycle) */
 .hero-image{position:relative}
 .hero-anim{display:block;width:100%;height:100%}
 .hero-anim *{transform-box:fill-box}
 .hero-anim .ha-stars circle{animation:haTwinkle 4s ease-in-out infinite}
 .ha-centerglow{transform-origin:center;animation:haGlow 18s ease-in-out infinite}
+.ha-corona{transform-origin:center;animation:haFlicker 3.2s ease-in-out infinite}
+.ha-spin{animation:haEarthSpin 22s linear infinite}
 .ha-sprout{animation:haSprout 18s ease-in-out infinite}
 .ha-seed{transform-origin:center;animation:haSeed 18s ease-in-out infinite}
-.ha-grow{stroke-dasharray:100;animation:haGrow1 18s ease-in-out infinite}
-.ha-g2{animation-name:haGrow2}
-.ha-g3{animation-name:haGrow3}
-.ha-lf{animation:haLeaf 18s ease-out infinite}
-.ha-lf1,.ha-lf2{transform-origin:0% 100%}
-.ha-lf3,.ha-lf4{transform-origin:0% 100%}
-.ha-lf3{animation-name:haLeaf2}.ha-lf4{animation-name:haLeaf2}
-.ha-prod{transform-origin:50% 0%}
+.ha-grow{stroke-dasharray:100;animation:haGrowC 18s ease-in-out infinite}
+.ha-rings{stroke-dasharray:1 3.2;animation-name:haRingsIn}
+.ha-gl{animation-name:haGrowL}
+.ha-gr{animation-name:haGrowR}
+.ha-frond{transform-origin:0% 100%;animation:haFrond 18s ease-out infinite}
+.ha-fr1{animation-delay:.12s}.ha-fr2{animation-delay:.24s}.ha-fr3{animation-delay:.36s}.ha-fr4{animation-delay:.18s}.ha-fr5{animation-delay:.3s}.ha-fr6{animation-delay:.42s}
+.ha-pop{transform-origin:50% 0%}
 .ha-p1{animation:haPop1 18s ease-out infinite}
-.ha-p2{animation:haPop2 18s ease-out infinite}
-.ha-p3{animation:haPop3 18s ease-out infinite}
-.ha-sway{transform-origin:50% 0%;animation:haSway 4s ease-in-out infinite}
-.ha-sway-b{animation-delay:-1.3s}
-.ha-sway-c{animation-delay:-2.6s}
+.ha-p2{transform-origin:50% 100%;animation:haPop2 18s ease-out infinite}
+.ha-p3{transform-origin:50% 100%;animation:haPop3 18s ease-out infinite}
+.ha-sway{transform-origin:50% 0%;animation:haSway 4.5s ease-in-out infinite}
+.ha-sway-b{transform-origin:50% 100%;animation-delay:-1.5s}
+.ha-sway-c{transform-origin:50% 100%;animation-delay:-3s}
 @keyframes haTwinkle{0%,100%{opacity:.2}50%{opacity:1}}
-@keyframes haGlow{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
-@keyframes haSprout{0%{opacity:1}92%{opacity:1}99%,100%{opacity:0}}
-@keyframes haSeed{0%,3%{opacity:0;transform:scale(.2)}10%{opacity:1;transform:scale(1.4)}30%{opacity:.9;transform:scale(1)}40%,100%{opacity:0;transform:scale(.4)}}
-@keyframes haGrow1{0%,8%{stroke-dashoffset:100}30%,100%{stroke-dashoffset:0}}
-@keyframes haGrow2{0%,26%{stroke-dashoffset:100}40%,100%{stroke-dashoffset:0}}
-@keyframes haGrow3{0%,30%{stroke-dashoffset:100}44%,100%{stroke-dashoffset:0}}
-@keyframes haLeaf{0%,18%{transform:scale(0)}30%{transform:scale(1.15)}36%,100%{transform:scale(1)}}
-@keyframes haLeaf2{0%,28%{transform:scale(0)}40%{transform:scale(1.15)}46%,100%{transform:scale(1)}}
-@keyframes haSway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-@keyframes haPop1{0%,44%{opacity:0;transform:scale(.1)}50%{opacity:1;transform:scale(1.18)}53%,100%{opacity:1;transform:scale(1)}}
-@keyframes haPop2{0%,50%{opacity:0;transform:scale(.1)}56%{opacity:1;transform:scale(1.18)}59%,100%{opacity:1;transform:scale(1)}}
-@keyframes haPop3{0%,56%{opacity:0;transform:scale(.1)}62%{opacity:1;transform:scale(1.18)}65%,100%{opacity:1;transform:scale(1)}}
+@keyframes haGlow{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes haFlicker{0%,100%{transform:scale(.96);opacity:.9}50%{transform:scale(1.06);opacity:1}}
+@keyframes haEarthSpin{to{transform:translateX(-30px)}}
+@keyframes haSprout{0%{opacity:1}93%{opacity:1}99%,100%{opacity:0}}
+@keyframes haSeed{0%,3%{opacity:0;transform:scale(.2)}10%{opacity:1;transform:scale(1.5)}30%{opacity:.9;transform:scale(1)}40%,100%{opacity:0;transform:scale(.4)}}
+@keyframes haGrowC{0%,8%{stroke-dashoffset:100}32%,100%{stroke-dashoffset:0}}
+@keyframes haRingsIn{0%,8%{opacity:0}32%,100%{opacity:.55}}
+@keyframes haGrowL{0%,22%{stroke-dashoffset:100}40%,100%{stroke-dashoffset:0}}
+@keyframes haGrowR{0%,26%{stroke-dashoffset:100}44%,100%{stroke-dashoffset:0}}
+@keyframes haFrond{0%,30%{transform:scale(0)}46%{transform:scale(1.1)}52%,100%{transform:scale(1)}}
+@keyframes haSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes haPop1{0%,46%{opacity:0;transform:scale(.1)}53%{opacity:1;transform:scale(1.15)}56%,100%{opacity:1;transform:scale(1)}}
+@keyframes haPop2{0%,44%{opacity:0;transform:scale(.1)}51%{opacity:1;transform:scale(1.15)}54%,100%{opacity:1;transform:scale(1)}}
+@keyframes haPop3{0%,50%{opacity:0;transform:scale(.1)}57%{opacity:1;transform:scale(1.15)}60%,100%{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.hero-anim *{animation:none!important}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}

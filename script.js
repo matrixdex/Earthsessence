@@ -85,15 +85,23 @@ window.addEventListener('resize', () => { measureHero(); updateLogo(); });
 window.addEventListener('load', () => { measureHero(); updateLogo(); });
 measureHero();
 updateLogo();
-// three-body hero animation: three equal masses on the figure-eight orbit, viewed in a slowly turning frame
+// three-body hero animation: three equal masses on the figure-eight orbit, seen at a low angle to their orbital plane
 (function () {
   const root = document.querySelector('.hero-anim');
   if (!root) return;
   const bodyEls = [...root.querySelectorAll('.ha-body')];
+  const shades = bodyEls.map(el => el.querySelector('.ha-shade'));
   const trailEls = [0, 1, 2].map(i => [...root.querySelectorAll('.ha-trail-' + i)]);
-  const T = 6.32591398;          // orbital period in simulation units
-  const REAL_PERIOD = 9;          // seconds per orbit on screen
-  const CX = 300, CY = 200, SCALE = 150, SPIN = 0.16, TRAIL = 90, H = 0.004;
+  const back = root.querySelector('.ha-back'), front = root.querySelector('.ha-front');
+  const orbitPath = root.querySelector('.ha-orbit'), orbitWrap = root.querySelector('.ha-orbit-wrap');
+  root.querySelector('.ha-bodies').remove();
+  bodyEls.forEach(el => back.appendChild(el));
+
+  const T = 6.32591398;           // orbital period in simulation units
+  const REAL_PERIOD = 9;           // seconds per orbit on screen
+  const CX = 300, CY = 200, SCALE = 150, SPIN = 0.14, TRAIL = 90, H = 0.004;
+  const EL = 26 * Math.PI / 180, SIN = Math.sin(EL), COS = Math.cos(EL);   // viewing elevation above the orbital plane
+  const SUN = 0;
   let p, v, simT, realT, history;
 
   function reset() {
@@ -133,26 +141,51 @@ updateLogo();
       const h = Math.min(H, remaining);
       rk4(h); simT += h; remaining -= h;
     }
-    if (simT >= T) { reset(); }
+    if (simT >= T) reset();
   }
+
+  // draw the orbit once (in plane coordinates) and turn it with the view
+  function buildOrbit() {
+    reset();
+    const pts = [];
+    for (let i = 0; i <= 240; i++) {
+      pts.push(p[0][0] * SCALE + ' ' + p[0][1] * SCALE);
+      let r = T / 240; while (r > 1e-9) { const h = Math.min(H, r); rk4(h); r -= h; }
+    }
+    orbitPath.setAttribute('d', 'M' + pts.join('L'));
+    reset();
+  }
+
   function draw() {
     const a = realT * SPIN, ca = Math.cos(a), sa = Math.sin(a);
-    p.forEach((q, i) => {
-      const x = CX + SCALE * (q[0] * ca - q[1] * sa);
-      const y = CY + SCALE * (q[0] * sa + q[1] * ca);
-      bodyEls[i].setAttribute('transform', 'translate(' + x.toFixed(2) + ' ' + y.toFixed(2) + ')');
+    orbitWrap.setAttribute('transform', 'translate(' + CX + ' ' + CY + ') scale(1 ' + SIN.toFixed(4) + ') rotate(' + (a * 180 / Math.PI).toFixed(2) + ')');
+    const screen = p.map(q => {
+      const X = SCALE * (q[0] * ca - q[1] * sa), Y = SCALE * (q[0] * sa + q[1] * ca);
+      return { x: CX + X, y: CY + Y * SIN, d: Y * COS };           // d > 0: nearer the viewer
+    });
+    screen.forEach((s, i) => {
+      const k = 1 + s.d * 0.0011;
+      bodyEls[i].setAttribute('transform', 'translate(' + s.x.toFixed(2) + ' ' + s.y.toFixed(2) + ') scale(' + k.toFixed(3) + ')');
+      const layer = s.d > 0 ? front : back;
+      if (bodyEls[i].parentNode !== layer) layer.appendChild(bodyEls[i]);
+      if (shades[i]) {                                              // light the moon and earth from the sun
+        const dx = screen[SUN].x - s.x, dy = screen[SUN].y - s.y, len = Math.hypot(dx, dy) || 1;
+        const off = i === 1 ? 7.4 : 10.6;
+        shades[i].setAttribute('cx', (-dx / len * off).toFixed(2));
+        shades[i].setAttribute('cy', (-dy / len * off).toFixed(2));
+      }
       const hs = history[i];
-      hs.push([x, y]);
+      hs.push([s.x, s.y]);
       if (hs.length > TRAIL) hs.shift();
       const seg = Math.ceil(hs.length / 3);
-      trailEls[i].forEach((el, k) => {
-        const pts = hs.slice(k * seg, Math.min(hs.length, (k + 1) * seg + 1));
+      trailEls[i].forEach((el, n) => {
+        const pts = hs.slice(n * seg, Math.min(hs.length, (n + 1) * seg + 1));
         el.setAttribute('d', pts.length > 1 ? 'M' + pts.map(pt => pt[0].toFixed(1) + ' ' + pt[1].toFixed(1)).join('L') : '');
       });
     });
   }
 
-  reset(); realT = 0;
+  buildOrbit(); realT = 0;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     for (let i = 0; i < 70; i++) { advance(1 / 60); draw(); }
     return;
