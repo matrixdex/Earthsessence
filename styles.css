@@ -121,7 +121,7 @@ body.locked{overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb-icon{width:52%;height:auto;max-height:84%;display:block}
 .thumb-dates .thumb-icon{width:74%}
-.thumb-seeds .thumb-icon{width:50%}
+.thumb-seeds .thumb-icon{width:52%}
 .thumb-oil .thumb-icon{width:72%}
 /* source country flag, as a soft gradient behind the tile illustration */
 .thumb[class*="flag-"]::before{content:"";position:absolute;inset:0;opacity:.25}
@@ -144,11 +144,11 @@ body.locked{overflow:hidden}
 .pa-ripple{transform-origin:center;animation:paRipple 7s ease-out infinite}
 .pa-speck{transform-origin:center;animation:paFloat 6s ease-in-out infinite}
 .pa-glow{opacity:0;animation:paGlow 3s ease-in-out infinite}
-.pa-orbit{transform-box:view-box;transform-origin:60px 60px;animation:paSpin 10s linear infinite}
 .pa-frond{transform-origin:0% 100%;animation:paFrond 5s ease-in-out infinite}
 .pa-bunch{transform-origin:50% 0;animation:paSwing 4s ease-in-out infinite}
 .pa-aura{transform-origin:center;animation:paAura 4s ease-in-out infinite}
 .pa-spark{transform-origin:center;opacity:0;animation:paSpark 2.6s ease-in-out infinite}
+.pa-orbit{transform-box:view-box;transform-origin:60px 60px;animation:paSpin 14s linear infinite}
 .pa-flow{stroke-dasharray:5 8;animation:paFlow 1s linear infinite}
 .pa-ripple2{transform-origin:center;opacity:0;animation:paRipple2 2.4s ease-out infinite}
 .pa-r2{animation-delay:-1.2s}
@@ -157,10 +157,10 @@ body.locked{overflow:hidden}
 @keyframes paRipple{0%,66%{opacity:0;transform:scale(.2)}70%{opacity:.8;transform:scale(.5)}100%{opacity:0;transform:scale(2.7)}}
 @keyframes paFloat{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(1.4px,-2px) rotate(20deg)}66%{transform:translate(-1.4px,1.6px) rotate(-18deg)}}
 @keyframes paGlow{0%,100%{opacity:0}35%{opacity:.6}}
-@keyframes paSpin{to{transform:rotate(360deg)}}
 @keyframes paFrond{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 @keyframes paSwing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
 @keyframes paAura{0%,100%{opacity:.35;transform:scale(.92)}50%{opacity:.9;transform:scale(1.1)}}
+@keyframes paSpin{to{transform:rotate(360deg)}}
 @keyframes paFlow{to{stroke-dashoffset:-13}}
 @keyframes paRipple2{0%{opacity:.8;transform:scale(.3)}100%{opacity:0;transform:scale(3.1)}}
 @keyframes paSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
