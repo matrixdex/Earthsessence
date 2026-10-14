@@ -70,49 +70,119 @@ if (grid) grid.innerHTML = list.map(p => `
     <a class="more" href="mailto:hello@example.com?subject=${encodeURIComponent('Order: ' + p.name)}">Order Now →</a>
   </article>`).join('');
 
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const SPRING = 'linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1)';
+
 // category filter (products page): oil, honey, dates; click the active one again to show all
 const filtersEl = document.getElementById('filters');
 if (filtersEl) {
-  const buttons = filtersEl.querySelectorAll('button');
+  const buttons = [...filtersEl.querySelectorAll('button')];
   let active = new URLSearchParams(location.search).get('filter');
   if (!['blackseed', 'honey', 'dates'].includes(active)) active = null;
-  const applyFilter = () => {
+
+  // one pill slides between the filters
+  const pill = document.createElement('span');
+  pill.className = 'pill';
+  pill.setAttribute('aria-hidden', 'true');
+  filtersEl.prepend(pill);
+  filtersEl.classList.add('has-pill');
+  const placePill = instant => {
+    const b = buttons.find(x => x.dataset.filter === active);
+    pill.classList.toggle('instant', !!instant);
+    pill.classList.toggle('on', !!b);
+    if (b) {
+      pill.style.width = b.offsetWidth + 'px';
+      pill.style.height = b.offsetHeight + 'px';
+      pill.style.setProperty('--px', b.offsetLeft + 'px');
+      pill.style.setProperty('--py', b.offsetTop + 'px');
+    }
+    if (instant) { pill.offsetWidth; pill.classList.remove('instant'); }
+  };
+
+  let run = 0;
+  const show = c => !active || c.dataset.cat === active;
+  const updateUrl = () => {
+    const url = new URL(location.href);
+    if (active) url.searchParams.set('filter', active); else url.searchParams.delete('filter');
+    try { history.replaceState(null, '', url); } catch (e) { /* e.g. opened from file:// */ }
+  };
+  // FLIP: leaving cards fade out, the rest glide to their new places, entering cards fade in
+  const applyFilter = animate => {
+    const my = ++run;
     buttons.forEach(b => {
       const on = b.dataset.filter === active;
       b.classList.toggle('active', on);
       b.setAttribute('aria-pressed', on);
     });
-    grid.querySelectorAll('.card').forEach(c => c.classList.toggle('hide', !!active && c.dataset.cat !== active));
-    const url = new URL(location.href);
-    if (active) url.searchParams.set('filter', active); else url.searchParams.delete('filter');
-    try { history.replaceState(null, '', url); } catch (e) { /* e.g. opened from file:// */ }
+    placePill(!animate);
+    updateUrl();
+    const cards = [...grid.querySelectorAll('.card')];
+    cards.forEach(c => c.getAnimations().forEach(a => a.cancel()));
+    if (!animate || reduceMotion.matches) {
+      cards.forEach(c => c.classList.toggle('hide', !show(c)));
+      return;
+    }
+    const leaving = cards.filter(c => !c.classList.contains('hide') && !show(c));
+    const go = () => {
+      if (my !== run) return;
+      const first = new Map(cards.filter(c => !c.classList.contains('hide')).map(c => [c, c.getBoundingClientRect()]));
+      cards.forEach(c => { c.getAnimations().forEach(a => a.cancel()); c.classList.toggle('hide', !show(c)); c.classList.add('in'); });
+      cards.filter(show).forEach(c => {
+        const f = first.get(c), l = c.getBoundingClientRect();
+        if (!f) {
+          c.animate([{opacity: 0, transform: 'scale(.96)'}, {opacity: 1, transform: 'none'}], {duration: 400, easing: SPRING});
+        } else if (f.left !== l.left || f.top !== l.top) {
+          c.animate([{transform: `translate(${f.left - l.left}px,${f.top - l.top}px)`}, {transform: 'none'}], {duration: 500, easing: SPRING});
+        }
+      });
+    };
+    if (!leaving.length) return go();
+    Promise.all(leaving.map(c => c.animate(
+      [{opacity: 1, transform: 'scale(1)'}, {opacity: 0, transform: 'scale(.96)'}],
+      {duration: 140, easing: 'ease-out', fill: 'forwards'}).finished)).then(go, () => {});
   };
   buttons.forEach(b => b.addEventListener('click', () => {
     active = active === b.dataset.filter ? null : b.dataset.filter;
-    applyFilter();
+    applyFilter(true);
   }));
-  applyFilter();
+  applyFilter(false);
+  window.addEventListener('resize', () => placePill(true));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => placePill(true));
 }
 
-// mobile overlay menu
+// mobile overlay menu: grows out of the burger, closes back into it, focus is contained while open
 const burger = document.getElementById('burger');
 const overlay = document.getElementById('overlay');
+const menuLinks = [...overlay.querySelectorAll('a')];
+menuLinks.forEach((a, i) => a.style.setProperty('--i', i));
+const behindMenu = [...document.querySelectorAll('main, footer')];
+overlay.inert = true;
 function setMenu(open){
+  if (open) {
+    const r = burger.getBoundingClientRect();
+    overlay.style.setProperty('--ox', (r.left + r.width / 2) + 'px');
+    overlay.style.setProperty('--oy', (r.top + r.height / 2) + 'px');
+  }
   burger.classList.toggle('open', open);
   overlay.classList.toggle('open', open);
   document.body.classList.toggle('locked', open);
   burger.setAttribute('aria-expanded', open);
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   overlay.setAttribute('aria-hidden', !open);
+  overlay.inert = !open;
+  behindMenu.forEach(el => { el.inert = open; });
+  if (open) menuLinks[0].focus({preventScroll: true});
 }
 burger.addEventListener('click', () => setMenu(!overlay.classList.contains('open')));
-overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-window.addEventListener('resize', () => { if (innerWidth > 768) setMenu(false); });
+menuLinks.forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && overlay.classList.contains('open')) { setMenu(false); burger.focus(); }
+});
+window.addEventListener('resize', () => { if (innerWidth > 768 && overlay.classList.contains('open')) setMenu(false); });
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// shrink the navbar logo smoothly from 100% to 50% over the hero section
+// the navbar logo shrinks from 100% to 50% over the hero; only a transform changes, so the page never reflows
 const hero = document.querySelector('.hero, .page-hero');
 let heroEnd = 1, ticking = false;
 function measureHero(){ heroEnd = Math.max(1, hero.offsetTop + hero.offsetHeight); }
@@ -128,11 +198,28 @@ window.addEventListener('resize', () => { measureHero(); updateLogo(); });
 window.addEventListener('load', () => { measureHero(); updateLogo(); });
 measureHero();
 updateLogo();
-// hero animation: pause while it is off screen
+
+// hero animation: pause while it is off screen or the tab is hidden
 (function () {
   const root = document.querySelector('.hero-anim');
   if (!root) return;
-  new IntersectionObserver(entries => {
-    root.classList.toggle('ts-paused', !entries[0].isIntersecting);
-  }).observe(root);
+  let visible = true;
+  const sync = () => root.classList.toggle('ts-paused', !visible || document.hidden);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(root);
+  document.addEventListener('visibilitychange', sync);
+})();
+
+// scroll reveals: one-shot, staggered, skipped for reduced motion
+(function () {
+  const items = [...document.querySelectorAll('.feature, .products-grid .card, .steps .card, .narrow.center > :is(h2, p), .page-hero .container > *')];
+  if (!items.length) return;
+  if (reduceMotion.matches || !('IntersectionObserver' in window)) { items.forEach(el => el.classList.add('in')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.filter(e => e.isIntersecting).forEach((e, i) => {
+      e.target.style.setProperty('--rd', Math.min(i, 6) * 0.05 + 's');
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  items.forEach(el => { el.classList.add('reveal'); io.observe(el); });
 })();
