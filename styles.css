@@ -127,6 +127,7 @@ body.locked{overflow:hidden}
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .feature:nth-child(even) .feature-image{order:2}
 .feature-image{aspect-ratio:3/2;width:100%;border-radius:1rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.feature-anim{background:transparent}
 .feature-image span{color:var(--muted);font-size:.9rem}
 .feature-image img{width:100%;height:100%;object-fit:cover;display:block}
 .feature-copy h3{font-size:1.6rem;margin-bottom:1.3rem}
