@@ -219,7 +219,7 @@ body.locked{overflow:hidden}
 .narrow p + .btn{margin-top:1.75rem}
 .page-hero{padding:2.5rem 0 calc(var(--gap) / 2)}
 .page-hero h1{font-weight:500;margin-bottom:1.3rem}
-.page-hero .lead{margin:0;max-width:620px}
+.page-hero .lead{margin:0;max-width:none;text-wrap:wrap}
 
 /* footer, modelled on theintegratedmed.com */
 .footer{padding:calc(var(--gap) / 2) 0 2rem}
@@ -317,7 +317,7 @@ body.locked{overflow:hidden}
 .benefit-list li::before{content:counter(b,decimal-leading-zero);font-size:.78rem;font-weight:700;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem}
 .benefit-list h3{font-size:1rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}
 .benefit-list .src{margin-top:.75rem;font-size:.85rem;font-weight:600;color:var(--accent);align-self:flex-start}
-.benefit-note{margin-top:3rem;font-size:.85rem;max-width:720px}
+.benefit-note{margin-top:3rem;font-size:.85rem;max-width:none;text-wrap:wrap}
 .benefit-list li{scroll-margin-top:7.5rem}
 .benefit-list li:target h3{color:var(--blue)}
 @media (max-width:768px){
