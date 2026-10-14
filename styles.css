@@ -57,21 +57,24 @@ p + p{margin-top:.75rem}
 .btn:active{transform:scale(.97);opacity:.9;transition-duration:var(--dur-press),var(--dur-press)}
 
 /* header */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:70;background:var(--bg-glass);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);padding-top:var(--header-pad)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:70;padding-top:var(--header-pad);pointer-events:none;--dy:0px;--glass-y:1;--glass-h:0px}
+.site-header > *{pointer-events:auto}
+/* the glass is its own layer: scrolling only changes transforms (compositor), never layout or backdrop size */
+.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg-glass);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);transform:scaleY(var(--glass-y));transform-origin:top;will-change:transform}
 /* scroll-edge effect: content fades out under the glass instead of meeting a hard line */
-.site-header::after{content:"";position:absolute;left:0;right:0;top:100%;height:1.5rem;pointer-events:none;background:linear-gradient(rgba(255,254,235,.55),rgba(255,254,235,0));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
-.nav-bar{display:flex;align-items:center;justify-content:space-between;height:calc(var(--logo-size) + 1.125rem)}
+.site-header::after{content:"";position:absolute;left:0;right:0;top:0;height:1.5rem;z-index:-1;pointer-events:none;background:linear-gradient(rgba(255,254,235,.55),rgba(255,254,235,0));transform:translateY(var(--glass-h));will-change:transform}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;height:calc(var(--logo-full) + 1.125rem)}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-stack{width:var(--logo-full);display:flex;flex-direction:column;align-items:center;gap:.35rem;line-height:1.1}
-.logo-nav{width:var(--logo-full);height:var(--logo-full);display:block;color:var(--navy);transform:scale(var(--logo-scale));transform-origin:left center;will-change:transform}
+.logo-nav{width:var(--logo-full);height:var(--logo-full);display:block;color:var(--navy);transform:translateY(var(--dy)) scale(var(--logo-scale));transform-origin:left center;will-change:transform}
 .footer-name{font-size:1.75rem;font-weight:500;line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
-.nav-desktop{display:flex;align-items:center;gap:2rem}
+.nav-desktop{display:flex;align-items:center;gap:2rem;transform:translateY(var(--dy))}
 .nav-desktop .btn{font-size:1.104rem}
 .nav-desktop a:not(.btn){font-size:1.104rem;font-weight:500;transition:color var(--dur-fast) var(--ease-out)}
 @media (hover:hover){.nav-desktop a:not(.btn):hover{color:var(--blue)}}
-.burger{display:none;background:none;border:0;width:2.5rem;height:2.5rem;position:relative;cursor:pointer;z-index:70}
+.burger{transform:translateY(var(--dy));display:none;background:none;border:0;width:2.5rem;height:2.5rem;position:relative;cursor:pointer;z-index:70}
 .burger{transition:transform var(--dur-press) var(--ease-out)}
-.burger:active{transform:scale(.92)}
+.burger:active{transform:translateY(var(--dy)) scale(.92)}
 .burger span{position:absolute;left:.5rem;right:.5rem;height:2px;background:var(--ink);transition:transform var(--dur-med) var(--spring),opacity var(--dur-fast) var(--ease-out),top var(--dur-med) var(--spring)}
 .burger span:nth-child(1){top:.85rem}
 .burger span:nth-child(2){top:1.2rem}
@@ -309,11 +312,11 @@ body.locked{overflow:hidden}
 }
 /* translucent materials degrade to solid surfaces on request */
 @media (prefers-reduced-transparency:reduce){
-  .site-header{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .site-header::before{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}
   .site-header::after{display:none}
 }
 @media (prefers-contrast:more){
-  .site-header{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid var(--ink)}
+  .site-header::before{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid var(--ink)}
   .site-header::after{display:none}
   .thumb-origin{background:var(--bg);outline:1px solid var(--ink)}
 }

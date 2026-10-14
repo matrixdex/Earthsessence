@@ -182,21 +182,35 @@ window.addEventListener('resize', () => { if (innerWidth > 768 && overlay.classL
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// the navbar logo shrinks from 100% to 50% over the hero; only a transform changes, so the page never reflows
+// the navbar logo shrinks from 100% to 50% over the hero. Only transforms change (logo, nav, glass layer), so scrolling never triggers layout
 const hero = document.querySelector('.hero, .page-hero');
-let heroEnd = 1, ticking = false;
-function measureHero(){ heroEnd = Math.max(1, hero.offsetTop + hero.offsetHeight); }
+const header = document.querySelector('.site-header');
+const logo = header.querySelector('.logo-nav');
+let heroEnd = 1, logoFull = 150, pad = 10, gap = 18, ticking = false;
+function measure(){
+  heroEnd = Math.max(1, hero.offsetTop + hero.offsetHeight);
+  const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  logoFull = parseFloat(getComputedStyle(logo).width);
+  pad = parseFloat(getComputedStyle(header).paddingTop);
+  gap = 1.125 * rem;
+}
 function updateLogo(){
   const p = Math.min(1, Math.max(0, window.scrollY / heroEnd));
-  document.documentElement.style.setProperty('--logo-scale', (1 - 0.5 * p).toFixed(4));
+  const s = 1 - 0.5 * p;
+  const fullH = pad + gap + logoFull, glassH = pad + gap + logoFull * s;
+  const st = header.style;
+  st.setProperty('--logo-scale', s.toFixed(4));
+  st.setProperty('--dy', (-logoFull * (1 - s) / 2).toFixed(2) + 'px');
+  st.setProperty('--glass-y', (glassH / fullH).toFixed(4));
+  st.setProperty('--glass-h', glassH.toFixed(2) + 'px');
   ticking = false;
 }
 window.addEventListener('scroll', () => {
   if (!ticking) { ticking = true; requestAnimationFrame(updateLogo); }
 }, { passive: true });
-window.addEventListener('resize', () => { measureHero(); updateLogo(); });
-window.addEventListener('load', () => { measureHero(); updateLogo(); });
-measureHero();
+window.addEventListener('resize', () => { measure(); updateLogo(); });
+window.addEventListener('load', () => { measure(); updateLogo(); });
+measure();
 updateLogo();
 
 // hero animation: pause while it is off screen or the tab is hidden
