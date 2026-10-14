@@ -186,6 +186,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const hero = document.querySelector('.hero, .page-hero');
 const header = document.querySelector('.site-header');
 const logo = header.querySelector('.logo-nav');
+const mobileNav = matchMedia('(max-width: 768px)');
 let heroEnd = 1, logoFull = 150, pad = 10, gap = 18, ticking = false;
 function measure(){
   heroEnd = Math.max(1, hero.offsetTop + hero.offsetHeight);
@@ -195,7 +196,8 @@ function measure(){
   gap = 1.125 * rem;
 }
 function updateLogo(){
-  const p = Math.min(1, Math.max(0, window.scrollY / heroEnd));
+  // on mobile the logo stays at its small, scrolled size throughout
+  const p = mobileNav.matches ? 1 : Math.min(1, Math.max(0, window.scrollY / heroEnd));
   const s = 1 - 0.5 * p;
   const fullH = pad + gap + logoFull, glassH = pad + gap + logoFull * s;
   const st = header.style;

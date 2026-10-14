@@ -237,6 +237,7 @@ body.locked{overflow:hidden}
   .grid.products-grid{row-gap:0}
   .products-grid .card{margin-bottom:3rem}
   :root{--logo-full:6.5625rem}
+  body{padding-top:calc(var(--logo-full) * .5 + 1.125rem + var(--header-pad))}
   html{scroll-padding-top:6rem}
   .nav-desktop{display:none}
   .burger{display:block}
