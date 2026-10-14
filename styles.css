@@ -306,25 +306,10 @@ body.locked{overflow:hidden}
 .benefit-list h3{font-size:1rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}
 .benefit-list .src{margin-top:.75rem;font-size:.85rem;font-weight:600;color:var(--accent);align-self:flex-start}
 .benefit-note{margin-top:3rem;font-size:.85rem;max-width:720px}
-.benefit-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3.5rem 4rem;margin-top:3.25rem}
-.benefit-col > p{text-wrap:wrap}
-.benefit-col h3{font-size:1.6rem;margin-bottom:.5rem}
-.benefit-short{list-style:none;margin:1.25rem 0 0}
-.benefit-short li{border-top:1px solid rgba(10,33,62,.12);color:var(--muted)}
-.benefit-short a{display:flex;flex-direction:column;gap:.1rem;padding:.8rem 0;transition:transform var(--dur-med) var(--spring),color var(--dur-fast) var(--ease-out)}
-.benefit-short a:active{opacity:.6}
-@media (hover:hover){.benefit-short a:hover{transform:translateX(4px)}.benefit-short a:hover strong{color:var(--blue)}}
 .benefit-list li{scroll-margin-top:7.5rem}
 .benefit-list li:target h3{color:var(--blue)}
-.benefit-short li:last-child{border-bottom:1px solid rgba(10,33,62,.12)}
-.benefit-col .more{display:inline-block;margin-top:1.25rem;font-weight:600;font-size:.9rem;color:var(--accent);transition:transform var(--dur-med) var(--spring)}
-@media (hover:hover){.benefit-col .more:hover{transform:translateX(3px)}}
-.benefit-short strong{color:var(--ink);font-size:.95rem}
 @media (max-width:768px){
-  .benefit-list,.benefit-pair{grid-template-columns:1fr}
-  .benefit-col .more{align-self:flex-start}
-  .benefit-list{gap:2rem;margin-top:2rem}
-  .benefit-pair{gap:3rem;margin-top:3rem}
+  .benefit-list{grid-template-columns:1fr;gap:2rem;margin-top:2rem}
 }
 
 /* scroll reveals (classes added by JS) */
