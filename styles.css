@@ -296,6 +296,31 @@ body.locked{overflow:hidden}
   .ts-s2{transform:translate(360px,230px) scale(.62)}
   .ts-s3{transform:translate(404px,248px) scale(.62)}
 }
+/* benefits: research lists */
+.benefit-section{padding-bottom:1rem}
+.benefit-section h2{margin-bottom:0}
+.lead-left{max-width:620px;margin-top:1.1rem}
+.benefit-list{list-style:none;counter-reset:b;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 3.5rem;margin-top:2.5rem}
+.benefit-list li{counter-increment:b;display:flex;flex-direction:column}
+.benefit-list li::before{content:counter(b,decimal-leading-zero);font-size:.78rem;font-weight:700;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem}
+.benefit-list h3{font-size:1rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}
+.benefit-list .src{margin-top:.75rem;font-size:.85rem;font-weight:600;color:var(--accent);align-self:flex-start}
+.benefit-note{margin-top:3rem;font-size:.85rem;max-width:720px}
+.benefit-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3.5rem 4rem;margin-top:4rem}
+.benefit-col h3{font-size:1.6rem;margin-bottom:.5rem}
+.benefit-short{list-style:none;margin:1.25rem 0 0}
+.benefit-short li{display:flex;flex-direction:column;gap:.1rem;padding:.7rem 0;border-top:1px solid rgba(10,33,62,.12);color:var(--muted)}
+.benefit-short li:last-child{border-bottom:1px solid rgba(10,33,62,.12)}
+.benefit-col .more{display:inline-block;margin-top:1.25rem;font-weight:600;font-size:.9rem;color:var(--accent);transition:transform var(--dur-med) var(--spring)}
+@media (hover:hover){.benefit-col .more:hover{transform:translateX(3px)}}
+.benefit-short strong{color:var(--ink);font-size:.95rem}
+@media (max-width:768px){
+  .benefit-list,.benefit-pair{grid-template-columns:1fr}
+  .benefit-col .more{align-self:flex-start}
+  .benefit-list{gap:2rem;margin-top:2rem}
+  .benefit-pair{gap:3rem;margin-top:3rem}
+}
+
 /* scroll reveals (classes added by JS) */
 .reveal{opacity:0;transform:translateY(14px);transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--spring);transition-delay:var(--rd,0s)}
 .reveal.in{opacity:1;transform:none}

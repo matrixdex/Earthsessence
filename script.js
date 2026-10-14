@@ -227,7 +227,7 @@ updateLogo();
 
 // scroll reveals: one-shot, staggered, skipped for reduced motion
 (function () {
-  const items = [...document.querySelectorAll('.feature, .products-grid .card, .steps .card, .narrow.center > :is(h2, p), .page-hero .container > *')];
+  const items = [...document.querySelectorAll('.feature, .products-grid .card, .steps .card, .benefit-list li, .benefit-col, .narrow.center > :is(h2, p), .page-hero .container > *')];
   if (!items.length) return;
   if (reduceMotion.matches || !('IntersectionObserver' in window)) { items.forEach(el => el.classList.add('in')); return; }
   const io = new IntersectionObserver(entries => {
