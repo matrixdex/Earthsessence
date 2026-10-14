@@ -299,7 +299,7 @@ body.locked{overflow:hidden}
 /* benefits: research lists */
 .benefit-section{padding-bottom:1rem}
 .benefit-section h2{margin-bottom:0}
-.lead-left{max-width:620px;margin-top:1.1rem}
+.lead-left{max-width:none;margin-top:1.1rem}
 .benefit-list{list-style:none;counter-reset:b;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 3.5rem;margin-top:2.5rem}
 .benefit-list li{counter-increment:b;display:flex;flex-direction:column}
 .benefit-list li::before{content:counter(b,decimal-leading-zero);font-size:.78rem;font-weight:700;letter-spacing:.18em;color:var(--accent);margin-bottom:.6rem}
