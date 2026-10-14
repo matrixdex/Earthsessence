@@ -3,7 +3,7 @@ const products = [
 
   {n:2,cat:'honey',name:'Honeycomb of Multi-Colour Multi-Nectar Honey',price:'£16',size:'215g',desc:'Our pure, natural, and unpasteurised Multi-Colour Multi-Nectar honey. Presented with raw, hand-cut honeycomb. Raw comb keeps honey’s natural enzymes and pollen, and the wax is safe to chew.'},
 
-  {n:3,cat:'honey',name:'Black Seed Infused Honey',price:'£16',size:'215g',desc:'Our Multi-Colour Multi-Nectar honey infused with Ethiopian black seed (Nigella sativa). A distinct combination of two treasured natural ingredients.'},
+  {n:3,cat:'blackseed',name:'Black Seed Infused Honey',price:'£16',size:'215g',desc:'Our Multi-Colour Multi-Nectar honey infused with Ethiopian black seed (Nigella sativa). A distinct combination of two treasured natural ingredients.'},
 
   {n:4,cat:'honey',name:'Spanish Acacia Honey',price:'£16',size:'215g',desc:'Delicate, naturally sweet, and unpasteurised Spanish Acacia honey. A delicious, natural alternative to refined sugar. Light and slow to crystallise, it offers natural energy and antioxidants in every spoonful.'},
 
@@ -15,9 +15,9 @@ const products = [
 
   {n:8,cat:'honey',name:'Spanish Wild Thyme Honey',price:'£16',size:'215g',desc:'Smooth and sweet honey with subtle herbal, floral, and distinct phenolic notes. A hint of thyme in every taste. Thyme has a long tradition in ancient medicine. Use a spoonful in warm water.'},
 
-  {n:9,featured:true,cat:'oil',name:'Ethiopian Black Seed Oil',price:'£16',size:'100ml',desc:'Cold-pressed from Nigella sativa seeds, our black seed oil is sourced from Ethiopia. Natural and unfiltered, without additives or preservatives. Boosts immunity and promotes good health.'},
+  {n:9,featured:true,cat:'blackseed',name:'Ethiopian Black Seed Oil',price:'£16',size:'100ml',desc:'Cold-pressed from Nigella sativa seeds, our black seed oil is sourced from Ethiopia. Natural and unfiltered, without additives or preservatives. Boosts immunity and promotes good health.'},
 
-  {n:10,cat:'',name:'Ethiopian Black Seeds',price:'£10',size:'100g',offer:'2 for £16',desc:'Carefully selected whole black seeds (Nigella sativa) of the highest quality. Boost immunity with long-term use. Contain thymoquinone with anti-inflammatory, antioxidant and respiratory relief properties.'},
+  {n:10,cat:'blackseed',name:'Ethiopian Black Seeds',price:'£10',size:'100g',offer:'2 for £16',desc:'Carefully selected whole black seeds (Nigella sativa) of the highest quality. Boost immunity with long-term use. Contain thymoquinone with anti-inflammatory, antioxidant and respiratory relief properties.'},
 
   {n:11,cat:'',name:'Honeybee Pollen',price:'£10',size:'100g',offer:'2 for £16',desc:'Pollen collected by local English honeybees. High in fibre. Full of vitamins, minerals, and antioxidants. A teaspoon everyday brings the natural power of pollen and propolis into your diet.'},
 
@@ -75,7 +75,7 @@ const filtersEl = document.getElementById('filters');
 if (filtersEl) {
   const buttons = filtersEl.querySelectorAll('button');
   let active = new URLSearchParams(location.search).get('filter');
-  if (!['oil', 'honey', 'dates'].includes(active)) active = null;
+  if (!['blackseed', 'honey', 'dates'].includes(active)) active = null;
   const applyFilter = () => {
     buttons.forEach(b => {
       const on = b.dataset.filter === active;
