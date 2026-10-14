@@ -11,7 +11,6 @@
   --logo-scale:1;
   --logo-size:calc(var(--logo-full) * var(--logo-scale));
   --header-pad:.625rem;
-  --bg-glass:rgba(255,254,235,.72);
   /* motion: critically damped spring (no overshoot) is the default; the bounce one is for momentum-driven moments */
   --spring:linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1);
   --spring-bounce:linear(0,.0531,.1749,.3235,.4728,.608,.7222,.8134,.8829,.9333,.9682,.9909,1.0046,1.0119,1.0148,1.015,1.0137,1.0116,1.0093,1.0071,1.0052,1.0036,1.0024,1.0014,1.0008,1.0003,1,.9999,1);
@@ -59,10 +58,8 @@ p + p{margin-top:.75rem}
 /* header */
 .site-header{position:fixed;top:0;left:0;right:0;z-index:70;padding-top:var(--header-pad);pointer-events:none;--dy:0px;--glass-y:1;--glass-h:0px}
 .nav-desktop,.burger{pointer-events:auto}
-/* the glass is its own layer: scrolling only changes transforms (compositor), never layout or backdrop size */
-.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg-glass);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);transform:scaleY(var(--glass-y));transform-origin:top;will-change:transform}
-/* scroll-edge effect: content fades out under the glass instead of meeting a hard line */
-.site-header::after{content:"";position:absolute;left:0;right:0;top:0;height:1.5rem;z-index:-1;pointer-events:none;background:linear-gradient(rgba(255,254,235,.55),rgba(255,254,235,0));transform:translateY(var(--glass-h));will-change:transform}
+/* solid header background as its own layer: scrolling only changes its transform, never layout */
+.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg);transform:scaleY(var(--glass-y));transform-origin:top;will-change:transform}
 .nav-bar{display:flex;align-items:center;justify-content:space-between;height:calc(var(--logo-full) + 1.125rem)}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-stack{width:var(--logo-full);display:flex;flex-direction:column;align-items:center;gap:.35rem;line-height:1.1}
@@ -315,13 +312,6 @@ body.locked{overflow:hidden}
   .burger span:nth-child(2){transform:none!important}
   .filters .pill{transform:translate(var(--px,0),var(--py,0))!important}
 }
-/* translucent materials degrade to solid surfaces on request */
-@media (prefers-reduced-transparency:reduce){
-  .site-header::before{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}
-  .site-header::after{display:none}
-}
 @media (prefers-contrast:more){
-  .site-header::before{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid var(--ink)}
-  .site-header::after{display:none}
   .thumb-origin{background:var(--bg);outline:1px solid var(--ink)}
 }
