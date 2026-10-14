@@ -11,6 +11,11 @@
   --logo-scale:1;
   --logo-size:calc(var(--logo-full) * var(--logo-scale));
   --header-pad:.625rem;
+  /* one rhythm for every gap between sections; sections pad half each side */
+  --gap:6rem;
+  --card-gap:3.5rem;
+  --btn-gap:2.5rem;
+  --more-h:2.9rem;
   /* motion: critically damped spring (no overshoot) is the default; the bounce one is for momentum-driven moments */
   --spring:linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1);
   --spring-bounce:linear(0,.0531,.1749,.3235,.4728,.608,.7222,.8134,.8829,.9333,.9682,.9909,1.0046,1.0119,1.0148,1.015,1.0137,1.0116,1.0093,1.0071,1.0052,1.0036,1.0024,1.0014,1.0008,1.0003,1,.9999,1);
@@ -92,7 +97,7 @@ p + p{margin-top:.75rem}
 body.locked{overflow:hidden}
 
 /* sections */
-.hero{padding:2.5rem 0 4rem}
+.hero{padding:2.5rem 0 calc(var(--gap) / 2)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4rem;align-items:center}
 .hero-image{order:2;aspect-ratio:3/2;width:100%;border-radius:1rem;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-image span{color:var(--muted);font-size:.9rem}
@@ -100,8 +105,7 @@ body.locked{overflow:hidden}
 .hero h1{font-weight:500}
 .hero-copy{text-align:left}
 .hero-copy .lead{margin:0 0 2rem;max-width:520px}
-.section{padding:4rem 0}
-.page-hero + .section{padding-top:2.5rem}
+.section{padding:calc(var(--gap) / 2) 0}
 
 /* cards: no outlines */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5rem 2rem}
@@ -119,6 +123,7 @@ body.locked{overflow:hidden}
 @media (hover:hover){.card .more:hover{transform:translateX(3px)}}
 .steps{margin-top:3.25rem}
 .about-list{margin-top:3.5rem;display:flex;flex-direction:column;gap:4rem}
+.page-hero + .section .about-list{margin-top:0}
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .feature:nth-child(even) .feature-image{order:2}
 .feature-image{aspect-ratio:3/2;width:100%;border-radius:1rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -128,8 +133,8 @@ body.locked{overflow:hidden}
 .feature-copy a{display:inline-block;margin-top:1.25rem;font-weight:600;font-size:.9rem;color:var(--accent);transition:transform var(--dur-med) var(--spring)}
 @media (hover:hover){.feature-copy a:hover{transform:translateX(3px)}}
 .feature-copy a:active{opacity:.6}
-.products-grid{margin-top:3.25rem;row-gap:0}
-.products-grid .card{display:grid;grid-template-rows:subgrid;grid-row:span 6;margin-bottom:3.5rem}
+.products-grid{margin-top:3.25rem;row-gap:0;margin-bottom:calc(-1 * var(--card-gap))}
+.products-grid .card{display:grid;grid-template-rows:subgrid;grid-row:span 6;margin-bottom:var(--card-gap)}
 .offer:empty{margin:0}
 /* product order link appears only while the card is hovered or focused (always visible on touch screens); its hit area covers the whole card */
 .products-grid .card{position:relative}
@@ -139,6 +144,10 @@ body.locked{overflow:hidden}
 @media (hover:hover){
   .products-grid .card .more,.steps .card .more{opacity:0;transform:translateY(4px);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--spring)}
   .products-grid .card:hover .more,.products-grid .card:focus-within .more,.steps .card:hover .more,.steps .card:focus-within .more{opacity:1;transform:none}
+}
+@media (hover:hover){
+  .steps{margin-bottom:calc(-1 * var(--more-h))}
+  .products-grid{margin-bottom:calc(-1 * var(--card-gap) - var(--more-h))}
 }
 /* benefit cards work the same way: link shows on hover, the whole card is the hit area */
 .steps .card{position:relative}
@@ -206,18 +215,14 @@ body.locked{overflow:hidden}
 @keyframes paRipple2{0%{opacity:.8;transform:scale(.3)}100%{opacity:0;transform:scale(3.1)}}
 @keyframes paSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 @media (prefers-reduced-motion:reduce){.thumb-icon *{animation:none!important}.pa-spark{opacity:.8}.pa-glow{opacity:0}.pa-stream{transform:scale(1,0)}}
-.view-all{margin-top:2.5rem;text-align:center}
-#products .view-all{margin-top:-.5rem}
-#benefits .view-all{margin-top:1.5rem}
-#products{padding-bottom:2rem}
-#benefits{padding-top:2rem}
+.view-all{margin-top:var(--btn-gap);text-align:center}
 .narrow p + .btn{margin-top:1.75rem}
-.page-hero{padding:2.5rem 0 1rem}
+.page-hero{padding:2.5rem 0 calc(var(--gap) / 2)}
 .page-hero h1{font-weight:500;margin-bottom:1.3rem}
 .page-hero .lead{margin:0;max-width:620px}
 
 /* footer, modelled on theintegratedmed.com */
-.footer{padding:3.5rem 0 2rem}
+.footer{padding:calc(var(--gap) / 2) 0 2rem}
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem}
 .footer-brand p{margin-top:.75rem;max-width:300px}
 .footer-col h4{margin-bottom:1.3rem;letter-spacing:.14em}
@@ -230,6 +235,7 @@ body.locked{overflow:hidden}
   .feature{grid-template-columns:1fr;gap:1.5rem}
   .feature:nth-child(even) .feature-image{order:0}
   .about-list{gap:3rem;margin-top:2.5rem}
+  .page-hero + .section .about-list{margin-top:0}
   .hero-grid{grid-template-columns:1fr;gap:2rem}
   .hero-image{order:0;aspect-ratio:3/2;max-width:560px;margin:0 auto}
   .hero-copy{text-align:center}
@@ -239,19 +245,15 @@ body.locked{overflow:hidden}
   .footer-brand{grid-column:1/-1}
 }
 @media (max-width:768px){
-  #products{padding-bottom:1.5rem}
-  #benefits{padding-top:1.5rem}
+  :root{--gap:4rem;--card-gap:3rem}
   .grid.products-grid{row-gap:0}
-  .products-grid .card{margin-bottom:3rem}
   :root{--logo-full:6.5625rem}
   body{padding-top:calc(var(--logo-full) * .5 + 1.125rem + var(--header-pad))}
   html{scroll-padding-top:6rem}
   .nav-desktop{display:none}
   .burger{display:block}
-  .hero{padding:2rem 0 3rem}
-  .section{padding:3rem 0}
+  .hero{padding-top:2rem}
   .page-hero{padding-top:2rem}
-  .page-hero + .section{padding-top:2rem}
   .grid{grid-template-columns:1fr;gap:3rem}
   .copyright{margin-top:2.5rem;flex-direction:column;align-items:center;text-align:center}
   .hero-image{margin:0}
@@ -308,7 +310,6 @@ body.locked{overflow:hidden}
   .ts-s3{transform:translate(404px,248px) scale(.62)}
 }
 /* benefits: research lists */
-.benefit-section{padding-bottom:1rem}
 .benefit-section h2{margin-bottom:0}
 .lead-left{max-width:none;margin-top:1.1rem}
 .benefit-list{list-style:none;counter-reset:b;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 3.5rem;margin-top:2.5rem}
