@@ -58,7 +58,7 @@ p + p{margin-top:.75rem}
 
 /* header */
 .site-header{position:fixed;top:0;left:0;right:0;z-index:70;padding-top:var(--header-pad);pointer-events:none;--dy:0px;--glass-y:1;--glass-h:0px}
-.site-header > *{pointer-events:auto}
+.nav-desktop,.burger{pointer-events:auto}
 /* the glass is its own layer: scrolling only changes transforms (compositor), never layout or backdrop size */
 .site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg-glass);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);transform:scaleY(var(--glass-y));transform-origin:top;will-change:transform}
 /* scroll-edge effect: content fades out under the glass instead of meeting a hard line */
@@ -66,7 +66,8 @@ p + p{margin-top:.75rem}
 .nav-bar{display:flex;align-items:center;justify-content:space-between;height:calc(var(--logo-full) + 1.125rem)}
 .brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-stack{width:var(--logo-full);display:flex;flex-direction:column;align-items:center;gap:.35rem;line-height:1.1}
-.logo-nav{width:var(--logo-full);height:var(--logo-full);display:block;color:var(--navy);transform:translateY(var(--dy)) scale(var(--logo-scale));transform-origin:left center;will-change:transform}
+.brand-stack{pointer-events:none}
+.logo-nav{pointer-events:auto;width:var(--logo-full);height:var(--logo-full);display:block;color:var(--navy);transform:translateY(var(--dy)) scale(var(--logo-scale));transform-origin:left center;will-change:transform}
 .footer-name{font-size:1.75rem;font-weight:500;line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
 .nav-desktop{display:flex;align-items:center;gap:2rem;transform:translateY(var(--dy))}
 .nav-desktop .btn{font-size:1.104rem}
@@ -133,12 +134,15 @@ body.locked{overflow:hidden}
 .products-grid{margin-top:3.25rem;row-gap:0}
 .products-grid .card{display:grid;grid-template-rows:subgrid;grid-row:span 6;margin-bottom:3.5rem}
 .offer:empty{margin:0}
-/* product order link is always visible; its hit area covers the whole card */
+/* product order link appears only while the card is hovered or focused (always visible on touch screens); its hit area covers the whole card */
 .products-grid .card{position:relative}
 .products-grid .card .more::after{content:"";position:absolute;inset:0}
 .products-grid .card .more:focus-visible{outline:0}
 .products-grid .card:has(.more:focus-visible){outline:2px solid var(--blue);outline-offset:6px;border-radius:1rem}
-@media (hover:hover){.products-grid .card:hover .more{transform:translateX(3px)}}
+@media (hover:hover){
+  .products-grid .card .more{opacity:0;transform:translateY(4px);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--spring)}
+  .products-grid .card:hover .more,.products-grid .card:focus-within .more{opacity:1;transform:none}
+}
 .filter-bar + .products-grid{margin-top:0}
 .filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1rem;margin-bottom:2.5rem}
 .filter-label{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink);font-size:.88rem;font-weight:600;padding:.55rem 0}
