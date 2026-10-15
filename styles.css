@@ -62,7 +62,9 @@ p + p{margin-top:.75rem}
 
 /* header */
 .site-header{position:fixed;top:0;left:0;right:0;z-index:70;padding-top:var(--header-pad);pointer-events:none;--dy:0px;--glass-y:1;--glass-h:0px}
-.nav-desktop,.burger{pointer-events:auto}
+.nav-desktop,.burger,.nav-title{pointer-events:auto}
+.nav-bar{position:relative}
+.nav-title{display:none}
 /* solid header background as its own layer: scrolling only changes its transform, never layout */
 .site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg);transform:scaleY(var(--glass-y));transform-origin:top;will-change:transform}
 .nav-bar{display:flex;align-items:center;justify-content:space-between;height:calc(var(--logo-full) + 1.125rem)}
@@ -254,6 +256,7 @@ body.locked{overflow:hidden}
   body{padding-top:calc(var(--logo-full) * .5 + 1.125rem + var(--header-pad))}
   html{scroll-padding-top:6rem}
   .nav-desktop{display:none}
+  .nav-title{display:block;position:absolute;left:50%;top:50%;transform:translate(-50%,calc(-50% + var(--dy)));white-space:nowrap;font-size:1.25rem;font-weight:500;letter-spacing:-.015em;line-height:1.15;color:var(--ink)}
   .burger{display:block}
   .hero{padding-top:2rem}
   .page-hero{padding-top:2rem}
