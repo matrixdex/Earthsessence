@@ -149,6 +149,8 @@ body.locked{overflow:hidden}
 @media (hover:hover){
   .steps{margin-bottom:calc(-1 * var(--more-h))}
   .products-grid{margin-bottom:calc(-1 * var(--card-gap) - var(--more-h))}
+  /* keep the button clear of the link that appears on hover */
+  .steps + .view-all,.products-grid + .view-all{margin-top:calc(var(--more-h) + 2rem)}
 }
 /* benefit cards work the same way: link shows on hover, the whole card is the hit area */
 .steps .card{position:relative}
