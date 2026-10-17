@@ -54,7 +54,7 @@ const LOOK = {
 };
 // source country -> flag class (Madinah is in Saudi Arabia)
 const FLAG = {Spain: 'es', Ethiopia: 'et', England: 'gb', Madinah: 'sa'};
-const PHOTO = {1: 'honeybase.png', 2: 'hc.png', 3: 'bshoney2.png', 4: 'acaciabase.jpg', 5: 'hc2.png', 6: 'lavender.png', 7: 'rosemary.png', 8: 'thyme.png', 9: 'seedoil.jpg', 10: 'seedoil.jpg', 12: 'combflowers.png', 13: 'ajwa.png'};
+const PHOTO = {1: 'honeybase.png', 2: 'hc.png', 3: 'bshoney2.png', 4: 'acaciabase.jpg', 5: 'hc2.png', 6: 'lavender.png', 7: 'rosemary.png', 8: 'thyme.png', 9: 'seedoil.jpg', 10: 'seeds.png', 12: 'combflowers.png', 13: 'ajwa.png'};
 const FULL = new Set([12, 13]); // 4:3 photos with their own background fill the tile edge to edge
 const lookFor = p => LOOK[p.n] || {k: {honey: 'honey', oil: 'oil', dates: 'dates'}[p.cat] || 'honey'};
 
