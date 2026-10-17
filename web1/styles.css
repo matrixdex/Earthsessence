@@ -178,6 +178,7 @@ body.locked{overflow:hidden}
 .thumb.thumb-photo{background:#fff}
 .thumb.thumb-photo::before{display:none}
 .thumb-photo img{object-fit:contain;padding:.5rem}
+.thumb-full img{object-fit:cover;padding:0}
 .thumb-icon{width:52%;height:auto;max-height:84%;display:block;transition:transform var(--dur-slow) var(--spring-bounce)}
 @media (hover:hover){.card:hover .thumb-icon{transform:scale(1.04)}}
 .thumb-dates .thumb-icon{width:74%}

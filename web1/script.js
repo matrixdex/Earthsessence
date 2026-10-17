@@ -55,6 +55,7 @@ const LOOK = {
 // source country -> flag class (Madinah is in Saudi Arabia)
 const FLAG = {Spain: 'es', Ethiopia: 'et', England: 'gb', Madinah: 'sa'};
 const PHOTO = {1: 'honeybase.png', 2: 'hc.png', 3: 'bshoney2.png', 4: 'acaciabase.jpg', 5: 'hc2.png', 6: 'lavender.png', 7: 'rosemary.png', 8: 'thyme.png', 9: 'seedoil.jpg', 10: 'seedoil.jpg', 12: 'combflowers.png', 13: 'ajwa.png'};
+const FULL = new Set([12, 13]); // 4:3 photos with their own background fill the tile edge to edge
 const lookFor = p => LOOK[p.n] || {k: {honey: 'honey', oil: 'oil', dates: 'dates'}[p.cat] || 'honey'};
 
 const grid = document.getElementById('grid');
@@ -63,7 +64,7 @@ const list = grid && grid.dataset.featured ? products.filter(p => p.featured) : 
 if (grid) document.body.insertAdjacentHTML('afterbegin', THUMB_SPRITE);
 if (grid) grid.innerHTML = list.map(p => `
   <article class="card" data-cat="${p.cat}">
-    <div class="thumb thumb-${lookFor(p).k}${PHOTO[p.n] ? ' thumb-photo' : ''}${FLAG[lookFor(p).o] ? ' flag-' + FLAG[lookFor(p).o] : ''}" role="img" aria-label="${esc(p.name)}">${PHOTO[p.n] ? `<img src="assets/${PHOTO[p.n]}" alt="" loading="lazy">` : ICON[lookFor(p).k]}${lookFor(p).o ? `<span class="thumb-origin">${lookFor(p).o}</span>` : ''}</div>
+    <div class="thumb thumb-${lookFor(p).k}${PHOTO[p.n] ? ' thumb-photo' + (FULL.has(p.n) ? ' thumb-full' : '') : ''}${FLAG[lookFor(p).o] ? ' flag-' + FLAG[lookFor(p).o] : ''}" role="img" aria-label="${esc(p.name)}">${PHOTO[p.n] ? `<img src="assets/${PHOTO[p.n]}" alt="" loading="lazy">` : ICON[lookFor(p).k]}${lookFor(p).o ? `<span class="thumb-origin">${lookFor(p).o}</span>` : ''}</div>
     <h3>${esc(p.name)}</h3>
     <p>${esc(p.desc)}</p>
     <div class="meta"><span class="price">${p.price}</span><span class="size">${p.size}</span></div>
