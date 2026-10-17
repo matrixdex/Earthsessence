@@ -98,3 +98,24 @@ h1.small{font-size:clamp(3rem,9vw,6.5rem);margin:clamp(1rem,4vw,3rem) 0 1rem}
 .benefit-note{margin:2rem 0 0;max-width:46rem;font-size:.9rem}
 @media(max-width:60rem){.blist{grid-template-columns:repeat(2,1fr)}.bhead{grid-template-columns:1fr}}
 @media(max-width:40rem){.blist{grid-template-columns:1fr}}
+
+/* mobile menu */
+.burger{display:none;width:2.75rem;height:2.75rem;border:0;border-radius:50%;background:rgba(10,33,62,.06);cursor:pointer;position:relative;color:var(--ink);transition:transform .1s ease-out}
+.burger:active{transform:scale(.94)}
+.burger:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.burger span{position:absolute;left:50%;top:50%;width:1.1rem;height:2px;margin:-1px 0 0 -.55rem;border-radius:2px;background:currentColor;transition:transform .45s cubic-bezier(.2,.9,.3,1)}
+.burger span:first-child{transform:translateY(-.3rem)}
+.burger span:last-child{transform:translateY(.3rem)}
+.burger[aria-expanded="true"] span:first-child{transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:rotate(-45deg)}
+nav{position:relative}
+@media(max-width:60rem){
+  nav{flex-wrap:nowrap}
+  nav .logo{margin-right:auto}
+  .burger{display:block}
+  nav ul{display:flex;flex-direction:column;gap:.2rem;position:absolute;top:calc(100% + .4rem);left:0;right:0;z-index:20;padding:.6rem;border-radius:1.5rem;background:var(--bg);border:1.5px solid var(--ink);box-shadow:0 1.5rem 3rem rgba(10,33,62,.18);opacity:0;visibility:hidden;transform:translateY(-.6rem) scale(.98);transform-origin:top right;pointer-events:none;transition:opacity .25s ease,transform .45s cubic-bezier(.2,.9,.3,1),visibility 0s .45s}
+  nav ul.open{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .25s ease,transform .45s cubic-bezier(.2,.9,.3,1)}
+  nav ul a{padding:.9rem 1rem;font-size:1.05rem;border-radius:1rem}
+}
+@media(max-width:30rem){nav>.btn{padding:.7rem 1.1rem;font-size:.9rem}}
+@media(prefers-reduced-motion:reduce){nav ul,.burger span{transition:opacity .2s!important}nav ul{transform:none!important}}
