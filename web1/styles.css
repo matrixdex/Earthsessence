@@ -177,7 +177,7 @@ body.locked{overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb.thumb-photo{background:#fff}
 .thumb.thumb-photo::before{display:none}
-.thumb-photo img{object-fit:contain;padding:.5rem}
+.thumb-photo img{object-fit:contain}
 .thumb-full img{object-fit:cover;padding:0}
 .thumb-icon{width:52%;height:auto;max-height:84%;display:block;transition:transform var(--dur-slow) var(--spring-bounce)}
 @media (hover:hover){.card:hover .thumb-icon{transform:scale(1.04)}}
