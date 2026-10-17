@@ -71,3 +71,9 @@ footer b{display:block;margin-bottom:.4rem}footer a{display:block}
 .p:hover .meta .off{color:var(--amber)}
 @media(max-width:60rem){.prod{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:40rem){.prod{grid-template-columns:1fr}}
+
+h1.small{font-size:clamp(3rem,9vw,6.5rem);margin:clamp(1rem,4vw,3rem) 0 1rem}
+.ph-top{padding-bottom:clamp(2rem,5vw,4rem)}
+.p{scroll-margin-top:1.5rem}
+.p:target{background:var(--ink);color:var(--bg)}
+.p .ph:not(.full) img{mix-blend-mode:multiply}
