@@ -101,10 +101,10 @@ body.locked{overflow:hidden}
 /* sections */
 .hero{padding:2.5rem 0 calc(var(--gap) / 2)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4rem;align-items:center}
-.hero-image{order:2;aspect-ratio:3/2;width:100%;border-radius:1rem;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-image{order:2;aspect-ratio:3/2;width:100%;border-radius:.5rem;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-image span{color:var(--muted);font-size:.9rem}
 /* hero slideshow: flat crossfade */
-.hero-image.slideshow{position:relative;display:block;background:var(--bg);border-radius:1rem}
+.hero-image.slideshow{position:relative;display:block;background:var(--bg);border-radius:.5rem}
 .slideshow .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity var(--dur-slow) var(--ease-out)}
 .slideshow .slide.is-active{opacity:1;z-index:1}
 /* the black seed photo is recoloured to the page cream, so it can show in full */
@@ -134,7 +134,7 @@ body.locked{overflow:hidden}
 .page-hero + .section .about-list{margin-top:0}
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .feature:nth-child(even) .feature-image{order:2}
-.feature-image{aspect-ratio:3/2;width:100%;border-radius:1rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.feature-image{aspect-ratio:3/2;width:100%;border-radius:.5rem;background:rgba(10,33,62,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .feature-anim{background:transparent}
 .feature-image span{color:var(--muted);font-size:.9rem}
 .feature-image img{width:100%;height:100%;object-fit:cover;display:block}
@@ -149,7 +149,7 @@ body.locked{overflow:hidden}
 .products-grid .card{position:relative}
 .products-grid .card .more::after{content:"";position:absolute;inset:0}
 .products-grid .card .more:focus-visible{outline:0}
-.products-grid .card:has(.more:focus-visible){outline:2px solid var(--blue);outline-offset:6px;border-radius:1rem}
+.products-grid .card:has(.more:focus-visible){outline:2px solid var(--blue);outline-offset:6px;border-radius:.5rem}
 @media (hover:hover){
   .products-grid .card .more,.steps .card .more{opacity:0;transform:translateY(4px);transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-med) var(--spring)}
   .products-grid .card:hover .more,.products-grid .card:focus-within .more,.steps .card:hover .more,.steps .card:focus-within .more{opacity:1;transform:none}
@@ -164,7 +164,7 @@ body.locked{overflow:hidden}
 .steps .card{position:relative}
 .steps .card .more::after{content:"";position:absolute;inset:0}
 .steps .card .more:focus-visible{outline:0}
-.steps .card:has(.more:focus-visible){outline:2px solid var(--blue);outline-offset:6px;border-radius:1rem}
+.steps .card:has(.more:focus-visible){outline:2px solid var(--blue);outline-offset:6px;border-radius:.5rem}
 .filter-bar + .products-grid{margin-top:0}
 .filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1rem;margin-bottom:2.5rem}
 .filter-label{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink);font-size:.88rem;font-weight:600;padding:.55rem 0}
@@ -179,7 +179,7 @@ body.locked{overflow:hidden}
 .filters.has-pill button.active{background:none}
 .filters.has-pill .pill.instant{transition:none}
 .card.hide{display:none}
-.thumb{position:relative;aspect-ratio:4/3;width:100%;border-radius:1rem;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.25rem;background:transparent}
+.thumb{position:relative;aspect-ratio:4/3;width:100%;border-radius:.5rem;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.25rem;background:transparent}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb.thumb-photo{background:#fff}
 .thumb.thumb-photo::before{display:none}
