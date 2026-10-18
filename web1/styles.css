@@ -103,21 +103,13 @@ body.locked{overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4rem;align-items:center}
 .hero-image{order:2;aspect-ratio:3/2;width:100%;border-radius:1rem;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-image span{color:var(--muted);font-size:.9rem}
-/* hero slideshow: crossfade with a slow push-in, dots and captions */
-.hero-image.slideshow{position:relative;display:block;background:var(--bg)}
+/* hero slideshow: flat crossfade */
+.hero-image.slideshow{position:relative;display:block;background:var(--bg);border-radius:0}
 .slideshow .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity var(--dur-slow) var(--ease-out)}
 .slideshow .slide.is-active{opacity:1;z-index:1}
-.slideshow .slide img{transform:scale(1)}
-.slideshow .slide.is-active img{animation:slidePush 7s linear forwards}
 /* the black seed photo is recoloured to the page cream, so it can show in full */
 .slideshow .slide-fit img{object-fit:contain}
-@keyframes slidePush{to{transform:scale(1.07)}}
-.slide-dots{position:absolute;right:1rem;bottom:1rem;z-index:2;display:flex;gap:.25rem;background:rgba(255,254,235,.9);padding:.2rem;border-radius:999px}
-.slide-dots button{width:1.5rem;height:1.5rem;border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%}
-.slide-dots button::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:rgba(10,33,62,.3);transition:background var(--dur-fast),transform var(--dur-med) var(--spring)}
-.slide-dots button[aria-current="true"]::before{background:var(--navy);transform:scale(1.35)}
-@media (hover:hover){.slide-dots button:hover::before{background:var(--navy)}}
-.hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+@media (hover:hover){.hero-image img{width:100%;height:100%;object-fit:cover;display:block}
 .hero h1{font-weight:500}
 .hero-copy{text-align:left}
 .hero-copy .lead{margin:0 0 2rem;max-width:520px}
@@ -343,7 +335,6 @@ body.locked{overflow:hidden}
 
 /* reduced motion: no slides, springs or scale; short cross-fades keep the feedback */
 @media (prefers-reduced-motion:reduce){
-  .slideshow .slide.is-active img{animation:none}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.15s!important;transition-delay:0s!important;transition-timing-function:ease!important}
   .btn,.btn:active,.burger:active,.filters button:active,.card .more,.feature-copy a,.thumb-icon,.card:hover .thumb-icon,.reveal,.overlay nav a{transform:none!important}
