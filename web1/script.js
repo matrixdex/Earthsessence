@@ -241,3 +241,32 @@ updateLogo();
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
   items.forEach(el => { el.classList.add('reveal'); io.observe(el); });
 })();
+
+// hero slideshow: auto-advances every 5.5s; pauses on hover, focus, off screen and hidden tab; still (first slide) for reduced motion
+(function () {
+  const root = document.querySelector('.slideshow');
+  if (!root) return;
+  const slides = [...root.querySelectorAll('.slide')];
+  const dots = [...root.querySelectorAll('.slide-dots button')];
+  let i = 0, timer = null, inView = true, held = false;
+  const show = n => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    dots.forEach((d, k) => d.setAttribute('aria-current', k === i));
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const play = () => {
+    stop();
+    if (reduceMotion.matches || held || !inView || document.hidden) return;
+    timer = setInterval(() => show(i + 1), 5500);
+  };
+  dots.forEach((d, k) => d.addEventListener('click', () => { show(k); play(); }));
+  root.addEventListener('mouseenter', () => { held = true; play(); });
+  root.addEventListener('mouseleave', () => { held = false; play(); });
+  root.addEventListener('focusin', () => { held = true; play(); });
+  root.addEventListener('focusout', () => { held = false; play(); });
+  document.addEventListener('visibilitychange', play);
+  reduceMotion.addEventListener('change', play);
+  new IntersectionObserver(e => { inView = e[0].isIntersecting; play(); }).observe(root);
+  play();
+})();
