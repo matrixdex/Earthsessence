@@ -104,7 +104,7 @@ body.locked{overflow:hidden}
 .hero-image{order:2;aspect-ratio:3/2;width:100%;border-radius:1rem;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-image span{color:var(--muted);font-size:.9rem}
 /* hero slideshow: flat crossfade */
-.hero-image.slideshow{position:relative;display:block;background:var(--bg);border-radius:.5rem}
+.hero-image.slideshow{position:relative;display:block;background:var(--bg);border-radius:1rem}
 .slideshow .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity var(--dur-slow) var(--ease-out)}
 .slideshow .slide.is-active{opacity:1;z-index:1}
 /* the black seed photo is recoloured to the page cream, so it can show in full */
