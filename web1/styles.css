@@ -104,7 +104,7 @@ body.locked{overflow:hidden}
 .hero-image{order:2;aspect-ratio:3/2;width:100%;border-radius:1rem;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-image span{color:var(--muted);font-size:.9rem}
 /* hero slideshow: crossfade with a slow push-in, dots and captions */
-.hero-image.slideshow{position:relative;display:block;background:var(--bg);box-shadow:0 30px 60px -34px rgba(10,33,62,.45)}
+.hero-image.slideshow{position:relative;display:block;background:var(--bg)}
 .slideshow .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity var(--dur-slow) var(--ease-out)}
 .slideshow .slide.is-active{opacity:1;z-index:1}
 .slideshow .slide img{transform:scale(1)}
@@ -112,9 +112,7 @@ body.locked{overflow:hidden}
 /* the black seed photo is recoloured to the page cream, so it can show in full */
 .slideshow .slide-fit img{object-fit:contain}
 @keyframes slidePush{to{transform:scale(1.07)}}
-.slideshow figcaption{position:absolute;left:1rem;bottom:1rem;background:rgba(255,254,235,.9);color:var(--ink);font-size:.8rem;font-weight:600;line-height:1;padding:.5rem .9rem;border-radius:999px;box-shadow:0 0 0 1px rgba(10,33,62,.1);opacity:0;transform:translateY(6px);transition:opacity var(--dur-med) var(--ease-out),transform var(--dur-med) var(--spring)}
-.slideshow .slide.is-active figcaption{opacity:1;transform:none;transition-delay:.25s}
-.slide-dots{position:absolute;right:1rem;bottom:1rem;z-index:2;display:flex;gap:.25rem;background:rgba(255,254,235,.9);padding:.2rem;border-radius:999px;box-shadow:0 0 0 1px rgba(10,33,62,.1)}
+.slide-dots{position:absolute;right:1rem;bottom:1rem;z-index:2;display:flex;gap:.25rem;background:rgba(255,254,235,.9);padding:.2rem;border-radius:999px}
 .slide-dots button{width:1.5rem;height:1.5rem;border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%}
 .slide-dots button::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:rgba(10,33,62,.3);transition:background var(--dur-fast),transform var(--dur-med) var(--spring)}
 .slide-dots button[aria-current="true"]::before{background:var(--navy);transform:scale(1.35)}
