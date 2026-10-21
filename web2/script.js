@@ -1,20 +1,34 @@
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
-// mobile menu: toggles the nav list; closes on Escape, outside tap, link tap or when the viewport widens
-const nav = document.querySelector('nav');
-const burger = nav && nav.querySelector('.burger');
-const menu = nav && nav.querySelector('ul');
-if (burger && menu) {
+// mobile menu: a full-screen overlay that grows out of the menu button and closes back into it; focus stays inside while open
+const burger = document.querySelector('.burger');
+const overlay = document.getElementById('overlay');
+if (burger && overlay) {
+  const links = [...overlay.querySelectorAll('a')];
+  links.forEach((a, i) => a.style.setProperty('--i', i));
+  const behind = [...document.querySelectorAll('.wrap > :not(nav):not(.overlay)')];
+  overlay.inert = true;
   const set = open => {
-    menu.classList.toggle('open', open);
+    if (open) {
+      const r = burger.getBoundingClientRect();
+      overlay.style.setProperty('--ox', (r.left + r.width / 2) + 'px');
+      overlay.style.setProperty('--oy', (r.top + r.height / 2) + 'px');
+    }
     burger.setAttribute('aria-expanded', open);
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    overlay.classList.toggle('open', open);
+    overlay.setAttribute('aria-hidden', !open);
+    overlay.inert = !open;
+    behind.forEach(el => { el.inert = open; });
+    document.body.classList.toggle('locked', open);
+    if (open) links[0].focus({ preventScroll: true });
   };
-  burger.addEventListener('click', () => set(!menu.classList.contains('open')));
-  menu.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
-  document.addEventListener('pointerdown', e => { if (!nav.contains(e.target)) set(false); });
-  matchMedia('(min-width: 60.01rem)').addEventListener('change', e => { if (e.matches) set(false); });
+  burger.addEventListener('click', () => set(!overlay.classList.contains('open')));
+  links.forEach(a => a.addEventListener('click', () => set(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) { set(false); burger.focus(); }
+  });
+  matchMedia('(min-width: 60.01rem)').addEventListener('change', e => { if (e.matches && overlay.classList.contains('open')) set(false); });
 }
 
 const year = document.getElementById('year');
