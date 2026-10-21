@@ -147,6 +147,9 @@ section{padding-block:var(--gap)}
 .contact h2{font-size:clamp(2.8rem,7vw,6.6rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.25rem}
 .contact p{max-width:30rem;margin:0 auto 2.25rem;color:rgba(245,237,218,.8);font-size:1.15rem}
 .contact .pill{background:var(--sun);color:var(--ink)}
+/* keeps the height the removed sentence had (two lines, three on very narrow screens) */
+.contact .spacer{height:calc(1.15rem * 1.55 * 2);margin:0 auto 2.25rem}
+@media(max-width:22.5rem){.contact .spacer{height:calc(1.15rem * 1.55 * 3)}}
 
 /* benefits page */
 .moon{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.5rem,5vw,4rem);align-items:center}
