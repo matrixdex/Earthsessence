@@ -130,7 +130,7 @@ h1.small{font-size:clamp(3rem,9.5vw,7rem);margin:clamp(1rem,4vw,2.5rem) 0 1rem}
 
 /* footer */
 footer{padding-block:var(--section) 1.5rem;font-size:.95rem}
-.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}
+.fgrid{display:grid;grid-template-columns:1fr repeat(3,max-content);gap:2rem clamp(3rem,7vw,7rem);align-items:start}
 .fgrid b{display:block;margin-bottom:.5rem;font-family:var(--display);font-size:1.05rem}
 .fgrid a{display:block;padding:.15rem 0;color:var(--mute);transition:color .2s}
 .fgrid a:hover{color:var(--blue)}
