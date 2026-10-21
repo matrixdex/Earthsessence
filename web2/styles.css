@@ -1,10 +1,10 @@
 /* Layout: bright colour-blocked bento grid with an oversized grotesk headline; each product family owns one colour. */
 :root{--bg:#FFFEEB;--ink:#0A213E;--mute:#3B4E6B;--blue:#1D4E89;--amber:#F4B942;--clay:#E7673C;--seed:#14283f;--date:#5b2a2f;--sage:#cfe0c3;
---display:'Playfair','Playfair Display',Georgia,'Times New Roman',serif;--body:var(--display);
+--display:'Playfair Display',Georgia,'Times New Roman',serif;--body:'Hanken Grotesk',system-ui,sans-serif;
 --ease:cubic-bezier(.2,.9,.3,1);--spring:linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1);--ease-out:cubic-bezier(.22,1,.36,1);--gap:.9rem;--section:clamp(3.25rem,7vw,6rem);color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:1rem}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--body);font-variant-ligatures:none;padding-inline:clamp(1rem,3vw,2rem);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--body);padding-inline:clamp(1rem,3vw,2rem);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:.4rem}
