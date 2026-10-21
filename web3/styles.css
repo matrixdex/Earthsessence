@@ -1,7 +1,9 @@
 /* Sunlit Editorial: cream paper, ink type, saffron and terracotta accents, arch-shaped photos, one forest-green band.
    Motion follows one spring token; hover only where a pointer exists; every press responds instantly. */
 :root{--bg:#F5EDDA;--ink:#16140F;--mute:#4A4538;--sun:#E9A21B;--clay:#C65B2C;--forest:#1F2E23;--sand:#E4D3AE;
---serif:'Fraunces',Georgia,'Times New Roman',serif;--sans:'Instrument Sans',system-ui,sans-serif;
+--serif:'Libre Caslon Display',Georgia,'Times New Roman',serif;--sans:'Instrument Sans',system-ui,sans-serif;
+:root{font-synthesis:none;font-variant-ligatures:none}
+h1 .ap{font:inherit;margin-inline:-.05em -.02em}h1 .fx{font:inherit;margin-right:.04em}
 --spring:linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1);
 --ease-out:cubic-bezier(.22,1,.36,1);--pad:clamp(1.1rem,4vw,3.5rem);--gap:clamp(4rem,9vw,8rem);color-scheme:light}
 *{box-sizing:border-box}
@@ -44,7 +46,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;font-optical-sizing:auto;te
 /* hero */
 .hero{padding:clamp(1.5rem,4vw,3rem) 0 var(--gap)}
 .hero .in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
-.hero h1{font-size:clamp(3.6rem,10.4vw,10.2rem);line-height:.88;letter-spacing:-.035em;margin:2rem 0 2.2rem}
+.hero h1{font-size:clamp(3.6rem,10.4vw,10.2rem);line-height:.88;letter-spacing:-.02em;margin:2rem 0 2.2rem}
 .hero .lead{max-width:31rem;font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.55;color:var(--mute);margin-bottom:2.6rem}
 .hero .acts{display:flex;align-items:center;flex-wrap:wrap;gap:1rem 1.75rem}
 .hero .acts .textlink{font-size:1.05rem}
@@ -70,7 +72,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;font-optical-sizing:auto;te
 /* sections */
 section{padding-block:var(--gap)}
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem 4rem;margin-bottom:clamp(2.25rem,5vw,4rem)}
-.head h2{font-size:clamp(2.8rem,7.4vw,7.2rem);line-height:.95;letter-spacing:-.03em}
+.head h2{font-size:clamp(2.8rem,7.4vw,7.2rem);line-height:.95;letter-spacing:-.015em}
 .head.top{align-items:flex-start}
 .head.top p{margin-top:.2rem;margin-bottom:0}
 .head p{max-width:24rem;margin-bottom:.6rem;color:var(--mute);font-size:1.08rem;line-height:1.55}
@@ -83,7 +85,7 @@ section{padding-block:var(--gap)}
 .row::before{content:"";position:absolute;inset:0;background:rgba(233,162,27,.16);opacity:0;transition:opacity .8s ease;pointer-events:none}
 .row>*{position:relative}
 .row{--hs:clamp(3rem,7.4vw,7rem)}
-.row h3{font-size:var(--hs);line-height:.95;letter-spacing:-.03em}
+.row h3{font-size:var(--hs);line-height:.95;letter-spacing:-.015em}
 .row .tag{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .row p{font-size:1rem;line-height:1.55;color:var(--mute)}
 .go{margin-right:calc(var(--hs) * .032);width:4rem;height:4rem;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;justify-self:end;transition:background-color .8s ease,color .8s ease}
@@ -131,7 +133,7 @@ section{padding-block:var(--gap)}
 
 /* page heads */
 .phero{padding:clamp(1.5rem,4vw,3rem) 0 clamp(2.5rem,5vw,4rem)}
-.phero h1{font-size:clamp(3.8rem,12vw,11rem);line-height:.9;letter-spacing:-.035em;margin:1.5rem 0 1.5rem}
+.phero h1{font-size:clamp(3.8rem,12vw,11rem);line-height:.9;letter-spacing:-.02em;margin:1.5rem 0 1.5rem}
 .phero .lead{font-size:clamp(1.05rem,1.8vw,1.35rem);color:var(--mute);max-width:none}
 
 /* delivery + contact blocks */
@@ -140,11 +142,11 @@ section{padding-block:var(--gap)}
 .sunband::before{width:26rem;height:26rem;left:-8rem;top:-8rem}
 .sunband::after{width:36rem;height:36rem;right:-11rem;bottom:-12rem}
 .sunband .in{position:relative}
-.sunband h2{font-size:clamp(3.2rem,9.6vw,9.6rem);line-height:.9;letter-spacing:-.035em;margin:1.5rem 0 2rem}
+.sunband h2{font-size:clamp(3.2rem,9.6vw,9.6rem);line-height:.9;letter-spacing:-.02em;margin:1.5rem 0 2rem}
 .sunband h2 span{font-style:normal}
 .sunband p{font-size:clamp(1.1rem,1.8vw,1.4rem);max-width:34rem;margin:0 auto .5rem}
 .contact{background:var(--ink);color:var(--bg);text-align:center}
-.contact h2{font-size:clamp(2.8rem,7vw,6.6rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.25rem}
+.contact h2{font-size:clamp(2.8rem,7vw,6.6rem);line-height:.95;letter-spacing:-.015em;margin-bottom:1.25rem}
 .contact p{max-width:30rem;margin:0 auto 2.25rem;color:rgba(245,237,218,.8);font-size:1.15rem}
 .contact .pill{background:var(--sun);color:var(--ink)}
 /* keeps the height the removed sentence had (two lines, three on very narrow screens) */
@@ -153,7 +155,7 @@ section{padding-block:var(--gap)}
 
 /* benefits page */
 .moon{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.5rem,5vw,4rem);align-items:center}
-.moon h2{font-size:clamp(2.8rem,6.6vw,6rem);line-height:.95;letter-spacing:-.03em;margin:1.25rem 0 1.5rem}
+.moon h2{font-size:clamp(2.8rem,6.6vw,6rem);line-height:.95;letter-spacing:-.015em;margin:1.25rem 0 1.5rem}
 .moon p{color:var(--mute);font-size:1.12rem;margin-bottom:2rem;max-width:36rem}
 .anim{aspect-ratio:3/2;width:100%}
 .bsec .head h2{font-size:clamp(3.4rem,9vw,8.4rem)}
