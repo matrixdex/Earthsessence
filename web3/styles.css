@@ -63,9 +63,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;font-optical-sizing:auto;te
 .band{background:var(--ink);color:var(--bg);padding:1.6rem 0;overflow:hidden}
 .band .track{display:flex;width:max-content;animation:mq 38s linear infinite}
 .band .track.paused{animation-play-state:paused}
-.band .seg{display:flex;align-items:center;gap:3.2rem;padding-right:3.2rem;white-space:nowrap;font-size:.85rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
-.band .flag{height:1.55rem;width:auto;aspect-ratio:3/2;border-radius:.25rem;box-shadow:0 0 0 1px rgba(245,237,218,.35);flex:none}
-.band .seg i{width:.9rem;height:.9rem;background:var(--sun);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);flex:none}
+.band .flag{height:2rem;width:auto;aspect-ratio:4/3;flex:none;display:block}
+.band .seg{display:flex;align-items:center;gap:2.25rem;padding-right:5.5rem;white-space:nowrap;font-size:.85rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* sections */
