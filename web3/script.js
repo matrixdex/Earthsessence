@@ -101,3 +101,30 @@ if (items.length) {
     items.forEach(el => io.observe(el));
   }
 }
+
+// widescreen header, as on web1: the badge starts large and shrinks to half size over the first screenful of scrolling
+const headerEl = document.querySelector('.site') || document.querySelector('nav');
+const headerLogo = headerEl && headerEl.querySelector('.logo svg');
+if (headerEl && headerLogo) {
+  const wide = matchMedia('(min-width: 60.01rem)');
+  let full = 150, padTop = 10, gapBottom = 18, tick = false;
+  const measure = () => {
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    full = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--logo-full')) * rem || 150;
+    padTop = 0.625 * rem; gapBottom = 1.125 * rem;
+  };
+  const update = () => {
+    tick = false;
+    const st = headerEl.style;
+    if (!wide.matches) { ['--logo-scale', '--dy', '--glass-y'].forEach(v => st.removeProperty(v)); return; }
+    const p = Math.min(1, Math.max(0, scrollY / Math.max(320, innerHeight * 0.6)));
+    const s = 1 - 0.5 * p;
+    st.setProperty('--logo-scale', s.toFixed(4));
+    st.setProperty('--dy', (-full * (1 - s) / 2).toFixed(2) + 'px');
+    st.setProperty('--glass-y', ((padTop + gapBottom + full * s) / (padTop + gapBottom + full)).toFixed(4));
+  };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', () => { measure(); update(); });
+  wide.addEventListener('change', () => { measure(); update(); });
+  measure(); update();
+}

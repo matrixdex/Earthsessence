@@ -289,3 +289,22 @@ section{padding-block:var(--gap)}
 
 /* widescreen footer: double side margins */
 @media(min-width:60.01rem){.foot .in{padding-inline:calc(var(--pad) * 2)}}
+
+/* widescreen header, as web1: big badge on the left that shrinks while scrolling, links on the right with Contact as the button */
+@media(min-width:60.01rem){
+  :root{--logo-full:9.375rem;--hdr-h:calc(var(--logo-full) + 1.75rem)}
+  html{scroll-padding-top:7.5rem}
+  body{padding-top:var(--hdr-h)}
+  .site{position:fixed;top:0;left:0;right:0;background:none}
+  .site::before{content:"";position:absolute;inset:0;background:var(--bg);transform:scaleY(var(--glass-y,1));transform-origin:top;z-index:-1}
+  .site .in{display:flex;justify-content:space-between;align-items:center;height:var(--hdr-h);min-height:0;padding-top:.625rem;padding-bottom:1.125rem}
+  .logo span{display:none}
+  .logo svg{width:var(--logo-full);height:var(--logo-full);transform:translateY(var(--dy,0px)) scale(var(--logo-scale,1));transform-origin:left center;will-change:transform}
+  .menu{gap:2.25rem;align-items:center;transform:translateY(var(--dy,0px))}
+  .menu a{font-size:1.1rem;border-bottom:0;padding:.5rem 0;transition:color .2s}
+  .menu a[aria-current="page"]{color:var(--clay)}
+  @media(hover:hover){.menu a:hover{color:var(--clay)}}
+  .menu li:last-child a{background:var(--ink);color:var(--bg);padding:.85rem 1.5rem;border-radius:99px;font-weight:600;transition:transform .5s var(--spring),opacity .2s}
+  .menu li:last-child a:active{transform:scale(.96);transition-duration:.1s}
+  @media(hover:hover){.menu li:last-child a:hover{color:var(--bg);transform:translateY(-2px)}}
+}
