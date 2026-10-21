@@ -80,13 +80,14 @@ section{padding-block:var(--gap)}
 /* ingredient rows */
 .rows{border-top:1.5px solid var(--ink)}
 .row{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,5fr) 4rem;gap:1.5rem 2rem;align-items:center;padding:clamp(1.6rem,3vw,2.4rem) 0;border-bottom:1.5px solid var(--ink)}
-/* hover tint is a layer behind the row that reaches past the content, so the arrow never touches its edge and no text moves */
-.row::before{content:"";position:absolute;inset:0 calc(var(--pad) * -.75);background:rgba(233,162,27,.16);opacity:0;transition:opacity .8s ease;pointer-events:none}
+/* hover tint is a layer behind the row, so only the background changes and no text moves */
+.row::before{content:"";position:absolute;inset:0;background:rgba(233,162,27,.16);opacity:0;transition:opacity .8s ease;pointer-events:none}
 .row>*{position:relative}
-.row h3{font-size:clamp(3rem,7.4vw,7rem);line-height:.95;letter-spacing:-.03em}
+.row{--hs:clamp(3rem,7.4vw,7rem)}
+.row h3{font-size:var(--hs);line-height:.95;letter-spacing:-.03em}
 .row .tag{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .row p{font-size:1rem;line-height:1.55;color:var(--mute)}
-.go{width:4rem;height:4rem;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;justify-self:end;transition:background-color .8s ease,color .8s ease}
+.go{margin-right:calc(var(--hs) * .032);width:4rem;height:4rem;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;justify-self:end;transition:background-color .8s ease,color .8s ease}
 @media(hover:hover){.row:hover::before{opacity:1}.row:hover .go{background-color:var(--ink);color:var(--bg)}}
 
 /* benefits band */
@@ -242,7 +243,8 @@ section{padding-block:var(--gap)}
   .head.row-btn .pill{padding:.8rem 1.25rem;font-size:.92rem}
   .head p{max-width:none;margin:0}
   .row{grid-template-columns:1fr 3.4rem;gap:.9rem 1.25rem;padding:1.6rem 0}
-  .row h3{grid-column:1;font-size:clamp(2.8rem,13vw,4.4rem)}
+  .row{--hs:clamp(2.8rem,13vw,4.4rem)}
+  .row h3{grid-column:1}
   .row .tag{grid-column:1;grid-row:2}
   .row p{grid-column:1/-1}
   .row .go{grid-column:2;grid-row:1;width:3.4rem;height:3.4rem}
