@@ -27,7 +27,7 @@ nav ul a[aria-current="page"]{background:var(--ink);color:var(--bg)}
 h1{font:500 clamp(3.2rem,11.2vw,9.6rem)/.9 var(--display);letter-spacing:-.025em;margin:clamp(1.25rem,4vw,3rem) 0 1.4rem;text-wrap:balance}
 h1 span{color:var(--clay)}
 .sub{display:flex;justify-content:space-between;align-items:end;gap:1.25rem 2rem;flex-wrap:wrap;margin-bottom:1.75rem}
-.sub p{max-width:30rem;font-size:clamp(1.05rem,2.2vw,1.3rem);line-height:1.45;margin:0}
+.sub p{max-width:none;font-size:clamp(1.05rem,2.2vw,1.3rem);line-height:1.45;margin:0}
 
 /* bento */
 .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
