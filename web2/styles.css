@@ -50,7 +50,7 @@ a.t:hover .im img{transform:scale(1.05)}
 .only h3{font-size:clamp(2.2rem,4.6vw,4rem)}
 .only p{font-size:1.08rem;max-width:30rem}
 .only .cut{flex:1;min-height:13rem;margin-bottom:.6rem;overflow:hidden;position:relative}
-.only .cut img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(1.45);transform-origin:50% 62%;mix-blend-mode:multiply}
+.only .cut img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(1.15);transform-origin:50% 50%;mix-blend-mode:multiply}
 .honey{grid-column:span 4;background:var(--amber)}
 .dates{grid-column:span 4;background:var(--date);color:var(--bg)}
 .seed{grid-column:span 4;background:var(--seed);color:var(--bg)}
