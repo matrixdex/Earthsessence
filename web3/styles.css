@@ -67,6 +67,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;font-optical-sizing:auto;te
 .band .track.paused{animation-play-state:paused}
 .band .flag{height:2rem;width:auto;aspect-ratio:4/3;flex:none;display:block}
 .band .seg{display:flex;align-items:center;gap:var(--sp);padding-right:var(--sp);white-space:nowrap;font-size:.85rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.band .seg span{font:400 1.7rem/1 var(--serif);letter-spacing:.14em}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* sections */
@@ -75,6 +76,7 @@ section{padding-block:var(--gap)}
 .head h2{font-size:clamp(2.8rem,7.4vw,7.2rem);line-height:.95;letter-spacing:-.015em}
 .head.top{align-items:flex-start}
 .head.top p{margin-top:.2rem;margin-bottom:0}
+@media(min-width:60.01rem){.head.top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,5fr) 4rem;gap:1.5rem 2rem}.head.top h2{grid-column:1/3;white-space:nowrap}.head.top p{grid-column:3;max-width:none;padding-right:0}}
 .head p{max-width:24rem;margin-bottom:.6rem;color:var(--mute);font-size:1.08rem;line-height:1.55}
 .head .pill{margin-bottom:.5rem;flex:none}
 
