@@ -170,7 +170,7 @@ section{padding-block:var(--gap)}
 
 /* footer */
 .foot{background:var(--ink);color:var(--bg);padding:clamp(4rem,8vw,7rem) 0 0}
-.fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2.5rem;margin-bottom:clamp(3.5rem,7vw,6rem)}
+.fgrid{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:2.5rem;margin-bottom:clamp(3.5rem,7vw,6rem)}
 
 .fgrid .fbrand{display:block;padding:0;color:var(--bg);font:600 1.9rem/1.05 var(--serif);letter-spacing:-.02em}
 .fgrid h4{font:600 .78rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--sun);margin-bottom:1.1rem}
