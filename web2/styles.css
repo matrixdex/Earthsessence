@@ -1,6 +1,6 @@
 /* Layout: bright colour-blocked bento grid with an oversized grotesk headline; each product family owns one colour. */
 :root{--bg:#FFFEEB;--ink:#0A213E;--mute:#3B4E6B;--blue:#1D4E89;--amber:#F4B942;--clay:#E7673C;--seed:#14283f;--date:#5b2a2f;--sage:#cfe0c3;
---display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Hanken Grotesk',system-ui,sans-serif;
+--display:'Playfair Display',Georgia,'Times New Roman',serif;--body:'Hanken Grotesk',system-ui,sans-serif;
 --ease:cubic-bezier(.2,.9,.3,1);--spring:linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1);--ease-out:cubic-bezier(.22,1,.36,1);--gap:.9rem;--section:clamp(3.25rem,7vw,6rem);color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:1rem}
@@ -24,7 +24,7 @@ nav ul a[aria-current="page"]{background:var(--ink);color:var(--bg)}
 .btn:hover{transform:scale(1.04)}.btn:active{transform:scale(.97)}
 
 /* hero headline */
-h1{font:500 clamp(3.2rem,11.2vw,9.6rem)/.9 var(--display);letter-spacing:-.025em;margin:clamp(1.25rem,4vw,3rem) 0 1.4rem;text-wrap:balance}
+h1{font:500 clamp(3rem,10vw,8rem)/.9 var(--display);letter-spacing:-.015em;margin:clamp(1.25rem,4vw,3rem) 0 1.4rem;text-wrap:balance}
 h1 span{color:var(--clay)}
 .sub{display:flex;justify-content:space-between;align-items:end;gap:1.25rem 2rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .sub p{max-width:none;font-size:clamp(1.05rem,2.2vw,1.3rem);line-height:1.45;margin:0}
@@ -33,7 +33,7 @@ h1 span{color:var(--clay)}
 .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
 .t{border-radius:2rem;padding:1.6rem;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease)}
 a.t:hover{transform:scale(1.012)}
-.t h3{font:500 clamp(1.9rem,3.4vw,2.9rem)/1 var(--display);letter-spacing:-.035em;margin:0 0 .7rem}
+.t h3{font:500 clamp(1.9rem,3.4vw,2.9rem)/1 var(--display);letter-spacing:-.02em;margin:0 0 .7rem}
 .t p{margin:0 0 .8rem;font-size:.97rem}
 .t p:last-child{margin-bottom:0}
 .t .go{font-weight:700;font-size:.92rem;margin-top:auto;padding-top:.4rem}
@@ -64,7 +64,7 @@ a.t:hover .im img{transform:scale(1.05)}
 
 /* sections */
 section{padding-block:var(--section)}
-h2{font:500 clamp(2.5rem,6.4vw,5.2rem)/1 var(--display);letter-spacing:-.035em;margin:0}
+h2{font:500 clamp(2.5rem,6.4vw,5.2rem)/1 var(--display);letter-spacing:-.02em;margin:0}
 .phead{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.5rem}
 .lede{font-size:clamp(1.05rem,2.2vw,1.25rem);max-width:none;margin:0 0 2rem}
 .phead + .lede{margin-top:-.5rem}
@@ -100,14 +100,14 @@ h1.small{font-size:clamp(3rem,9.5vw,7rem);margin:clamp(1rem,4vw,2.5rem) 0 1rem}
 .ben{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 .ben > div{border-radius:2rem;padding:clamp(1.4rem,3vw,2rem);background:rgba(10,33,62,.06);display:flex;flex-direction:column}
 .ben > div:nth-child(2){background:var(--amber)}.ben > div:nth-child(3){background:var(--sage)}
-.ben h3{font:500 clamp(1.7rem,2.8vw,2.2rem)/1.05 var(--display);letter-spacing:-.035em;margin:0 0 .9rem}
+.ben h3{font:500 clamp(1.7rem,2.8vw,2.2rem)/1.05 var(--display);letter-spacing:-.02em;margin:0 0 .9rem}
 .ben p{margin:0 0 1.1rem;flex:1}
 .ben a{font-weight:700}
 
 /* benefits page */
 .moon{background:var(--sage);border-radius:2rem;padding:clamp(1.4rem,4vw,3rem);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1.5rem clamp(1.5rem,5vw,4rem);align-items:center}
 .ph-top.flush{padding-bottom:var(--gap)}
-.moon h3{font:500 clamp(2.2rem,5.4vw,4.4rem)/1 var(--display);margin:0 0 1rem;letter-spacing:-.04em}
+.moon h3{font:500 clamp(2.2rem,5.4vw,4.4rem)/1 var(--display);margin:0 0 1rem;letter-spacing:-.025em}
 .moon p{max-width:40rem;font-size:1.05rem;margin:0 0 1.25rem}
 .moon .btn{justify-self:start}
 .moon .anim{aspect-ratio:3/2;width:100%}
