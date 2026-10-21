@@ -58,6 +58,7 @@ a.t:hover .im img{transform:scale(1.05)}
 .seed{grid-column:span 4;background:var(--seed);color:var(--bg)}
 .free{grid-column:span 5;background:var(--clay);color:#fff;justify-content:flex-end}
 .free h3{font-size:clamp(2rem,3.8vw,3.2rem)}
+@media(min-width:60.01rem){.free p:not(:last-child){margin-bottom:0}}
 .blue{grid-column:span 7;background:var(--blue);color:var(--bg);flex-direction:column;align-items:flex-start;justify-content:space-between;gap:1.25rem 1.5rem}
 .blue h3{margin:0;font-size:clamp(2.2rem,4.6vw,4rem)}
 .blue div{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;max-width:22rem}
