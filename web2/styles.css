@@ -235,7 +235,7 @@ body.locked{overflow:hidden}
 
 /* widescreen header, as web1: big badge on the left that shrinks while scrolling, plain links on the right */
 @media(min-width:60.01rem){
-  :root{--logo-full:6.25rem;--logo-min:.75;--hdr-h:calc(var(--logo-full) + 1.75rem);--bpad:clamp(1rem,3vw,2rem)}
+  :root{--logo-full:7.8125rem;--logo-min:.6;--hdr-h:calc(var(--logo-full) + 1.75rem);--bpad:clamp(1rem,3vw,2rem)}
   html{scroll-padding-top:6.5rem}
   body{padding-top:var(--hdr-h)}
   nav{position:fixed;top:0;left:0;right:0;z-index:70;box-sizing:border-box;max-width:calc(80rem + 2 * var(--bpad));margin-inline:auto;height:var(--hdr-h);padding:.875rem var(--bpad);display:flex;align-items:center;justify-content:space-between;gap:1rem}
