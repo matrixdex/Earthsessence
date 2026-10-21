@@ -89,7 +89,7 @@ if (headerEl && headerLogo) {
     const css = getComputedStyle(document.documentElement);
     full = parseFloat(css.getPropertyValue('--logo-full')) * rem || 100;
     minScale = parseFloat(css.getPropertyValue('--logo-min')) || 0.5;
-    padTop = 0.625 * rem; gapBottom = 1.125 * rem;
+    padTop = 0.875 * rem; gapBottom = 0.875 * rem;
   };
   const update = () => {
     tick = false;
