@@ -232,5 +232,5 @@ body.locked{overflow:hidden}
   .burger span:nth-child(2){transform:none!important}
 }
 
-/* widescreen footer: double side margins */
-@media(min-width:60.01rem){footer{padding-inline:clamp(1rem,3vw,2rem)}}
+/* widescreen footer: wide side margins (4x the page gutter) */
+@media(min-width:60.01rem){footer{padding-inline:calc(clamp(1rem,3vw,2rem) * 3)}}
