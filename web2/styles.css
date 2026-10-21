@@ -10,7 +10,7 @@ img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:.4rem}
 .wrap{max-width:80rem;margin-inline:auto}
 p{text-wrap:pretty}
-h1,h2,h3,h4{font-family:var(--display);font-weight:500;font-style:normal;text-wrap:balance}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;font-style:normal;text-wrap:balance;font-variant-ligatures:none;font-feature-settings:"liga" 0,"clig" 0}
 
 /* nav */
 nav{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;padding-block:1.1rem}
@@ -26,6 +26,7 @@ nav ul a[aria-current="page"]{background:var(--ink);color:var(--bg)}
 /* hero headline */
 h1{font:500 clamp(3rem,10vw,8rem)/.9 var(--display);letter-spacing:-.015em;margin:clamp(1.25rem,4vw,3rem) 0 1.4rem;text-wrap:balance}
 @media(min-width:60.01rem){h1:not(.small){white-space:nowrap;font-size:clamp(5rem,8vw,8rem)}}
+h1 .fx{font:inherit;margin-right:.06em}
 h1 span{color:var(--clay)}
 .sub{display:flex;justify-content:space-between;align-items:end;gap:1.25rem 2rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .sub p{max-width:none;font-size:clamp(1.05rem,2.2vw,1.3rem);line-height:1.45;margin:0}
