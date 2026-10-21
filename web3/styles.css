@@ -288,9 +288,6 @@ section{padding-block:var(--gap)}
     .cols>div+div,.blist li{border-color:currentColor}
 }
 
-/* widescreen footer: double side margins */
-@media(min-width:60.01rem){.foot .in{padding-inline:calc(var(--pad) * 2)}}
-
 /* widescreen header, as web1: big badge on the left that shrinks while scrolling, links on the right with Contact as the button */
 @media(min-width:60.01rem){
   :root{--logo-full:6.875rem;--logo-min:.65;--hdr-h:calc(var(--logo-full) + 1.75rem)}
