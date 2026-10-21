@@ -77,32 +77,3 @@ if (show) {
 // sun, moon and Earth animation: pause while it is off screen
 const anim = document.querySelector('.hero-anim');
 if (anim) new IntersectionObserver(e => anim.classList.toggle('ts-paused', !e[0].isIntersecting)).observe(anim);
-
-// widescreen header, as on web1: the badge starts large and shrinks to its scrolled size over the first 150px of scrolling
-const headerEl = document.querySelector('.site') || document.querySelector('nav');
-const headerLogo = headerEl && headerEl.querySelector('.logo svg');
-if (headerEl && headerLogo) {
-  const wide = matchMedia('(min-width: 60.01rem)');
-  let full = 100, padTop = 10, gapBottom = 18, minScale = 0.75, tick = false;
-  const measure = () => {
-    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const css = getComputedStyle(document.documentElement);
-    full = parseFloat(css.getPropertyValue('--logo-full')) * rem || 100;
-    minScale = parseFloat(css.getPropertyValue('--logo-min')) || 0.5;
-    padTop = 0.875 * rem; gapBottom = 0.875 * rem;
-  };
-  const update = () => {
-    tick = false;
-    const st = headerEl.style;
-    if (!wide.matches) { ['--logo-scale', '--dy', '--glass-y'].forEach(v => st.removeProperty(v)); return; }
-    const p = Math.min(1, Math.max(0, scrollY / 150));
-    const s = 1 - (1 - minScale) * p;
-    st.setProperty('--logo-scale', s.toFixed(4));
-    st.setProperty('--dy', (-full * (1 - s) / 2).toFixed(2) + 'px');
-    st.setProperty('--glass-y', ((padTop + gapBottom + full * s) / (padTop + gapBottom + full)).toFixed(4));
-  };
-  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
-  addEventListener('resize', () => { measure(); update(); });
-  wide.addEventListener('change', () => { measure(); update(); });
-  measure(); update();
-}

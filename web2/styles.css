@@ -233,16 +233,15 @@ body.locked{overflow:hidden}
 }
 
 
-/* widescreen header, as web1: big badge on the left that shrinks while scrolling, plain links on the right */
+/* widescreen header: badge on the left, plain links on the right; scrolls away with the page (the header stays sticky on mobile only) */
 @media(min-width:60.01rem){
-  :root{--logo-full:7.8125rem;--logo-min:.6;--hdr-h:calc(var(--logo-full) + 1.75rem);--bpad:clamp(1rem,3vw,2rem)}
-  html{scroll-padding-top:6.5rem}
+  :root{--logo-full:7.8125rem;--hdr-h:calc(var(--logo-full) + 1.75rem);--bpad:clamp(1rem,3vw,2rem)}
+  html{scroll-padding-top:1rem}
   body{padding-top:var(--hdr-h)}
-  nav{position:fixed;top:0;left:0;right:0;z-index:70;box-sizing:border-box;max-width:calc(80rem + 2 * var(--bpad));margin-inline:auto;height:var(--hdr-h);padding:.875rem var(--bpad);display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  nav::before{content:"";position:absolute;inset:0 -100vmax;background:var(--bg);transform:scaleY(var(--glass-y,1));transform-origin:top;z-index:-1}
+  nav{position:absolute;top:0;left:0;right:0;z-index:70;box-sizing:border-box;max-width:calc(80rem + 2 * var(--bpad));margin-inline:auto;height:var(--hdr-h);padding:.875rem var(--bpad);display:flex;align-items:center;justify-content:space-between;gap:1rem}
   .logo .wm{display:none}
-  .logo svg{width:var(--logo-full);height:var(--logo-full);transform:translateY(var(--dy,0px)) scale(var(--logo-scale,1));transform-origin:left center;will-change:transform}
-  nav ul{gap:2.25rem;padding:0;border-radius:0;background:none;transform:translateY(var(--dy,0px))}
+  .logo svg{width:var(--logo-full);height:var(--logo-full)}
+  nav ul{gap:2.25rem;padding:0;border-radius:0;background:none}
   nav ul a{padding:.5rem 0;border-radius:0;font-size:1.1rem;background:none;color:var(--ink)}
   nav ul a:hover{background:none;color:var(--blue)}
   nav ul a[aria-current="page"]{background:none;color:var(--blue)}
