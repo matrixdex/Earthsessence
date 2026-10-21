@@ -62,7 +62,22 @@ if (filters && grid) {
 // animations that only run while visible: the marquee band and the sun, moon and Earth
 const watch = (el, onChange) => el && new IntersectionObserver(e => onChange(e[0].isIntersecting)).observe(el);
 const track = document.querySelector('.band .track');
-watch(track, on => track.classList.toggle('paused', !on));
+if (track) {
+  // repeat the Origins group until one half of the track is wider than the screen, so the loop never shows empty space
+  const first = track.querySelector('.seg');
+  const fit = () => {
+    track.querySelectorAll('.seg:not(:first-child)').forEach(s => s.remove());
+    const w = first.getBoundingClientRect().width;
+    if (!w) return;
+    const k = Math.max(1, Math.ceil(innerWidth / w) + 1);
+    for (let i = 1; i < 2 * k; i++) track.appendChild(first.cloneNode(true));
+    track.style.animationDuration = Math.round((w * k) / 60) + 's'; // about 60px per second at any width
+  };
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(fit, 150); });
+  watch(track, on => track.classList.toggle('paused', !on));
+}
 const anim = document.querySelector('.hero-anim');
 watch(anim, on => anim.classList.toggle('ts-paused', !on));
 const badge = document.querySelector('.badge');
