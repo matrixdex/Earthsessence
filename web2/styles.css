@@ -235,8 +235,8 @@ body.locked{overflow:hidden}
 
 /* widescreen header, as web1: big badge on the left that shrinks while scrolling, plain links on the right */
 @media(min-width:60.01rem){
-  :root{--logo-full:9.375rem;--hdr-h:calc(var(--logo-full) + 1.75rem);--bpad:clamp(1rem,3vw,2rem)}
-  html{scroll-padding-top:7.5rem}
+  :root{--logo-full:4.6875rem;--hdr-h:calc(var(--logo-full) + 1.75rem);--bpad:clamp(1rem,3vw,2rem)}
+  html{scroll-padding-top:5.5rem}
   body{padding-top:var(--hdr-h)}
   nav{position:fixed;top:0;left:0;right:0;z-index:70;box-sizing:border-box;max-width:calc(80rem + 2 * var(--bpad));margin-inline:auto;height:var(--hdr-h);padding:.625rem var(--bpad) 1.125rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
   nav::before{content:"";position:absolute;inset:0 -100vmax;background:var(--bg);transform:scaleY(var(--glass-y,1));transform-origin:top;z-index:-1}
