@@ -78,6 +78,9 @@ if (items.length) {
         e.target.style.setProperty('--rd', Math.min(i, 5) * 0.06 + 's');
         e.target.classList.add('in-view');
         io.unobserve(e.target);
+        // once revealed, hand the element back to its own hover transitions (reveal timing would delay them)
+        const el = e.target;
+        setTimeout(() => el.classList.remove('reveal', 'in-view'), 1600);
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
     items.forEach(el => io.observe(el));
