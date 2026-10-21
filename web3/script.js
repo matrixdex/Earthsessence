@@ -102,7 +102,7 @@ if (items.length) {
   }
 }
 
-// widescreen header, as on web1: the badge starts large and shrinks to half size over the first screenful of scrolling
+// widescreen header, as on web1: the badge starts large and shrinks to half size over the first 150px of scrolling
 const headerEl = document.querySelector('.site') || document.querySelector('nav');
 const headerLogo = headerEl && headerEl.querySelector('.logo svg');
 if (headerEl && headerLogo) {
@@ -117,7 +117,7 @@ if (headerEl && headerLogo) {
     tick = false;
     const st = headerEl.style;
     if (!wide.matches) { ['--logo-scale', '--dy', '--glass-y'].forEach(v => st.removeProperty(v)); return; }
-    const p = Math.min(1, Math.max(0, scrollY / Math.max(320, innerHeight * 0.6)));
+    const p = Math.min(1, Math.max(0, scrollY / 150));
     const s = 1 - 0.5 * p;
     st.setProperty('--logo-scale', s.toFixed(4));
     st.setProperty('--dy', (-full * (1 - s) / 2).toFixed(2) + 'px');
