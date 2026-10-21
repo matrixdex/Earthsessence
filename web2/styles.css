@@ -155,7 +155,6 @@ footer{padding-block:var(--section) 1.5rem;font-size:.95rem}
   .t{padding:1.35rem}
   .only h3,.free h3,.blue h3{font-size:clamp(1.9rem,8vw,2.6rem)}
   .only{justify-content:flex-start}
-  .only .cut{display:none}
   nav{display:flex}
   .prod{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ben{grid-template-columns:1fr}
@@ -203,6 +202,9 @@ footer{padding-block:var(--section) 1.5rem;font-size:.95rem}
   .ts-s2{transform:translate(360px,230px) scale(.62)}
   .ts-s3{transform:translate(404px,248px) scale(.62)}
 }
+
+/* the Only the purest photo is hidden on small phones */
+@media(max-width:499px){.only .cut{display:none}}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
