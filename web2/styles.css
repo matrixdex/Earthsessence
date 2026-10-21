@@ -231,3 +231,6 @@ body.locked{overflow:hidden}
   .ov-links a,.overlay.open .ov-links a{transform:none!important;opacity:1}
   .burger span:nth-child(2){transform:none!important}
 }
+
+/* widescreen footer: double side margins */
+@media(min-width:60.01rem){footer{padding-inline:clamp(1rem,3vw,2rem)}}

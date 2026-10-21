@@ -282,3 +282,6 @@ section{padding-block:var(--gap)}
   .org{outline:1px solid var(--ink)}
   .cols>div+div,.blist li{border-color:currentColor}
 }
+
+/* widescreen footer: double side margins */
+@media(min-width:60.01rem){.foot .in{padding-inline:calc(var(--pad) * 2)}}
