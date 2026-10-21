@@ -130,12 +130,12 @@ h1.small{font-size:clamp(3rem,9.5vw,7rem);margin:clamp(1rem,4vw,2.5rem) 0 1rem}
 
 /* footer */
 footer{padding-block:var(--section) 1.5rem;font-size:.95rem}
-.fgrid{display:grid;grid-template-columns:1fr repeat(3,max-content);gap:2rem clamp(3rem,7vw,7rem);align-items:start}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}
 .fgrid b{display:block;margin-bottom:.5rem;font-family:var(--display);font-size:1.05rem}
 .fgrid a{display:block;padding:.15rem 0;color:var(--mute);transition:color .2s}
 .fgrid a:hover{color:var(--blue)}
 .fgrid .fbrand{display:flex;padding:0;color:var(--ink);align-items:center;gap:.7rem;white-space:nowrap;font:600 1.5rem/1 var(--display);letter-spacing:-.02em}
-.fbrand svg{display:block;width:4.2rem;height:4.2rem;flex:none;color:var(--ink)}
+.fbrand svg{display:none;width:4.2rem;height:4.2rem;flex:none;color:var(--ink)}
 .copy{display:flex;justify-content:space-between;gap:.25rem 1.5rem;margin-top:3rem;color:var(--mute);font-size:.9rem}
 
 /* menu button and full-screen menu (small screens only), modelled on web1 */
@@ -181,6 +181,7 @@ body.locked{overflow:hidden}
   /* centred footer: logo, title, then the rest */
   .fgrid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:1.75rem}
   .fgrid .fbrand{flex-direction:column;gap:.8rem}
+  .fgrid .fbrand svg{display:block}
   .copy{flex-direction:column;align-items:center;text-align:center;margin-top:2.25rem}
 }
 @media(max-width:40rem){
