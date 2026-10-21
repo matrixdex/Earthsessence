@@ -107,18 +107,20 @@ const headerEl = document.querySelector('.site') || document.querySelector('nav'
 const headerLogo = headerEl && headerEl.querySelector('.logo svg');
 if (headerEl && headerLogo) {
   const wide = matchMedia('(min-width: 60.01rem)');
-  let full = 150, padTop = 10, gapBottom = 18, tick = false;
+  let full = 110, padTop = 14, gapBottom = 14, minScale = 0.65, tick = false;
   const measure = () => {
     const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    full = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--logo-full')) * rem || 150;
-    padTop = 0.625 * rem; gapBottom = 1.125 * rem;
+    const css = getComputedStyle(document.documentElement);
+    full = parseFloat(css.getPropertyValue('--logo-full')) * rem || 110;
+    minScale = parseFloat(css.getPropertyValue('--logo-min')) || 0.5;
+    padTop = 0.875 * rem; gapBottom = 0.875 * rem;
   };
   const update = () => {
     tick = false;
     const st = headerEl.style;
     if (!wide.matches) { ['--logo-scale', '--dy', '--glass-y'].forEach(v => st.removeProperty(v)); return; }
     const p = Math.min(1, Math.max(0, scrollY / 150));
-    const s = 1 - 0.5 * p;
+    const s = 1 - (1 - minScale) * p;
     st.setProperty('--logo-scale', s.toFixed(4));
     st.setProperty('--dy', (-full * (1 - s) / 2).toFixed(2) + 'px');
     st.setProperty('--glass-y', ((padTop + gapBottom + full * s) / (padTop + gapBottom + full)).toFixed(4));
